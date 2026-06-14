@@ -51,6 +51,12 @@ node dist/index.js --help
 
 ## Usage
 
+For a complete first-time user test starting from GitHub account creation, see:
+
+```text
+docs/new-user-e2e-test.md
+```
+
 ### Setup
 
 ```bash
