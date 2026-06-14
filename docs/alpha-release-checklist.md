@@ -26,7 +26,7 @@ Run backup after changing files
 - [x] `aicodebackup --help` works after local build.
 - [x] `aicodebackup doctor --lang en` works.
 - [x] `aicodebackup doctor --lang zh-CN` works.
-- [ ] GitHub install works: `npm install -g https://codeload.github.com/GazeAfar/aicodebackup/tar.gz/refs/tags/v0.1.0-alpha.4`.
+- [x] GitHub install works: `npm install -g https://codeload.github.com/GazeAfar/aicodebackup/tar.gz/refs/tags/v0.1.0-alpha.4`.
 - [x] `aicodebackup --version` prints `0.1.0-alpha.4`.
 
 ## GitHub Install Policy
