@@ -1,4 +1,4 @@
-# AICodeBackup
+﻿# AICodeBackup
 
 Never lose your AI-generated code again.
 
@@ -40,7 +40,7 @@ Automatic backup
 For Alpha testing from GitHub:
 
 ```bash
-npm install -g https://codeload.github.com/GazeAfar/aicodebackup/tar.gz/refs/tags/v0.1.0-alpha.3
+npm install -g https://codeload.github.com/GazeAfar/aicodebackup/tar.gz/refs/tags/v0.1.0-alpha.4
 ```
 
 After installation:

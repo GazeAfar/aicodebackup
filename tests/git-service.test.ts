@@ -36,4 +36,16 @@ describe("GitService", () => {
     await expect(git.hasRemote()).resolves.toBe(true);
     expect(runner.commands[0].args).toEqual(["remote", "get-url", "origin"]);
   });
+
+  it("configures local author identity", async () => {
+    const runner = new MockRunner().queue({}).queue({});
+    const git = new GitService(runner, "C:/project");
+
+    await git.setLocalAuthorIdentity("Gaze Afar", "33276444+GazeAfar@users.noreply.github.com");
+
+    expect(runner.commands.map((entry) => entry.args)).toEqual([
+      ["config", "user.name", "Gaze Afar"],
+      ["config", "user.email", "33276444+GazeAfar@users.noreply.github.com"],
+    ]);
+  });
 });

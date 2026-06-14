@@ -8,12 +8,15 @@ export declare class GitService {
     init(): Promise<void>;
     hasRemote(name?: string): Promise<boolean>;
     getRemoteUrl(name?: string): Promise<string | undefined>;
+    hasAuthorIdentity(): Promise<boolean>;
+    setLocalAuthorIdentity(name: string, email: string): Promise<void>;
     statusPorcelain(): Promise<string>;
     hasChanges(): Promise<boolean>;
     addAll(): Promise<void>;
     commit(message: string): Promise<void>;
     push(): Promise<void>;
     lastCommit(): Promise<string | undefined>;
+    private getConfig;
     private succeeds;
     private mustRun;
 }

@@ -25,6 +25,15 @@ export class GitService {
         const result = await this.runner.run("git", ["remote", "get-url", name], { cwd: this.cwd });
         return result.failed ? undefined : result.stdout.trim();
     }
+    async hasAuthorIdentity() {
+        const name = await this.getConfig("user.name");
+        const email = await this.getConfig("user.email");
+        return Boolean(name && email);
+    }
+    async setLocalAuthorIdentity(name, email) {
+        await this.mustRun("git config user.name", "git", ["config", "user.name", name]);
+        await this.mustRun("git config user.email", "git", ["config", "user.email", email]);
+    }
     async statusPorcelain() {
         const result = await this.mustRun("git status --porcelain", "git", ["status", "--porcelain"]);
         return result.stdout;
@@ -46,6 +55,10 @@ export class GitService {
         const result = await this.runner.run("git", ["log", "-1", "--format=%h %s"], {
             cwd: this.cwd,
         });
+        return result.failed ? undefined : result.stdout.trim();
+    }
+    async getConfig(key) {
+        const result = await this.runner.run("git", ["config", "--get", key], { cwd: this.cwd });
         return result.failed ? undefined : result.stdout.trim();
     }
     async succeeds(command, args) {

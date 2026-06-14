@@ -1,6 +1,6 @@
 {
   "name": "aicodebackup",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "description": "Automatic private GitHub backups for AI-generated code.",
   "type": "module",
   "bin": {

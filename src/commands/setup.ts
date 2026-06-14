@@ -56,6 +56,14 @@ export async function runSetup(
     output.success(t(language, "setup.repoInitialized"));
   }
 
+  if (!(await git.hasAuthorIdentity())) {
+    const user = await gh.getCurrentUser();
+    const name = user.name?.trim() || user.login;
+    const email = `${user.id}+${user.login}@users.noreply.github.com`;
+    await git.setLocalAuthorIdentity(name, email);
+    output.success(t(language, "setup.gitIdentityConfigured"));
+  }
+
   if (await git.hasRemote()) {
     output.info(t(language, "setup.remoteExists"));
   } else {

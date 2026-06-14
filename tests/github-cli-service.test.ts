@@ -29,4 +29,21 @@ describe("GitHubCliService", () => {
       args: ["repo", "create", "demo", "--private", "--source=.", "--remote=origin"],
     });
   });
+
+  it("reads the current GitHub user", async () => {
+    const runner = new MockRunner().queue({
+      stdout: '{"login":"GazeAfar","id":33276444,"name":"Gaze Afar"}',
+    });
+    const gh = new GitHubCliService(runner, "C:/project");
+
+    await expect(gh.getCurrentUser()).resolves.toEqual({
+      login: "GazeAfar",
+      id: 33276444,
+      name: "Gaze Afar",
+    });
+    expect(runner.commands[0]).toEqual({
+      command: "gh",
+      args: ["api", "user", "--jq", "{login:.login,id:.id,name:.name}"],
+    });
+  });
 });

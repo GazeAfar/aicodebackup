@@ -1,6 +1,12 @@
 import type { CommandRunner } from "../core/command-runner.js";
 import { CommandFailedError } from "../core/errors.js";
 
+export interface GitHubUser {
+  login: string;
+  id: number;
+  name?: string;
+}
+
 export class GitHubCliService {
   constructor(
     private readonly runner: CommandRunner,
@@ -27,5 +33,19 @@ export class GitHubCliService {
     if (result.failed) {
       throw new CommandFailedError("gh repo create", result);
     }
+  }
+
+  async getCurrentUser(): Promise<GitHubUser> {
+    const result = await this.runner.run(
+      "gh",
+      ["api", "user", "--jq", "{login:.login,id:.id,name:.name}"],
+      { cwd: this.cwd },
+    );
+
+    if (result.failed) {
+      throw new CommandFailedError("gh api user", result);
+    }
+
+    return JSON.parse(result.stdout) as GitHubUser;
   }
 }

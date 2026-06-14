@@ -1,4 +1,4 @@
-# AICodeBackup Alpha Tester Guide
+﻿# AICodeBackup Alpha Tester Guide
 
 Thank you for testing AICodeBackup.
 
@@ -52,7 +52,7 @@ gh auth status
 Run:
 
 ```bash
-npm install -g https://codeload.github.com/GazeAfar/aicodebackup/tar.gz/refs/tags/v0.1.0-alpha.3
+npm install -g https://codeload.github.com/GazeAfar/aicodebackup/tar.gz/refs/tags/v0.1.0-alpha.4
 ```
 
 Check:
@@ -64,7 +64,7 @@ aicodebackup --version
 Expected:
 
 ```text
-0.1.0-alpha.3
+0.1.0-alpha.4
 ```
 
 If Windows reports cleanup or `EPERM` errors from a previous failed install, close terminals that may be running AICodeBackup, then run:

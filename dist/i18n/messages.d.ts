@@ -31,6 +31,7 @@ export declare const messages: {
         readonly "setup.ghLoginHelp": "Run: gh auth login";
         readonly "setup.repoInitialized": "Git repository initialized.";
         readonly "setup.remoteExists": "Existing remote repository found. It will not be overwritten.";
+        readonly "setup.gitIdentityConfigured": "Git author identity configured for this project.";
         readonly "setup.repoNameQuestion": "GitHub repository name:";
         readonly "setup.privateRepoCreated": "Private GitHub repository created.";
         readonly "setup.firstBackup": "Running first backup...";
@@ -69,6 +70,7 @@ export declare const messages: {
         readonly "setup.ghLoginHelp": "运行：gh auth login";
         readonly "setup.repoInitialized": "Git 仓库已初始化。";
         readonly "setup.remoteExists": "已找到现有远程仓库，不会覆盖。";
+        readonly "setup.gitIdentityConfigured": "已为当前项目配置 Git 提交身份。";
         readonly "setup.repoNameQuestion": "GitHub 仓库名称：";
         readonly "setup.privateRepoCreated": "GitHub 私有仓库已创建。";
         readonly "setup.firstBackup": "正在执行首次备份...";

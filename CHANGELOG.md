@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.0-alpha.4
+
+### Fixed
+
+- `setup` now configures a local Git author identity from the logged-in GitHub account when the project has no `user.name` or `user.email`.
+
 ## 0.1.0-alpha.3
 
 ### Fixed

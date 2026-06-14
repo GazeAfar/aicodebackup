@@ -20,5 +20,12 @@ export class GitHubCliService {
             throw new CommandFailedError("gh repo create", result);
         }
     }
+    async getCurrentUser() {
+        const result = await this.runner.run("gh", ["api", "user", "--jq", "{login:.login,id:.id,name:.name}"], { cwd: this.cwd });
+        if (result.failed) {
+            throw new CommandFailedError("gh api user", result);
+        }
+        return JSON.parse(result.stdout);
+    }
 }
 //# sourceMappingURL=github-cli.js.map
