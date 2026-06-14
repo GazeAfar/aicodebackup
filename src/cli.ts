@@ -1,0 +1,95 @@
+import { Command } from "commander";
+import { ExecaCommandRunner } from "./core/command-runner.js";
+import { normalizeError } from "./core/errors.js";
+import { ConsoleOutput } from "./core/output.js";
+import { runBackup } from "./commands/backup.js";
+import { runDoctor } from "./commands/doctor.js";
+import { runSetup } from "./commands/setup.js";
+import { resolveLanguage } from "./i18n/index.js";
+import { ConfigService } from "./services/config.js";
+import { GitService } from "./services/git.js";
+import { GitHubCliService } from "./services/github-cli.js";
+
+export function createCli(): Command {
+  const program = new Command();
+
+  program
+    .name("aicodebackup")
+    .description("Automatic private GitHub backups for AI-generated code.")
+    .version("0.1.0")
+    .option("--lang <language>", "Output language: en or zh-CN");
+
+  program
+    .command("doctor")
+    .description("Check whether AICodeBackup can back up this project.")
+    .option("--lang <language>", "Output language: en or zh-CN")
+    .action(async (options: { lang?: string }, command: Command) => {
+      await withServices(readLanguageOption(options, command), async ({ git, gh, output, language }) => {
+        await runDoctor(git, gh, output, language);
+      });
+    });
+
+  program
+    .command("backup")
+    .description("Back up the current project to GitHub.")
+    .option("--lang <language>", "Output language: en or zh-CN")
+    .action(async (options: { lang?: string }, command: Command) => {
+      await withServices(readLanguageOption(options, command), async ({ git, output, language, config }) => {
+        const result = await runBackup(git, output, language);
+        if (result.backedUp) {
+          config.setLastBackupAt(new Date().toISOString());
+        }
+      });
+    });
+
+  program
+    .command("setup")
+    .description("Connect this project to a private GitHub repository and run the first backup.")
+    .option("--lang <language>", "Output language: en or zh-CN")
+    .action(async (options: { lang?: string }, command: Command) => {
+      await withServices(readLanguageOption(options, command), async ({ git, gh, output, language, config }) => {
+        await runSetup(git, gh, output, language);
+        config.setLastBackupAt(new Date().toISOString());
+      });
+    });
+
+  return program;
+}
+
+function readLanguageOption(options: { lang?: string }, command: Command): string | undefined {
+  return options.lang ?? (command.parent?.opts<{ lang?: string }>().lang);
+}
+
+interface Services {
+  git: GitService;
+  gh: GitHubCliService;
+  output: ConsoleOutput;
+  language: ReturnType<typeof resolveLanguage>;
+  config: ConfigService;
+}
+
+async function withServices(
+  languageInput: string | undefined,
+  action: (services: Services) => Promise<void>,
+): Promise<void> {
+  const config = new ConfigService();
+  const language = resolveLanguage(languageInput ?? config.getLanguage());
+  const output = new ConsoleOutput();
+  const runner = new ExecaCommandRunner();
+  const git = new GitService(runner);
+  const gh = new GitHubCliService(runner);
+
+  try {
+    if (languageInput) {
+      config.setLanguage(language);
+    }
+    await action({ git, gh, output, language, config });
+  } catch (error) {
+    const normalized = normalizeError(error);
+    output.error(normalized.message);
+    if (normalized.nextStep) {
+      output.info(normalized.nextStep);
+    }
+    process.exitCode = 1;
+  }
+}

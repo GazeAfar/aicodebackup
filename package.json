@@ -1,0 +1,44 @@
+{
+  "name": "aicodebackup",
+  "version": "0.1.0",
+  "description": "Automatic private GitHub backups for AI-generated code.",
+  "type": "module",
+  "bin": {
+    "aicodebackup": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "keywords": [
+    "ai",
+    "backup",
+    "git",
+    "github",
+    "cli"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "conf": "^13.0.1",
+    "execa": "^9.6.0",
+    "inquirer": "^14.0.2",
+    "simple-git": "^3.27.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "eslint": "^9.29.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.61.0",
+    "vitest": "^4.1.8"
+  }
+}
