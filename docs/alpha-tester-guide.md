@@ -52,7 +52,7 @@ gh auth status
 Run:
 
 ```bash
-npm install -g https://github.com/GazeAfar/aicodebackup/archive/refs/tags/v0.1.0-alpha.3.tar.gz
+npm install -g https://codeload.github.com/GazeAfar/aicodebackup/tar.gz/refs/tags/v0.1.0-alpha.3
 ```
 
 Check:
@@ -65,6 +65,14 @@ Expected:
 
 ```text
 0.1.0-alpha.3
+```
+
+If Windows reports cleanup or `EPERM` errors from a previous failed install, close terminals that may be running AICodeBackup, then run:
+
+```powershell
+npm uninstall -g aicodebackup
+Remove-Item "$env:APPDATA\npm\node_modules\aicodebackup" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item "$env:APPDATA\npm\aicodebackup*" -Force -ErrorAction SilentlyContinue
 ```
 
 ## 3. Create a Test Project
