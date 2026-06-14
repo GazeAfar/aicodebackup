@@ -1,6 +1,6 @@
 {
   "name": "aicodebackup",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.1",
   "description": "Automatic private GitHub backups for AI-generated code.",
   "type": "module",
   "bin": {
@@ -15,6 +15,7 @@
     "build": "tsc -p tsconfig.json",
     "test": "vitest run",
     "lint": "eslint .",
+    "prepare": "npm run build",
     "format": "prettier --write ."
   },
   "keywords": [

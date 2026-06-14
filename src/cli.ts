@@ -9,6 +9,7 @@ import { resolveLanguage } from "./i18n/index.js";
 import { ConfigService } from "./services/config.js";
 import { GitService } from "./services/git.js";
 import { GitHubCliService } from "./services/github-cli.js";
+import { version } from "./version.js";
 
 export function createCli(): Command {
   const program = new Command();
@@ -16,7 +17,7 @@ export function createCli(): Command {
   program
     .name("aicodebackup")
     .description("Automatic private GitHub backups for AI-generated code.")
-    .version("0.1.0")
+    .version(version)
     .option("--lang <language>", "Output language: en or zh-CN");
 
   program

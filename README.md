@@ -2,6 +2,8 @@
 
 Never lose your AI-generated code again.
 
+> Status: V0.1 Alpha. AICodeBackup is ready for small-group testing, but not yet recommended for broad production use.
+
 AICodeBackup is an automatic backup tool for people building software with AI coding agents such as Codex, Claude Code, Cursor, Trae, and Gemini CLI.
 
 It helps you back up local projects to private GitHub repositories without needing to understand Git or GitHub.
@@ -35,7 +37,19 @@ Automatic backup
 
 ## Installation
 
-The package is designed to be installed as a global npm CLI:
+For Alpha testing from GitHub:
+
+```bash
+npm install -g github:GazeAfar/aicodebackup
+```
+
+After installation:
+
+```bash
+aicodebackup --help
+```
+
+The package is designed to be published later as a global npm CLI:
 
 ```bash
 npm install -g aicodebackup
@@ -55,6 +69,13 @@ For a complete first-time user test starting from GitHub account creation, see:
 
 ```text
 docs/new-user-e2e-test.md
+```
+
+For Alpha release and tester coordination, see:
+
+```text
+docs/alpha-release-checklist.md
+docs/alpha-tester-guide.md
 ```
 
 ### Setup
