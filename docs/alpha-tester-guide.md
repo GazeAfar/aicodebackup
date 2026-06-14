@@ -52,7 +52,7 @@ gh auth status
 Run:
 
 ```bash
-npm install -g github:GazeAfar/aicodebackup
+npm install -g https://github.com/GazeAfar/aicodebackup/archive/refs/tags/v0.1.0-alpha.3.tar.gz
 ```
 
 Check:
@@ -64,7 +64,7 @@ aicodebackup --version
 Expected:
 
 ```text
-0.1.0-alpha.2
+0.1.0-alpha.3
 ```
 
 ## 3. Create a Test Project

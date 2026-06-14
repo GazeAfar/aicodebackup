@@ -40,7 +40,7 @@ Automatic backup
 For Alpha testing from GitHub:
 
 ```bash
-npm install -g github:GazeAfar/aicodebackup
+npm install -g https://github.com/GazeAfar/aicodebackup/archive/refs/tags/v0.1.0-alpha.3.tar.gz
 ```
 
 After installation:

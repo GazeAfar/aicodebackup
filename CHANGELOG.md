@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.0-alpha.3
+
+### Fixed
+
+- Replaced the `github:` install instruction with a GitHub tag tarball URL, which installs the prebuilt package reliably for Alpha testers.
+
 ## 0.1.0-alpha.2
 
 ### Fixed

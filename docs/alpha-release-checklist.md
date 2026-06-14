@@ -26,27 +26,27 @@ Run backup after changing files
 - [x] `aicodebackup --help` works after local build.
 - [x] `aicodebackup doctor --lang en` works.
 - [x] `aicodebackup doctor --lang zh-CN` works.
-- [ ] GitHub install works: `npm install -g github:GazeAfar/aicodebackup`.
-- [x] `aicodebackup --version` prints `0.1.0-alpha.2`.
+- [ ] GitHub install works: `npm install -g https://github.com/GazeAfar/aicodebackup/archive/refs/tags/v0.1.0-alpha.3.tar.gz`.
+- [x] `aicodebackup --version` prints `0.1.0-alpha.3`.
 
 ## GitHub Install Policy
 
-The Alpha branch commits `dist/` and does not run `prepare` during GitHub install.
+The Alpha branch commits `dist/` and uses GitHub tag tarball installation instead of the `github:` npm shortcut.
 
 Reason:
 
 - GitHub installs should work for non-developer testers.
 - Testers should not need TypeScript or a local build toolchain.
-- `npm install -g github:GazeAfar/aicodebackup` should install the prebuilt CLI.
+- `npm install -g https://github.com/GazeAfar/aicodebackup/archive/refs/tags/v0.1.0-alpha.3.tar.gz` should install the prebuilt CLI.
 
 ## Alpha Tag
 
 Use:
 
 ```bash
-git tag v0.1.0-alpha.2
+git tag v0.1.0-alpha.3
 git push origin main
-git push origin v0.1.0-alpha.2
+git push origin v0.1.0-alpha.3
 ```
 
 ## Tester Requirements
