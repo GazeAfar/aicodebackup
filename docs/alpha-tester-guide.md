@@ -64,7 +64,7 @@ aicodebackup --version
 Expected:
 
 ```text
-0.1.0-alpha.1
+0.1.0-alpha.2
 ```
 
 ## 3. Create a Test Project

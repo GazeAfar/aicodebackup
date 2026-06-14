@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.0-alpha.2
+
+### Fixed
+
+- GitHub install no longer requires a local TypeScript build toolchain.
+- Prebuilt `dist/` files are committed for Alpha testers.
+
 ## 0.1.0-alpha.1
 
 Initial Alpha release for small-group testing.
