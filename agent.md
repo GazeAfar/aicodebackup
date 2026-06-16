@@ -148,11 +148,11 @@ AICodeBackup 是一款面向 AI 编程用户的自动备份工具，核心目标
 - Node.js
 - TypeScript
 - Commander
-- simple-git
 - execa
 - inquirer
 - conf
-- node-notifier
+
+当前 Git 操作通过本地 `git` CLI 执行；GitHub 认证与私有仓库创建通过 GitHub CLI 执行。不要在文档中写未实际使用的运行时依赖。
 
 除非有明确理由，不要引入偏离上述方向的大型框架。
 
@@ -162,7 +162,7 @@ AICodeBackup 是一款面向 AI 编程用户的自动备份工具，核心目标
 
 - 使用 `gh --version` 检测 GitHub CLI。
 - 使用 `gh auth status` 检查登录状态。
-- 使用 `gh auth login` 引导登录。
+- 使用 `gh auth login --web` 启动浏览器登录。
 - 使用 `gh repo create` 创建 GitHub 私有仓库。
 - 使用标准 `git push` 完成推送。
 

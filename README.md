@@ -2,7 +2,7 @@
 
 Never lose your AI-generated code again.
 
-> Status: V0.1 Alpha. AICodeBackup is ready for small-group testing, but not yet recommended for broad production use.
+> Status: V0.1 Alpha. AICodeBackup is published on npm for small-group testing, but not yet recommended for broad production use.
 
 AICodeBackup is an automatic backup tool for people building software with AI coding agents such as Codex, Claude Code, Cursor, Trae, and Gemini CLI.
 
@@ -45,11 +45,9 @@ Private GitHub repository
 Automatic backup
 ```
 
-## Planned CLI
-
 ## Installation
 
-For Alpha testing from GitHub:
+For Alpha testing from npm:
 
 ```bash
 npm install -g aicodebackup@alpha
@@ -69,7 +67,7 @@ Remove-Item "$env:APPDATA\npm\node_modules\aicodebackup" -Recurse -Force -ErrorA
 Remove-Item "$env:APPDATA\npm\aicodebackup*" -Force -ErrorAction SilentlyContinue
 ```
 
-The package is designed to be published later as a global npm CLI:
+The stable release will use:
 
 ```bash
 npm install -g aicodebackup
@@ -107,7 +105,7 @@ aicodebackup setup
 
 Initializes the current project and connects it to a private GitHub repository.
 
-Planned checks and actions:
+What it does:
 
 - Check whether Git is installed, and try to install it when missing.
 - Check whether GitHub CLI is installed, and try to install it when missing.
@@ -161,7 +159,7 @@ Example output:
 aicodebackup watch
 ```
 
-Planned for a later version. It is not included in V0.1.
+Planned for a later version. It is not included in V0.1 Alpha.
 
 In a future release, it will watch project changes and warn when an AI coding session becomes risky.
 
@@ -181,12 +179,12 @@ Backup now?
 
 AICodeBackup defaults to English.
 
-Planned language options:
+Supported language options:
 
 - English
 - Simplified Chinese
 
-Future CLI examples:
+CLI examples:
 
 ```bash
 aicodebackup doctor --lang en
@@ -195,27 +193,27 @@ aicodebackup doctor --lang zh-CN
 
 ## Tech Stack
 
-Planned implementation stack:
+Current implementation stack:
 
 - Node.js
 - TypeScript
 - Commander
-- simple-git
 - execa
 - inquirer
 - conf
-- node-notifier
+
+Git operations currently run through the local `git` CLI. GitHub authentication and private repository creation run through GitHub CLI.
 
 ## GitHub Integration
 
 AICodeBackup uses GitHub CLI for authentication and repository creation.
 
-Planned integration commands:
+Current integration commands:
 
 ```bash
 gh --version
 gh auth status
-gh auth login
+gh auth login --web
 gh repo create
 git push
 ```
