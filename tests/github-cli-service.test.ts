@@ -19,6 +19,14 @@ describe("GitHubCliService", () => {
     expect(runner.commands[0]).toEqual({ command: "gh", args: ["auth", "status"] });
   });
 
+  it("starts browser login", async () => {
+    const runner = new MockRunner().queue({});
+    const gh = new GitHubCliService(runner, "C:/project");
+
+    await expect(gh.login()).resolves.toBe(true);
+    expect(runner.commands[0]).toEqual({ command: "gh", args: ["auth", "login", "--web"] });
+  });
+
   it("creates private repositories by default", async () => {
     const runner = new MockRunner().queue({});
     const gh = new GitHubCliService(runner, "C:/project");

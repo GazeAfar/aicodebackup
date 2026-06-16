@@ -9,6 +9,7 @@ import { resolveLanguage } from "./i18n/index.js";
 import { ConfigService } from "./services/config.js";
 import { GitService } from "./services/git.js";
 import { GitHubCliService } from "./services/github-cli.js";
+import { InstallerService } from "./services/installer.js";
 import { version } from "./version.js";
 export function createCli() {
     const program = new Command();
@@ -43,8 +44,8 @@ export function createCli() {
         .description("Connect this project to a private GitHub repository and run the first backup.")
         .option("--lang <language>", "Output language: en or zh-CN")
         .action(async (options, command) => {
-        await withServices(readLanguageOption(options, command), async ({ git, gh, output, language, config }) => {
-            await runSetup(git, gh, output, language);
+        await withServices(readLanguageOption(options, command), async ({ git, gh, installer, output, language, config }) => {
+            await runSetup(git, gh, installer, output, language);
             config.setLastBackupAt(new Date().toISOString());
         });
     });
@@ -60,11 +61,12 @@ async function withServices(languageInput, action) {
     const runner = new ExecaCommandRunner();
     const git = new GitService(runner);
     const gh = new GitHubCliService(runner);
+    const installer = new InstallerService(runner);
     try {
         if (languageInput) {
             config.setLanguage(language);
         }
-        await action({ git, gh, output, language, config });
+        await action({ git, gh, installer, output, language, config });
     }
     catch (error) {
         const normalized = normalizeError(error);

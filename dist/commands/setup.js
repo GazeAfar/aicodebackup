@@ -16,16 +16,31 @@ export class InquirerSetupPrompt {
         return answers.repositoryName.trim() || defaultName;
     }
 }
-export async function runSetup(git, gh, output, language, prompt = new InquirerSetupPrompt(), cwd = process.cwd()) {
+export async function runSetup(git, gh, installer, output, language, prompt = new InquirerSetupPrompt(), cwd = process.cwd()) {
     output.info(t(language, "setup.title"));
     if (!(await git.isInstalled())) {
-        throw new AICodeBackupError(t(language, "setup.gitMissing"));
+        output.info(t(language, "setup.installingGit"));
+        await installer.installGit();
+        if (!(await git.isInstalled())) {
+            throw new AICodeBackupError(t(language, "setup.gitInstallFailed"), t(language, "doctor.installGit"));
+        }
     }
     if (!(await gh.isInstalled())) {
-        throw new AICodeBackupError(t(language, "setup.ghMissing"), t(language, "setup.ghMissingHelp"));
+        output.info(t(language, "setup.installingGh"));
+        await installer.installGitHubCli();
+        if (!(await gh.isInstalled())) {
+            throw new AICodeBackupError(t(language, "setup.ghInstallFailed"), t(language, "setup.ghMissingHelp"));
+        }
     }
     if (!(await gh.isAuthenticated())) {
-        throw new AICodeBackupError(t(language, "setup.ghNotLoggedIn"), t(language, "setup.ghLoginHelp"));
+        output.info(t(language, "setup.ghNotLoggedIn"));
+        output.info(t(language, "setup.openingSignup"));
+        await installer.openGitHubSignup();
+        output.info(t(language, "setup.startingGhLogin"));
+        await gh.login();
+        if (!(await gh.isAuthenticated())) {
+            throw new AICodeBackupError(t(language, "setup.ghLoginFailed"), t(language, "setup.ghLoginHelp"));
+        }
     }
     if (!(await git.isRepository())) {
         await git.init();

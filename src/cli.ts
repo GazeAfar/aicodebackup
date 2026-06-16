@@ -9,6 +9,7 @@ import { resolveLanguage } from "./i18n/index.js";
 import { ConfigService } from "./services/config.js";
 import { GitService } from "./services/git.js";
 import { GitHubCliService } from "./services/github-cli.js";
+import { InstallerService } from "./services/installer.js";
 import { version } from "./version.js";
 
 export function createCli(): Command {
@@ -48,10 +49,13 @@ export function createCli(): Command {
     .description("Connect this project to a private GitHub repository and run the first backup.")
     .option("--lang <language>", "Output language: en or zh-CN")
     .action(async (options: { lang?: string }, command: Command) => {
-      await withServices(readLanguageOption(options, command), async ({ git, gh, output, language, config }) => {
-        await runSetup(git, gh, output, language);
-        config.setLastBackupAt(new Date().toISOString());
-      });
+      await withServices(
+        readLanguageOption(options, command),
+        async ({ git, gh, installer, output, language, config }) => {
+          await runSetup(git, gh, installer, output, language);
+          config.setLastBackupAt(new Date().toISOString());
+        },
+      );
     });
 
   return program;
@@ -64,6 +68,7 @@ function readLanguageOption(options: { lang?: string }, command: Command): strin
 interface Services {
   git: GitService;
   gh: GitHubCliService;
+  installer: InstallerService;
   output: ConsoleOutput;
   language: ReturnType<typeof resolveLanguage>;
   config: ConfigService;
@@ -79,12 +84,13 @@ async function withServices(
   const runner = new ExecaCommandRunner();
   const git = new GitService(runner);
   const gh = new GitHubCliService(runner);
+  const installer = new InstallerService(runner);
 
   try {
     if (languageInput) {
       config.setLanguage(language);
     }
-    await action({ git, gh, output, language, config });
+    await action({ git, gh, installer, output, language, config });
   } catch (error) {
     const normalized = normalizeError(error);
     output.error(normalized.message);

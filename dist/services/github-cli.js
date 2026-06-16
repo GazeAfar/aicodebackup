@@ -14,6 +14,13 @@ export class GitHubCliService {
         const result = await this.runner.run("gh", ["auth", "status"], { cwd: this.cwd });
         return !result.failed;
     }
+    async login() {
+        const result = await this.runner.run("gh", ["auth", "login", "--web"], {
+            cwd: this.cwd,
+            interactive: true,
+        });
+        return !result.failed;
+    }
     async createPrivateRepository(name) {
         const result = await this.runner.run("gh", ["repo", "create", name, "--private", "--source=.", "--remote=origin"], { cwd: this.cwd });
         if (result.failed) {

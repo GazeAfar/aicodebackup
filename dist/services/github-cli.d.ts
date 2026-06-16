@@ -10,6 +10,7 @@ export declare class GitHubCliService {
     constructor(runner: CommandRunner, cwd?: string);
     isInstalled(): Promise<boolean>;
     isAuthenticated(): Promise<boolean>;
+    login(): Promise<boolean>;
     createPrivateRepository(name: string): Promise<void>;
     getCurrentUser(): Promise<GitHubUser>;
 }

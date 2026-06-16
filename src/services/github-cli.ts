@@ -23,6 +23,14 @@ export class GitHubCliService {
     return !result.failed;
   }
 
+  async login(): Promise<boolean> {
+    const result = await this.runner.run("gh", ["auth", "login", "--web"], {
+      cwd: this.cwd,
+      interactive: true,
+    });
+    return !result.failed;
+  }
+
   async createPrivateRepository(name: string): Promise<void> {
     const result = await this.runner.run(
       "gh",

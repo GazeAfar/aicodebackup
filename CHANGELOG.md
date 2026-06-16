@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.0-alpha.5
+
+### Changed
+
+- `setup` now attempts to install Git and GitHub CLI on Windows and macOS instead of only showing manual instructions.
+- `setup` opens GitHub signup and starts `gh auth login --web` when GitHub is not connected.
+
 ## 0.1.0-alpha.4
 
 ### Fixed

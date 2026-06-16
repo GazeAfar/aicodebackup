@@ -10,6 +10,7 @@ export interface CommandResult {
 export interface RunCommandOptions {
   cwd?: string;
   env?: NodeJS.ProcessEnv;
+  interactive?: boolean;
 }
 
 export interface CommandRunner {
@@ -25,14 +26,15 @@ export class ExecaCommandRunner implements CommandRunner {
     const result = await execa(command, args, {
       cwd: options.cwd,
       env: options.env,
+      stdio: options.interactive ? "inherit" : "pipe",
       reject: false,
       all: false,
     });
 
     return {
       exitCode: result.exitCode ?? 0,
-      stdout: result.stdout,
-      stderr: result.stderr,
+      stdout: result.stdout ?? "",
+      stderr: result.stderr ?? "",
       failed: result.failed,
     };
   }

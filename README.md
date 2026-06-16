@@ -8,6 +8,18 @@ AICodeBackup is an automatic backup tool for people building software with AI co
 
 It helps you back up local projects to private GitHub repositories without needing to understand Git or GitHub.
 
+Official website:
+
+```text
+https://www.aicodebackup.com
+```
+
+Contact:
+
+```text
+hello@aicodebackup.com
+```
+
 ## Why This Exists
 
 AI coding sessions can move fast. In a single session, an AI agent may create features, edit dozens of files, and restructure a project. Then the session ends, tokens run out, context is lost, or a mistake breaks the code.
@@ -40,7 +52,7 @@ Automatic backup
 For Alpha testing from GitHub:
 
 ```bash
-npm install -g https://codeload.github.com/GazeAfar/aicodebackup/tar.gz/refs/tags/v0.1.0-alpha.4
+npm install -g https://codeload.github.com/GazeAfar/aicodebackup/tar.gz/refs/tags/v0.1.0-alpha.5
 ```
 
 After installation:
@@ -84,6 +96,7 @@ For Alpha release and tester coordination, see:
 ```text
 docs/alpha-release-checklist.md
 docs/alpha-tester-guide.md
+docs/website-and-market-requirements.md
 ```
 
 ### Setup
@@ -96,9 +109,10 @@ Initializes the current project and connects it to a private GitHub repository.
 
 Planned checks and actions:
 
-- Check whether Git is installed.
-- Check whether GitHub CLI is installed.
-- Guide GitHub login.
+- Check whether Git is installed, and try to install it when missing.
+- Check whether GitHub CLI is installed, and try to install it when missing.
+- Open GitHub signup for users who do not have an account yet.
+- Start GitHub browser login with `gh auth login --web`.
 - Initialize Git if needed.
 - Create a private GitHub repository.
 - Run the first backup.
@@ -212,7 +226,7 @@ Repositories should be private by default.
 
 - `watch` is not implemented.
 - `restore` is not implemented.
-- GitHub CLI must be installed by the user; AICodeBackup detects it and provides guidance, but does not install it automatically.
+- Automatic Git and GitHub CLI installation is best-effort and currently focused on Windows and macOS.
 - AICodeBackup does not overwrite an existing Git remote.
 - AICodeBackup does not run destructive Git commands such as `git reset --hard`.
 

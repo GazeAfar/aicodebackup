@@ -1,4 +1,4 @@
-# New User End-to-End Test
+﻿# New User End-to-End Test
 
 This test is for users who do not know GitHub, Git, or GitHub CLI.
 
@@ -11,7 +11,7 @@ Create GitHub account
 ↓
 Install required tools
 ↓
-Log in to GitHub CLI
+Let AICodeBackup start GitHub CLI login
 ↓
 Create a private GitHub repository with AICodeBackup
 ↓
@@ -41,7 +41,7 @@ Record:
 ## Success Criteria
 
 - The tester can create a GitHub account.
-- The tester can install Git and GitHub CLI.
+- The tester can Let AICodeBackup help install Git and GitHub CLI.
 - The tester can log in with `gh auth login`.
 - The tester can run `aicodebackup setup`.
 - A private GitHub repository is created.
@@ -143,7 +143,7 @@ Notes to record:
 - Did the tester understand the difference between GitHub website and GitHub CLI?
 - Did the install page make sense?
 
-### 4. Log in to GitHub CLI
+### 4. Let AICodeBackup start GitHub CLI login
 
 Run:
 
@@ -404,6 +404,6 @@ Use this template for each tester:
 ## Current Product Gaps to Watch
 
 - AICodeBackup does not create a GitHub account for the user; it must guide them to GitHub signup.
-- AICodeBackup does not install Git or GitHub CLI automatically in V0.1.
+- AICodeBackup attempts to install Git and GitHub CLI automatically on Windows and macOS, but installers can still fail because of operating system permissions, package manager availability, or network issues.
 - `gh auth login` is still a GitHub CLI flow, so the experience depends on GitHub's browser login screens.
 - Success text currently says "GitHub" even when tests use a local Git remote; this is acceptable for production GitHub use but should be considered in local-only testing.
