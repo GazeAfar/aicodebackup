@@ -26,7 +26,7 @@ Run backup after changing files
 - [x] `aicodebackup --help` works after local build.
 - [x] `aicodebackup doctor --lang en` works.
 - [x] `aicodebackup doctor --lang zh-CN` works.
-- [x] GitHub install works: `npm install -g https://codeload.github.com/GazeAfar/aicodebackup/tar.gz/refs/tags/v0.1.0-alpha.5`.
+- [x] npm Alpha install works: `npm install -g aicodebackup@alpha`.
 - [x] `aicodebackup --version` prints `0.1.0-alpha.5`.
 
 ## GitHub Install Policy
@@ -37,7 +37,7 @@ Reason:
 
 - GitHub installs should work for non-developer testers.
 - Testers should not need TypeScript or a local build toolchain.
-- `npm install -g https://codeload.github.com/GazeAfar/aicodebackup/tar.gz/refs/tags/v0.1.0-alpha.5` should install the prebuilt CLI.
+- `npm install -g aicodebackup@alpha` should install the prebuilt CLI.
 
 ## Alpha Tag
 

@@ -4,7 +4,7 @@
   "description": "Automatic private GitHub backups for AI-generated code.",
   "type": "module",
   "bin": {
-    "aicodebackup": "./dist/index.js"
+    "aicodebackup": "dist/index.js"
   },
   "files": [
     "dist",

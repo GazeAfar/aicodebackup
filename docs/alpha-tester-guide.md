@@ -52,7 +52,7 @@ gh auth status
 Run:
 
 ```bash
-npm install -g https://codeload.github.com/GazeAfar/aicodebackup/tar.gz/refs/tags/v0.1.0-alpha.5
+npm install -g aicodebackup@alpha
 ```
 
 Check:
