@@ -1,0 +1,25 @@
+<svg width="1120" height="780" viewBox="0 0 1120 780" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">AICodeBackup terminal backup preview</title>
+  <desc id="desc">A terminal showing setup, private GitHub repository creation, backup, and doctor status.</desc>
+  <rect width="1120" height="780" rx="34" fill="#F7FAF8"/>
+  <rect x="60" y="64" width="1000" height="652" rx="28" fill="#101413"/>
+  <rect x="60" y="64" width="1000" height="72" rx="28" fill="#1B211F"/>
+  <circle cx="104" cy="101" r="10" fill="#FF6B6B"/>
+  <circle cx="136" cy="101" r="10" fill="#FFD166"/>
+  <circle cx="168" cy="101" r="10" fill="#19C37D"/>
+  <text x="220" y="108" fill="#DDEBE4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="22" font-weight="700">aicodebackup setup</text>
+  <text x="100" y="190" fill="#8CF4BF" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" font-weight="700">$ aicodebackup setup</text>
+  <text x="100" y="246" fill="#DDEBE4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="22">OK  Git installed</text>
+  <text x="100" y="300" fill="#DDEBE4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="22">OK  GitHub CLI connected</text>
+  <text x="100" y="354" fill="#DDEBE4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="22">OK  Private GitHub repository created</text>
+  <text x="100" y="408" fill="#DDEBE4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="22">OK  Project backed up to GitHub</text>
+  <rect x="100" y="462" width="486" height="118" rx="18" fill="#17211D" stroke="#2A3A34"/>
+  <text x="132" y="510" fill="#8CF4BF" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="19" font-weight="700">Backup complete</text>
+  <text x="132" y="548" fill="#DDEBE4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17">repo: github.com/you/app</text>
+  <rect x="624" y="462" width="336" height="118" rx="18" fill="#17211D" stroke="#2A3A34"/>
+  <text x="656" y="510" fill="#8CF4BF" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="19" font-weight="700">Doctor</text>
+  <text x="656" y="548" fill="#DDEBE4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17">all systems healthy</text>
+  <path d="M856 236C894 236 925 267 925 305C925 343 894 374 856 374C818 374 787 343 787 305C787 267 818 236 856 236Z" fill="#19C37D"/>
+  <path d="M831 307L849 325L884 282" stroke="#101413" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="766" y="412" fill="#8EA29A" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Private by default</text>
+</svg>

@@ -1,0 +1,11 @@
+{
+  "name": "aicodebackup-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/verify-site.mjs",
+    "dev": "npx serve public",
+    "verify": "node scripts/verify-site.mjs"
+  },
+  "devDependencies": {}
+}
