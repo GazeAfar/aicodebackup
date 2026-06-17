@@ -51,7 +51,7 @@ export declare const messages: {
         readonly "setup.openingSignup": "Opening GitHub signup. Create a free account, then return here.";
         readonly "setup.openingLogin": "Opening GitHub login. Sign in, then return here.";
         readonly "setup.githubAccountReadyQuestion": "Have you finished creating an account or signing in to GitHub in the browser?";
-        readonly "setup.startingGhLogin": "Starting GitHub CLI authorization in your browser.";
+        readonly "setup.startingGhLogin": "Starting GitHub CLI authorization. Copy the one-time code into the browser page.";
         readonly "setup.ghLoginFailed": "AICodeBackup could not complete GitHub login automatically.";
         readonly "setup.ghLoginHelp": "Check your GitHub connection or proxy, then run: aicodebackup setup";
         readonly "setup.repoInitialized": "Git repository initialized.";
@@ -115,7 +115,7 @@ export declare const messages: {
         readonly "setup.openingSignup": "正在打开 GitHub 注册页。请先创建免费账号，然后回到这里继续。";
         readonly "setup.openingLogin": "正在打开 GitHub 登录页。请先登录，然后回到这里继续。";
         readonly "setup.githubAccountReadyQuestion": "你已经在浏览器中完成 GitHub 注册或登录了吗？";
-        readonly "setup.startingGhLogin": "正在浏览器中启动 GitHub CLI 授权。";
+        readonly "setup.startingGhLogin": "正在启动 GitHub CLI 授权。请把终端里的一次性验证码输入到浏览器页面。";
         readonly "setup.ghLoginFailed": "AICodeBackup 无法自动完成 GitHub 登录。";
         readonly "setup.ghLoginHelp": "请检查 GitHub 网络连接或代理设置，然后重新运行：aicodebackup setup";
         readonly "setup.repoInitialized": "Git 仓库已初始化。";
