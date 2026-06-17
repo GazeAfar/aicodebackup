@@ -160,7 +160,7 @@ describe("runSetup", () => {
     expect(output.lines).toContain("✓ Git author identity configured for this project.");
   });
 
-  it("opens signup and starts GitHub login when not authenticated", async () => {
+  it("starts GitHub browser login when not authenticated", async () => {
     const runner = new MockRunner()
       .queue({ stdout: "git version 2.0.0" })
       .queue({ stdout: "gh version 2.0.0" })
@@ -188,7 +188,7 @@ describe("runSetup", () => {
       "C:/project",
     );
 
-    expect(installer.openGitHubSignupCalls).toBe(1);
+    expect(installer.openGitHubSignupCalls).toBe(0);
     expect(runner.commands.map((entry) => entry.args)).toContainEqual([
       "auth",
       "login",

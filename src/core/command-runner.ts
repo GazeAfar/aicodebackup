@@ -11,6 +11,7 @@ export interface RunCommandOptions {
   cwd?: string;
   env?: NodeJS.ProcessEnv;
   interactive?: boolean;
+  input?: string;
 }
 
 export interface CommandRunner {
@@ -26,7 +27,8 @@ export class ExecaCommandRunner implements CommandRunner {
     const result = await execa(command, args, {
       cwd: options.cwd,
       env: options.env,
-      stdio: options.interactive ? "inherit" : "pipe",
+      input: options.input,
+      stdio: getStdio(options),
       reject: false,
       all: false,
     });
@@ -38,4 +40,12 @@ export class ExecaCommandRunner implements CommandRunner {
       failed: result.failed,
     };
   }
+}
+
+function getStdio(options: RunCommandOptions): "pipe" | "inherit" | ["pipe", "inherit", "inherit"] {
+  if (options.interactive && options.input) {
+    return ["pipe", "inherit", "inherit"];
+  }
+
+  return options.interactive ? "inherit" : "pipe";
 }

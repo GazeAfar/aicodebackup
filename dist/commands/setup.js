@@ -34,8 +34,6 @@ export async function runSetup(git, gh, installer, output, language, prompt = ne
     }
     if (!(await gh.isAuthenticated())) {
         output.info(t(language, "setup.ghNotLoggedIn"));
-        output.info(t(language, "setup.openingSignup"));
-        await installer.openGitHubSignup();
         output.info(t(language, "setup.startingGhLogin"));
         await gh.login();
         if (!(await gh.isAuthenticated())) {

@@ -30,6 +30,7 @@ export class GitHubCliService {
       {
         cwd: this.cwd,
         interactive: true,
+        input: "Y\n",
       },
     );
 

@@ -113,8 +113,8 @@ aicodebackup setup
 
 - 检查 Git 是否已安装，缺失时尝试安装。
 - 检查 GitHub CLI 是否已安装，缺失时尝试安装。
-- 为还没有 GitHub 账号的用户打开 GitHub 注册页面。
-- 使用 `gh auth login --web` 启动 GitHub 浏览器登录。
+- 启动 GitHub 浏览器登录，用户可以在那里登录或注册 GitHub 账号。
+- 将 GitHub CLI 配置为使用 HTTPS 执行 Git 操作。
 - 在需要时初始化 Git。
 - 创建 GitHub 私有仓库。
 - 执行首次备份。

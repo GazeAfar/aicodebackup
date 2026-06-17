@@ -8,6 +8,7 @@ export interface RunCommandOptions {
     cwd?: string;
     env?: NodeJS.ProcessEnv;
     interactive?: boolean;
+    input?: string;
 }
 export interface CommandRunner {
     run(command: string, args?: string[], options?: RunCommandOptions): Promise<CommandResult>;

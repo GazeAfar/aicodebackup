@@ -113,8 +113,8 @@ What it does:
 
 - Check whether Git is installed, and try to install it when missing.
 - Check whether GitHub CLI is installed, and try to install it when missing.
-- Open GitHub signup for users who do not have an account yet.
-- Start GitHub browser login with `gh auth login --web`.
+- Start GitHub browser login, where users can sign in or create a GitHub account.
+- Configure GitHub CLI to use HTTPS for Git operations.
 - Initialize Git if needed.
 - Create a private GitHub repository.
 - Run the first backup.

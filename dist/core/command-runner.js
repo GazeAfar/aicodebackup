@@ -4,7 +4,8 @@ export class ExecaCommandRunner {
         const result = await execa(command, args, {
             cwd: options.cwd,
             env: options.env,
-            stdio: options.interactive ? "inherit" : "pipe",
+            input: options.input,
+            stdio: getStdio(options),
             reject: false,
             all: false,
         });
@@ -15,5 +16,11 @@ export class ExecaCommandRunner {
             failed: result.failed,
         };
     }
+}
+function getStdio(options) {
+    if (options.interactive && options.input) {
+        return ["pipe", "inherit", "inherit"];
+    }
+    return options.interactive ? "inherit" : "pipe";
 }
 //# sourceMappingURL=command-runner.js.map

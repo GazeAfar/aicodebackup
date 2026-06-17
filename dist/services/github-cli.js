@@ -18,6 +18,7 @@ export class GitHubCliService {
         const result = await this.runner.run("gh", ["auth", "login", "--web", "--hostname", "github.com", "--git-protocol", "https", "--skip-ssh-key"], {
             cwd: this.cwd,
             interactive: true,
+            input: "Y\n",
         });
         if (result.failed) {
             return false;

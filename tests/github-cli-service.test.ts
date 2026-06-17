@@ -34,6 +34,7 @@ describe("GitHubCliService", () => {
         args: ["auth", "setup-git", "--hostname", "github.com"],
       },
     ]);
+    expect(runner.commandOptions[0]).toMatchObject({ interactive: true, input: "Y\n" });
   });
 
   it("creates private repositories by default", async () => {
