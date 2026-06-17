@@ -181,7 +181,9 @@ Backup now?
 
 ## Language Support
 
-AICodeBackup defaults to English.
+AICodeBackup defaults to English on first use.
+
+When you pass `--lang en` or `--lang zh-CN`, AICodeBackup saves that language preference locally. Future commands without `--lang` will use the saved language.
 
 Supported language options:
 

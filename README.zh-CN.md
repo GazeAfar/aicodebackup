@@ -181,7 +181,9 @@ Backup now?
 
 ## 语言支持
 
-AICodeBackup 默认使用英文。
+AICodeBackup 首次使用默认英文。
+
+当你传入 `--lang en` 或 `--lang zh-CN` 时，AICodeBackup 会在本机保存这个语言偏好。之后不带 `--lang` 的命令会自动使用上一次保存的语言。
 
 支持的语言：
 
