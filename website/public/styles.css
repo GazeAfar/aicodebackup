@@ -329,10 +329,8 @@ main section {
   align-items: center;
   min-height: 220px;
   padding: 38px 48px;
-  border: 1px solid var(--line);
   border-radius: 8px;
-  background: linear-gradient(90deg, #f4fbf8, #ffffff);
-  box-shadow: 0 18px 50px rgba(9, 15, 13, 0.04);
+  background: linear-gradient(90deg, #eff8f4, #f8fcfa);
 }
 
 .risk-lead {
@@ -433,11 +431,10 @@ main section {
 }
 
 .commands-panel {
-  padding: 28px 36px 32px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #ffffff;
-  box-shadow: 0 14px 36px rgba(9, 15, 13, 0.035);
+  padding: 58px 36px 62px;
+  background: var(--soft);
+  box-shadow: 0 0 0 100vmax var(--soft);
+  clip-path: inset(0 -100vmax);
 }
 
 .command-grid {
@@ -449,9 +446,9 @@ main section {
 .command-card {
   min-height: 150px;
   padding: 24px 26px;
-  border: 1px solid var(--line);
   border-radius: 8px;
   background: #ffffff;
+  box-shadow: 0 16px 36px rgba(9, 15, 13, 0.055);
 }
 
 .command-card code {
@@ -488,10 +485,8 @@ main section {
   align-items: center;
   min-height: 180px;
   padding: 30px;
-  border: 1px solid var(--line);
   border-radius: 8px;
-  background: #ffffff;
-  box-shadow: var(--card-shadow);
+  background: var(--soft);
 }
 
 .platform-logo {
@@ -534,16 +529,21 @@ main section {
   gap: 22px;
 }
 
+.resources-section {
+  background: #f7fbf8;
+  box-shadow: 0 0 0 100vmax #f7fbf8;
+  clip-path: inset(0 -100vmax);
+}
+
 .resource-card {
   display: grid;
   justify-items: center;
   gap: 13px;
   min-height: 190px;
   padding: 24px;
-  border: 1px solid var(--line);
   border-radius: 8px;
   background: #ffffff;
-  box-shadow: 0 12px 34px rgba(9, 15, 13, 0.04);
+  box-shadow: 0 16px 36px rgba(9, 15, 13, 0.055);
   text-align: center;
 }
 
@@ -564,9 +564,9 @@ main section {
 }
 
 .faq-list {
-  border: 1px solid var(--line);
   border-radius: 8px;
   background: #ffffff;
+  box-shadow: 0 16px 36px rgba(9, 15, 13, 0.045);
   overflow: hidden;
 }
 
@@ -658,13 +658,7 @@ main section {
 .footer-bottom {
   display: flex;
   justify-content: center;
-  gap: 180px;
   padding-top: 18px;
-}
-
-.footer-bottom div {
-  display: flex;
-  gap: 26px;
 }
 
 .page-hero {
