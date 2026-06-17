@@ -120,8 +120,7 @@ for (const url of sitemapUrls) {
     check(/[\u4e00-\u9fff]/.test(html), `${pageLabel}: Chinese page must contain Chinese content.`);
   } else {
     const htmlWithoutLanguageSwitch = html
-      .replace(/<a class="language-link" href="\/zh-CN\/" hreflang="zh-CN" lang="zh-CN">中文<\/a>/g, "")
-      .replace(/<a class="mobile-language-link" href="\/zh-CN\/" hreflang="zh-CN" lang="zh-CN"[\s\S]*?<\/a>/g, "");
+      .replace(/<a class="language-switch" href="\/zh-CN\/" hreflang="zh-CN" lang="zh-CN"[\s\S]*?<\/a>/g, "");
     check(!/[\u4e00-\u9fff]/.test(htmlWithoutLanguageSwitch), `${pageLabel}: English page must be English-only except for the language switch.`);
   }
   check(!/vercel\.app/i.test(html), `${pageLabel}: page must not promote vercel.app URLs.`);
@@ -166,8 +165,8 @@ check(homepage.includes("/guides/backup-ai-generated-code/"), "Homepage must lin
 check(homepage.includes("/guides/github-backup-for-vibe-coders/"), "Homepage must link to the vibe coder GitHub backup guide.");
 check(homepage.includes('href="/zh-CN/" hreflang="zh-CN"'), "English homepage must link to the Chinese version.");
 check(chineseHomepage.includes('href="/" hreflang="en"'), "Chinese homepage must link back to the English version.");
-check(homepage.includes('class="mobile-language-link" href="/zh-CN/"'), "English homepage must expose the Chinese switch on mobile.");
-check(chineseHomepage.includes('class="mobile-language-link" href="/"'), "Chinese homepage must expose the English switch on mobile.");
+check(homepage.includes('class="language-switch" href="/zh-CN/"'), "English homepage must expose the Chinese language switch.");
+check(chineseHomepage.includes('class="language-switch" href="/"'), "Chinese homepage must expose the English language switch.");
 check(homepage.includes('rel="alternate" hreflang="zh-CN" href="https://www.aicodebackup.com/zh-CN/"'), "English homepage must include zh-CN hreflang.");
 check(chineseHomepage.includes('rel="alternate" hreflang="en" href="https://www.aicodebackup.com/"'), "Chinese homepage must include en hreflang.");
 check(homepage.includes('application/ld+json'), "Homepage must include JSON-LD structured data.");
