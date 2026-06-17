@@ -166,6 +166,7 @@ describe("runSetup", () => {
       .queue({ stdout: "gh version 2.0.0" })
       .queue({ failed: true })
       .queue({})
+      .queue({})
       .queue({ stdout: "true" })
       .queue({ stdout: "true" })
       .queue({ stdout: "Existing User" })
@@ -188,6 +189,21 @@ describe("runSetup", () => {
     );
 
     expect(installer.openGitHubSignupCalls).toBe(1);
-    expect(runner.commands.map((entry) => entry.args)).toContainEqual(["auth", "login", "--web"]);
+    expect(runner.commands.map((entry) => entry.args)).toContainEqual([
+      "auth",
+      "login",
+      "--web",
+      "--hostname",
+      "github.com",
+      "--git-protocol",
+      "https",
+      "--skip-ssh-key",
+    ]);
+    expect(runner.commands.map((entry) => entry.args)).toContainEqual([
+      "auth",
+      "setup-git",
+      "--hostname",
+      "github.com",
+    ]);
   });
 });

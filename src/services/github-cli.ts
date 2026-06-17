@@ -24,11 +24,24 @@ export class GitHubCliService {
   }
 
   async login(): Promise<boolean> {
-    const result = await this.runner.run("gh", ["auth", "login", "--web"], {
+    const result = await this.runner.run(
+      "gh",
+      ["auth", "login", "--web", "--hostname", "github.com", "--git-protocol", "https", "--skip-ssh-key"],
+      {
+        cwd: this.cwd,
+        interactive: true,
+      },
+    );
+
+    if (result.failed) {
+      return false;
+    }
+
+    const setupGitResult = await this.runner.run("gh", ["auth", "setup-git", "--hostname", "github.com"], {
       cwd: this.cwd,
-      interactive: true,
     });
-    return !result.failed;
+
+    return !setupGitResult.failed;
   }
 
   async createPrivateRepository(name: string): Promise<void> {

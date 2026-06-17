@@ -15,11 +15,17 @@ export class GitHubCliService {
         return !result.failed;
     }
     async login() {
-        const result = await this.runner.run("gh", ["auth", "login", "--web"], {
+        const result = await this.runner.run("gh", ["auth", "login", "--web", "--hostname", "github.com", "--git-protocol", "https", "--skip-ssh-key"], {
             cwd: this.cwd,
             interactive: true,
         });
-        return !result.failed;
+        if (result.failed) {
+            return false;
+        }
+        const setupGitResult = await this.runner.run("gh", ["auth", "setup-git", "--hostname", "github.com"], {
+            cwd: this.cwd,
+        });
+        return !setupGitResult.failed;
     }
     async createPrivateRepository(name) {
         const result = await this.runner.run("gh", ["repo", "create", name, "--private", "--source=.", "--remote=origin"], { cwd: this.cwd });
