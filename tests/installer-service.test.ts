@@ -43,4 +43,15 @@ describe("InstallerService", () => {
       args: ["https://github.com/signup"],
     });
   });
+
+  it("opens GitHub login with the platform browser command", async () => {
+    const runner = new MockRunner().queue({});
+    const installer = new InstallerService(runner, "darwin");
+
+    await expect(installer.openGitHubLogin()).resolves.toBe(true);
+    expect(runner.commands[0]).toEqual({
+      command: "open",
+      args: ["https://github.com/login"],
+    });
+  });
 });

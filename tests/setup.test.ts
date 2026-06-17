@@ -7,6 +7,9 @@ import { InstallerService } from "../src/services/installer.js";
 import { MockRunner } from "./helpers/mock-runner.js";
 
 const prompt: SetupPrompt = {
+  async hasGitHubAccount() {
+    return false;
+  },
   async githubAccountReady() {},
   async repositoryName() {
     return "demo";
@@ -17,6 +20,7 @@ class TestInstaller extends InstallerService {
   installGitCalls = 0;
   installGitHubCliCalls = 0;
   openGitHubSignupCalls = 0;
+  openGitHubLoginCalls = 0;
 
   constructor() {
     super(new MockRunner(), "win32");
@@ -34,6 +38,11 @@ class TestInstaller extends InstallerService {
 
   override async openGitHubSignup(): Promise<boolean> {
     this.openGitHubSignupCalls += 1;
+    return true;
+  }
+
+  override async openGitHubLogin(): Promise<boolean> {
+    this.openGitHubLoginCalls += 1;
     return true;
   }
 }
@@ -161,7 +170,7 @@ describe("runSetup", () => {
     expect(output.lines).toContain("✓ Git author identity configured for this project.");
   });
 
-  it("starts GitHub browser login when not authenticated", async () => {
+  it("opens GitHub signup by default when not authenticated", async () => {
     const runner = new MockRunner()
       .queue({ stdout: "git version 2.0.0" })
       .queue({ stdout: "gh version 2.0.0" })
@@ -190,6 +199,7 @@ describe("runSetup", () => {
     );
 
     expect(installer.openGitHubSignupCalls).toBe(1);
+    expect(installer.openGitHubLoginCalls).toBe(0);
     expect(runner.commands.map((entry) => entry.args)).toContainEqual([
       "auth",
       "login",
@@ -206,5 +216,46 @@ describe("runSetup", () => {
       "--hostname",
       "github.com",
     ]);
+  });
+
+  it("opens GitHub login for users with an existing account", async () => {
+    const existingAccountPrompt: SetupPrompt = {
+      async hasGitHubAccount() {
+        return true;
+      },
+      async githubAccountReady() {},
+      async repositoryName() {
+        return "demo";
+      },
+    };
+    const runner = new MockRunner()
+      .queue({ stdout: "git version 2.0.0" })
+      .queue({ stdout: "gh version 2.0.0" })
+      .queue({ failed: true })
+      .queue({})
+      .queue({})
+      .queue({ stdout: "true" })
+      .queue({ stdout: "true" })
+      .queue({ stdout: "Existing User" })
+      .queue({ stdout: "existing@example.com" })
+      .queue({ stdout: "https://github.com/user/repo.git" })
+      .queue({ stdout: "true" })
+      .queue({ stdout: "https://github.com/user/repo.git" })
+      .queue({ stdout: "" });
+    const output = new MemoryOutput();
+    const installer = new TestInstaller();
+
+    await runSetup(
+      new GitService(runner, "C:/project"),
+      new GitHubCliService(runner, "C:/project"),
+      installer,
+      output,
+      "en",
+      existingAccountPrompt,
+      "C:/project",
+    );
+
+    expect(installer.openGitHubSignupCalls).toBe(0);
+    expect(installer.openGitHubLoginCalls).toBe(1);
   });
 });

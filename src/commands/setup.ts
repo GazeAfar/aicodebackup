@@ -9,11 +9,25 @@ import type { InstallerService } from "../services/installer.js";
 import { runBackup } from "./backup.js";
 
 export interface SetupPrompt {
+  hasGitHubAccount(language: Language): Promise<boolean>;
   repositoryName(defaultName: string, language: Language): Promise<string>;
   githubAccountReady(language: Language): Promise<void>;
 }
 
 export class InquirerSetupPrompt implements SetupPrompt {
+  async hasGitHubAccount(language: Language): Promise<boolean> {
+    const answers = await inquirer.prompt<{ hasAccount: boolean }>([
+      {
+        type: "confirm",
+        name: "hasAccount",
+        message: t(language, "setup.githubAccountQuestion"),
+        default: false,
+      },
+    ]);
+
+    return answers.hasAccount;
+  }
+
   async githubAccountReady(language: Language): Promise<void> {
     await inquirer.prompt<{ ready: boolean }>([
       {
@@ -70,8 +84,15 @@ export async function runSetup(
 
   if (!(await gh.isAuthenticated())) {
     output.info(t(language, "setup.ghNotLoggedIn"));
-    output.info(t(language, "setup.openingSignup"));
-    await installer.openGitHubSignup();
+    const hasGitHubAccount = await prompt.hasGitHubAccount(language);
+    if (hasGitHubAccount) {
+      output.info(t(language, "setup.openingLogin"));
+      await installer.openGitHubLogin();
+    } else {
+      output.info(t(language, "setup.openingSignup"));
+      await installer.openGitHubSignup();
+    }
+
     await prompt.githubAccountReady(language);
     output.info(t(language, "setup.startingGhLogin"));
     await gh.login();

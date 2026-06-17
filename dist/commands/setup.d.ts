@@ -4,10 +4,12 @@ import type { GitService } from "../services/git.js";
 import type { GitHubCliService } from "../services/github-cli.js";
 import type { InstallerService } from "../services/installer.js";
 export interface SetupPrompt {
+    hasGitHubAccount(language: Language): Promise<boolean>;
     repositoryName(defaultName: string, language: Language): Promise<string>;
     githubAccountReady(language: Language): Promise<void>;
 }
 export declare class InquirerSetupPrompt implements SetupPrompt {
+    hasGitHubAccount(language: Language): Promise<boolean>;
     githubAccountReady(language: Language): Promise<void>;
     repositoryName(defaultName: string, language: Language): Promise<string>;
 }

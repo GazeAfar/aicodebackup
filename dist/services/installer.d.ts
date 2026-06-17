@@ -8,6 +8,7 @@ export declare class InstallerService {
     installGit(): Promise<boolean>;
     installGitHubCli(): Promise<boolean>;
     openGitHubSignup(): Promise<boolean>;
+    openGitHubLogin(): Promise<boolean>;
     openUrl(url: string): Promise<boolean>;
     private succeeds;
 }

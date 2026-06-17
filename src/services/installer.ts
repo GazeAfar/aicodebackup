@@ -57,6 +57,10 @@ export class InstallerService {
     return this.openUrl("https://github.com/signup");
   }
 
+  async openGitHubLogin(): Promise<boolean> {
+    return this.openUrl("https://github.com/login");
+  }
+
   async openUrl(url: string): Promise<boolean> {
     if (this.platform === "win32") {
       return this.succeeds("powershell", ["-NoProfile", "-Command", "Start-Process", url]);
