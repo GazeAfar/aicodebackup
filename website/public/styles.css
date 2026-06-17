@@ -100,6 +100,15 @@ svg {
   font-weight: 760;
 }
 
+.language-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
 .nav-links > a:not(.nav-cta):hover,
 .footer-column a:hover,
 .footer-bottom a:hover {
@@ -860,8 +869,13 @@ main section {
     gap: 0;
   }
 
-  .nav-links > a:not(.nav-cta) {
+  .nav-links > a:not(.nav-cta):not(.language-link) {
     display: none;
+  }
+
+  .language-link {
+    min-height: 40px;
+    padding: 0 12px;
   }
 
   .nav-cta {

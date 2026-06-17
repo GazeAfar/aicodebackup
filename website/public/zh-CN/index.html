@@ -1,20 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AICodeBackup - Never lose your AI-generated code again</title>
+    <title>AICodeBackup 中文版 - 别让 AI 写出来的代码丢失</title>
     <meta
       name="description"
-      content="AICodeBackup helps AI coding users back up local projects to private GitHub repositories, with setup, backup, and doctor commands for Windows and macOS."
+      content="AICodeBackup 帮助 AI 编程用户把本地项目备份到 GitHub 私有仓库。即使不熟悉 Git，也可以通过 setup、backup 和 doctor 命令保护代码。"
     />
     <meta
       name="keywords"
-      content="AI code backup, AI coding backup, backup AI-generated code, GitHub backup for vibe coders, automatic GitHub backup, Codex backup, Claude Code backup, Cursor backup"
+      content="AI 代码备份, AI 编程备份, GitHub 私有仓库备份, 不会 Git 备份代码, Codex 备份, Claude Code 备份, Cursor 备份"
     />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="AICodeBackup" />
-    <link rel="canonical" href="https://www.aicodebackup.com/" />
+    <link rel="canonical" href="https://www.aicodebackup.com/zh-CN/" />
     <link rel="alternate" hreflang="en" href="https://www.aicodebackup.com/" />
     <link rel="alternate" hreflang="zh-CN" href="https://www.aicodebackup.com/zh-CN/" />
     <link rel="alternate" hreflang="x-default" href="https://www.aicodebackup.com/" />
@@ -24,20 +24,20 @@
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="AICodeBackup" />
-    <meta property="og:title" content="AICodeBackup - Never lose your AI-generated code again" />
+    <meta property="og:title" content="AICodeBackup 中文版 - 别让 AI 写出来的代码丢失" />
     <meta
       property="og:description"
-      content="Back up AI coding projects to private GitHub repositories without learning Git."
+      content="把 AI 编程项目自动备份到 GitHub 私有仓库，不需要先学会 Git。"
     />
-    <meta property="og:url" content="https://www.aicodebackup.com/" />
+    <meta property="og:url" content="https://www.aicodebackup.com/zh-CN/" />
     <meta property="og:image" content="https://www.aicodebackup.com/assets/social-preview.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="AICodeBackup - Never lose your AI-generated code again" />
+    <meta name="twitter:title" content="AICodeBackup 中文版 - 别让 AI 写出来的代码丢失" />
     <meta
       name="twitter:description"
-      content="Back up AI coding projects to private GitHub repositories without learning Git."
+      content="把 AI 编程项目自动备份到 GitHub 私有仓库，不需要先学会 Git。"
     />
     <meta name="twitter:image" content="https://www.aicodebackup.com/assets/social-preview.png" />
 
@@ -48,8 +48,8 @@
         "name": "AICodeBackup",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Windows, macOS",
-        "description": "A CLI tool that backs up AI coding projects to private GitHub repositories without making users learn Git.",
-        "url": "https://www.aicodebackup.com/",
+        "description": "AICodeBackup 是一款帮助 AI 编程用户把本地项目备份到 GitHub 私有仓库的 CLI 工具。",
+        "url": "https://www.aicodebackup.com/zh-CN/",
         "downloadUrl": "https://www.npmjs.com/package/aicodebackup",
         "softwareVersion": "0.1.0-alpha.5",
         "offers": {
@@ -75,19 +75,19 @@
   </head>
   <body>
     <header class="site-header">
-      <nav class="nav" aria-label="Main navigation">
-        <a class="brand" href="/" aria-label="AICodeBackup home">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="/zh-CN/" aria-label="AICodeBackup 中文首页">
           <span class="brand-mark" aria-hidden="true">AC</span>
           <span>AICodeBackup</span>
         </a>
         <div class="nav-links">
-          <a href="/#how-it-works">How it works</a>
-          <a href="/#commands">Commands</a>
-          <a href="/guides/">Guides</a>
-          <a href="/#faq">FAQ</a>
-          <a href="mailto:hello@aicodebackup.com">Contact</a>
-          <a class="language-link" href="/zh-CN/" hreflang="zh-CN" lang="zh-CN">中文</a>
-          <a class="nav-cta" href="https://www.npmjs.com/package/aicodebackup">Install alpha</a>
+          <a href="#how-it-works">工作方式</a>
+          <a href="#commands">命令</a>
+          <a href="#platforms">Windows 与 macOS</a>
+          <a href="#faq">FAQ</a>
+          <a href="mailto:hello@aicodebackup.com">联系</a>
+          <a class="language-link" href="/" hreflang="en" lang="en">English</a>
+          <a class="nav-cta" href="https://www.npmjs.com/package/aicodebackup">安装 alpha</a>
         </div>
       </nav>
     </header>
@@ -96,12 +96,12 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-grid">
           <div class="hero-copy">
-            <h1 id="hero-title">Never lose your AI-generated code again.</h1>
+            <h1 id="hero-title">别让 AI 写出来的代码丢失。</h1>
             <p>
-              AICodeBackup automatically backs up your AI coding projects to private
-              GitHub repositories without making you learn Git.
+              AICodeBackup 会把你的 AI 编程项目备份到 GitHub 私有仓库。你不需要先学会
+              Git，也不需要记住复杂命令。
             </p>
-            <div class="command-line" aria-label="npm install command">
+            <div class="command-line" aria-label="npm 安装命令">
               <code id="install-command">npm install -g aicodebackup@alpha</code>
               <span class="copy-button" aria-hidden="true">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -112,7 +112,7 @@
             </div>
             <div class="hero-actions">
               <a class="button primary" href="https://www.npmjs.com/package/aicodebackup"
-                >Install alpha</a
+                >安装 alpha</a
               >
               <a class="button secondary" href="https://github.com/GazeAfar/aicodebackup">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -120,12 +120,12 @@
                     d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.9c-2.7.6-3.3-1.1-3.3-1.1-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.6 1.1 1.6 1.1.9 1.5 2.4 1.1 2.9.8.1-.7.4-1.1.7-1.3-2.2-.2-4.5-1.1-4.5-4.8 0-1.1.4-1.9 1-2.6-.1-.2-.4-1.2.1-2.5 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 4.9 0c1.8-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.5.6.7 1 1.6 1 2.6 0 3.8-2.3 4.6-4.5 4.8.4.3.8 1 .8 2v3c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"
                   />
                 </svg>
-                View on GitHub
+                查看 GitHub
               </a>
             </div>
-            <ul class="proof-list" aria-label="Product guarantees">
-              <li>Private by default</li>
-              <li>Works on Windows and macOS</li>
+            <ul class="proof-list" aria-label="产品承诺">
+              <li>默认创建私有仓库</li>
+              <li>支持 Windows 和 macOS</li>
             </ul>
           </div>
           <figure class="hero-visual">
@@ -133,7 +133,7 @@
               src="/assets/product-preview.svg"
               width="1120"
               height="780"
-              alt="AICodeBackup terminal showing setup, private GitHub repository creation, backup, and doctor status"
+              alt="AICodeBackup 终端界面，展示初始化、创建 GitHub 私有仓库、备份和诊断状态"
             />
           </figure>
         </div>
@@ -147,7 +147,7 @@
               <path d="M12 8v5" />
               <path d="M12 16h.01" />
             </svg>
-            <h2 id="risk-title">AI code is fragile. Losing it is easy.</h2>
+            <h2 id="risk-title">AI 写代码很快，丢代码也很快。</h2>
           </div>
           <div class="risk-items">
             <article>
@@ -158,8 +158,8 @@
                 <path d="M6 7l1 14h10l1-14" />
                 <path d="M9 7V4h6v3" />
               </svg>
-              <strong>Lost work</strong>
-              <p>Crash, reset, or accidentally delete your project.</p>
+              <strong>误删或崩溃</strong>
+              <p>电脑故障、误操作或 AI 改坏文件，都可能让本地项目不安全。</p>
             </article>
             <article>
               <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -168,8 +168,8 @@
                 <path d="M9 13h6" />
                 <path d="M8 21h8" />
               </svg>
-              <strong>No backup</strong>
-              <p>AI tools do not save your code for you.</p>
+              <strong>没有远程备份</strong>
+              <p>AI 工具负责写代码，但通常不会替你把代码安全保存到 GitHub。</p>
             </article>
             <article>
               <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -177,16 +177,16 @@
                 <path d="M17 7h-4a5 5 0 0 0-5 5v5" />
                 <path d="M7 17h4a5 5 0 0 0 5-5V7" />
               </svg>
-              <strong>Messy copies</strong>
-              <p>Scattered files and versions create confusion.</p>
+              <strong>版本混乱</strong>
+              <p>手动复制文件夹会很快变乱，不知道哪一份才是最新可用版本。</p>
             </article>
             <article>
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <rect x="5" y="10" width="14" height="10" rx="2" />
                 <path d="M8 10V7a4 4 0 0 1 8 0v3" />
               </svg>
-              <strong>Privacy risk</strong>
-              <p>Public repos or cloud syncs leak sensitive code.</p>
+              <strong>隐私风险</strong>
+              <p>公开仓库或不合适的云同步，可能让未发布代码暴露出去。</p>
             </article>
           </div>
         </div>
@@ -194,8 +194,8 @@
 
       <section id="how-it-works" class="steps-section" aria-labelledby="how-title">
         <div class="section-heading">
-          <h2 id="how-title">Three simple steps.</h2>
-          <p>Set it up once. We handle the rest.</p>
+          <h2 id="how-title">三步完成安全备份。</h2>
+          <p>初始化一次，之后重复备份。</p>
         </div>
         <div class="workflow">
           <article class="workflow-step">
@@ -207,8 +207,8 @@
                 <path d="M7 17c-1.1.3-2 .9-2.8 1.8C5.1 18 5.7 17.1 6 16" />
               </svg>
             </div>
-            <strong>Create the safety layer</strong>
-            <p>We install Git and GitHub CLI, create a private repo, and run your first backup.</p>
+            <strong>创建安全层</strong>
+            <p>检查 Git 和 GitHub CLI，连接 GitHub，并创建 GitHub 私有仓库。</p>
           </article>
           <article class="workflow-step">
             <div class="icon-shell" aria-hidden="true">
@@ -218,8 +218,8 @@
                 <path d="m8 13 4-4 4 4" />
               </svg>
             </div>
-            <strong>Save your work</strong>
-            <p>AICodeBackup adds, commits, and pushes changes. No Git knowledge needed.</p>
+            <strong>保存当前工作</strong>
+            <p>AICodeBackup 会自动 add、commit 和 push，不要求你理解 Git 细节。</p>
           </article>
           <article class="workflow-step">
             <div class="icon-shell" aria-hidden="true">
@@ -228,37 +228,37 @@
                 <path d="m9 12 2 2 4-5" />
               </svg>
             </div>
-            <strong>Back up safely</strong>
-            <p>Your project is backed up to a private GitHub repository by default.</p>
+            <strong>默认私有备份</strong>
+            <p>项目会备份到你的 GitHub 私有仓库，避免源代码被意外公开。</p>
           </article>
         </div>
       </section>
 
       <section id="commands" class="commands-panel" aria-labelledby="commands-title">
         <div class="section-heading">
-          <h2 id="commands-title">Commands that do the heavy lifting.</h2>
-          <p>Three commands. That's it.</p>
+          <h2 id="commands-title">三个核心命令。</h2>
+          <p>第一版只解决最重要的备份问题。</p>
         </div>
         <div class="command-grid">
           <article class="command-card">
             <code>aicodebackup setup</code>
-            <p>Initial setup. Installs requirements, connects GitHub, and creates your private repository.</p>
+            <p>初始化项目，安装或检查依赖，连接 GitHub，并创建私有仓库。</p>
           </article>
           <article class="command-card">
             <code>aicodebackup backup</code>
-            <p>Save your current project. Commits, and pushes changes to GitHub.</p>
+            <p>把当前项目状态提交并推送到 GitHub，形成一个安全恢复点。</p>
           </article>
           <article class="command-card">
             <code>aicodebackup doctor</code>
-            <p>Check backup health, repo status, authentication, and more.</p>
+            <p>检查 Git、GitHub CLI、登录状态、远程仓库和最近备份状态。</p>
           </article>
         </div>
       </section>
 
       <section id="platforms" class="platform-section" aria-labelledby="platforms-title">
         <div class="section-heading">
-          <h2 id="platforms-title">Built for Windows and macOS.</h2>
-          <p>A smooth setup on the platforms you use every day.</p>
+          <h2 id="platforms-title">支持 Windows 和 macOS。</h2>
+          <p>面向 AI 编程用户常见的本地开发环境。</p>
         </div>
         <div class="platform-list">
           <article>
@@ -270,8 +270,7 @@
             </svg>
             <div>
               <strong>Windows PowerShell</strong>
-              <p>Setup attempts Git and GitHub CLI installation through winget when tools are missing.</p>
-              <a href="/guides/">View Windows guide</a>
+              <p>当缺少 Git 或 GitHub CLI 时，setup 会尝试通过 winget 引导安装。</p>
             </div>
           </article>
           <article>
@@ -282,84 +281,36 @@
             </svg>
             <div>
               <strong>macOS Terminal</strong>
-              <p>Setup uses Homebrew when available and starts a secure browser login to GitHub.</p>
-              <a href="/guides/">View macOS guide</a>
+              <p>setup 会在可用时使用 Homebrew，并通过浏览器完成 GitHub 登录。</p>
             </div>
           </article>
         </div>
       </section>
 
-      <section class="resources-section" aria-labelledby="guides-title">
-        <div class="section-heading">
-          <h2 id="guides-title">Guides & resources.</h2>
-          <p>Everything you need to get started and stay safe.</p>
-        </div>
-        <div class="resource-grid">
-          <a class="resource-card" href="/guides/github-backup-without-git/">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 6.5A5.5 5.5 0 0 0 6.5 4H4v15h2.5A5.5 5.5 0 0 1 12 21" />
-              <path d="M12 6.5A5.5 5.5 0 0 1 17.5 4H20v15h-2.5A5.5 5.5 0 0 0 12 21" />
-              <path d="M12 6.5V21" />
-            </svg>
-            <strong>GitHub without Git</strong>
-            <p>Back up code without learning Git commands first.</p>
-            <span>Read guide</span>
-          </a>
-          <a class="resource-card" href="/guides/github-backup-for-vibe-coders/">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="5" y="10" width="14" height="10" rx="2" />
-              <path d="M8 10V7a4 4 0 0 1 8 0v3" />
-            </svg>
-            <strong>Private by default</strong>
-            <p>How privacy works and why it matters.</p>
-            <span>Read guide</span>
-          </a>
-          <a class="resource-card" href="/guides/backup-ai-generated-code/">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 4 5 7v5c0 4.5 2.9 7 7 8 4.1-1 7-3.5 7-8V7z" />
-              <path d="m9 12 2 2 4-5" />
-            </svg>
-            <strong>Security practices</strong>
-            <p>Recommended settings for safe AI coding.</p>
-            <span>Read guide</span>
-          </a>
-          <a class="resource-card" href="/guides/how-to-not-lose-ai-generated-code/">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="9" />
-              <path d="M9.5 9a2.8 2.8 0 0 1 5 1.7c0 1.8-2.5 2.1-2.5 3.8" />
-              <path d="M12 17h.01" />
-            </svg>
-            <strong>Avoid lost code</strong>
-            <p>Build a safety habit around AI coding sessions.</p>
-            <span>Read guide</span>
-          </a>
-        </div>
-      </section>
-
       <section id="faq" class="faq-section" aria-labelledby="faq-title">
         <div class="section-heading">
-          <h2 id="faq-title">Frequently asked questions.</h2>
+          <h2 id="faq-title">常见问题。</h2>
         </div>
         <div class="faq-list">
           <details>
-            <summary>Do I need to know Git?</summary>
-            <p>No. AICodeBackup wraps Git setup, commits, and pushes behind simple commands.</p>
+            <summary>我需要会 Git 吗？</summary>
+            <p>不需要。AICodeBackup 把常见 Git 操作包装成 setup、backup 和 doctor 命令。</p>
           </details>
           <details>
-            <summary>Is my code really private?</summary>
-            <p>Yes. The setup flow creates GitHub repositories as private by default.</p>
+            <summary>仓库是私有的吗？</summary>
+            <p>是的。setup 流程默认创建 GitHub private repository。</p>
           </details>
           <details>
-            <summary>Where is my code stored?</summary>
-            <p>Your code is stored in your own private GitHub repository.</p>
+            <summary>我的代码保存在哪里？</summary>
+            <p>代码保存在你自己的 GitHub 私有仓库里，不是保存在 AICodeBackup 的服务器上。</p>
           </details>
           <details>
-            <summary>What happens if I uninstall?</summary>
-            <p>Your GitHub repository and backups stay in your GitHub account.</p>
+            <summary>卸载 AICodeBackup 会影响备份吗？</summary>
+            <p>不会。已经推送到 GitHub 的仓库和历史备份仍然保留在你的 GitHub 账号中。</p>
           </details>
           <details>
-            <summary>Is AICodeBackup free?</summary>
-            <p>The alpha CLI is free and open source under the MIT License.</p>
+            <summary>AICodeBackup 免费吗？</summary>
+            <p>当前 alpha CLI 是免费的开源版本，使用 MIT License。</p>
           </details>
         </div>
       </section>
@@ -368,46 +319,46 @@
     <footer class="site-footer">
       <div class="footer-main">
         <div class="footer-brand">
-          <a class="brand" href="/" aria-label="AICodeBackup home">
+          <a class="brand" href="/zh-CN/" aria-label="AICodeBackup 中文首页">
             <span class="brand-mark" aria-hidden="true">AC</span>
             <span>AICodeBackup</span>
           </a>
-          <p>Automatic private GitHub backups for AI coding projects.</p>
-          <div class="social-links" aria-label="Social links">
+          <p>面向 AI 编程项目的 GitHub 私有仓库自动备份工具。</p>
+          <div class="social-links" aria-label="社交链接">
             <a href="https://github.com/GazeAfar/aicodebackup" aria-label="GitHub">GitHub</a>
             <a href="https://www.npmjs.com/package/aicodebackup" aria-label="npm">npm</a>
             <a href="mailto:hello@aicodebackup.com" aria-label="Email">Email</a>
           </div>
         </div>
         <div class="footer-column">
-          <strong>Product</strong>
-          <a href="/#how-it-works">How it works</a>
-          <a href="/#commands">Commands</a>
-          <a href="/guides/">Guides</a>
-          <a href="/#faq">FAQ</a>
+          <strong>产品</strong>
+          <a href="#how-it-works">工作方式</a>
+          <a href="#commands">命令</a>
+          <a href="#platforms">系统支持</a>
+          <a href="#faq">FAQ</a>
         </div>
         <div class="footer-column">
-          <strong>Resources</strong>
+          <strong>资源</strong>
           <a href="/guides/github-backup-without-git/">No-Git backup</a>
           <a href="/guides/private-github-backup-for-ai-code/">Private backup</a>
           <a href="/guides/how-to-not-lose-ai-generated-code/">Avoid lost code</a>
           <a href="https://github.com/GazeAfar/aicodebackup/releases">Changelog</a>
         </div>
         <div class="footer-column">
-          <strong>Company</strong>
-          <a href="mailto:hello@aicodebackup.com">Contact</a>
+          <strong>公司</strong>
+          <a href="mailto:hello@aicodebackup.com">联系</a>
           <a href="/privacy/">Privacy Policy</a>
           <a href="/terms/">Terms of Use</a>
         </div>
         <div class="footer-column">
           <strong>Contact</strong>
           <a href="mailto:hello@aicodebackup.com">hello@aicodebackup.com</a>
+          <a href="/" hreflang="en" lang="en">English version</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 AICodeBackup. All rights reserved.</span>
       </div>
     </footer>
-
   </body>
 </html>

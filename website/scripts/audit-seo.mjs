@@ -78,6 +78,7 @@ const sitemapUrls = [...sitemap.matchAll(/<loc>(https:\/\/www\.aicodebackup\.com
 
 check(sitemapUrls.length >= 6, "sitemap.xml should include homepage, guides, legal pages, and guide articles.");
 check(new Set(sitemapUrls).size === sitemapUrls.length, "sitemap.xml must not include duplicate URLs.");
+check(sitemapUrls.includes(`${canonicalHost}/zh-CN/`), "sitemap.xml must include the Chinese homepage.");
 
 for (const url of sitemapUrls) {
   const filePath = pagePathFromUrl(url);
@@ -88,14 +89,26 @@ for (const url of sitemapUrls) {
 
   const html = readFileSync(filePath, "utf8");
   const pageLabel = url.replace(canonicalHost, "") || "/";
+  const isChinesePage = pageLabel.startsWith("/zh-CN/");
   const title = extract(html, /<title>([^<]+)<\/title>/);
   const description = extract(html, /<meta\s+name="description"\s+content="([^"]+)"\s*\/>/);
   const canonical = extract(html, /<link rel="canonical" href="([^"]+)"\s*\/>/);
 
-  check(title.length >= 30 && title.length <= 65, `${pageLabel}: title should be 30-65 characters. Current: ${title.length}.`);
-  check(description.length >= 110 && description.length <= 165, `${pageLabel}: meta description should be 110-165 characters. Current: ${description.length}.`);
+  if (isChinesePage) {
+    check(title.length >= 15 && title.length <= 65, `${pageLabel}: Chinese title should be 15-65 characters. Current: ${title.length}.`);
+    check(
+      description.length >= 55 && description.length <= 165,
+      `${pageLabel}: Chinese meta description should be 55-165 characters. Current: ${description.length}.`,
+    );
+  } else {
+    check(title.length >= 30 && title.length <= 65, `${pageLabel}: title should be 30-65 characters. Current: ${title.length}.`);
+    check(description.length >= 110 && description.length <= 165, `${pageLabel}: meta description should be 110-165 characters. Current: ${description.length}.`);
+  }
   check(count(html, /<h1\b/g) === 1, `${pageLabel}: page must contain exactly one H1.`);
-  check(html.includes('<html lang="en">'), `${pageLabel}: page must use html lang en.`);
+  check(
+    html.includes(isChinesePage ? '<html lang="zh-CN">' : '<html lang="en">'),
+    `${pageLabel}: page must use the correct html lang attribute.`,
+  );
   check(html.includes('<meta name="viewport" content="width=device-width, initial-scale=1" />'), `${pageLabel}: missing mobile viewport.`);
   check(canonical === url, `${pageLabel}: canonical must match sitemap URL.`);
   check(html.includes(`property="og:url" content="${url}"`), `${pageLabel}: Open Graph URL must match canonical URL.`);
@@ -103,7 +116,12 @@ for (const url of sitemapUrls) {
   check(html.includes('name="twitter:card" content="summary_large_image"'), `${pageLabel}: missing Twitter summary_large_image card.`);
   check(html.includes('name="twitter:image" content="https://www.aicodebackup.com/assets/social-preview.png"'), `${pageLabel}: missing canonical Twitter image.`);
   check(!html.includes("twitter:site"), `${pageLabel}: twitter:site must not be set before an official X account exists.`);
-  check(!/[\u4e00-\u9fff]/.test(html), `${pageLabel}: public page must be English-only.`);
+  if (isChinesePage) {
+    check(/[\u4e00-\u9fff]/.test(html), `${pageLabel}: Chinese page must contain Chinese content.`);
+  } else {
+    const htmlWithoutLanguageSwitch = html.replace(/<a class="language-link" href="\/zh-CN\/" hreflang="zh-CN" lang="zh-CN">中文<\/a>/g, "");
+    check(!/[\u4e00-\u9fff]/.test(htmlWithoutLanguageSwitch), `${pageLabel}: English page must be English-only except for the language switch.`);
+  }
   check(!/vercel\.app/i.test(html), `${pageLabel}: page must not promote vercel.app URLs.`);
   const scriptBlocks = [...html.matchAll(/<script\b[\s\S]*?<\/script>/gi)].map((match) => match[0]);
   for (const scriptBlock of scriptBlocks) {
@@ -138,11 +156,16 @@ for (const url of sitemapUrls) {
 }
 
 const homepage = readFileSync(join(publicRoot, "index.html"), "utf8");
+const chineseHomepage = readFileSync(join(publicRoot, "zh-CN", "index.html"), "utf8");
 check(homepage.includes(contactEmail), "Homepage must include the official contact email.");
 check(homepage.includes("&copy; 2026 AICodeBackup"), "Footer must use the HTML copyright entity.");
 check(homepage.includes("/privacy/") && homepage.includes("/terms/"), "Homepage footer must link to Privacy Policy and Terms of Use.");
 check(homepage.includes("/guides/backup-ai-generated-code/"), "Homepage must link to the AI-generated code backup guide.");
 check(homepage.includes("/guides/github-backup-for-vibe-coders/"), "Homepage must link to the vibe coder GitHub backup guide.");
+check(homepage.includes('href="/zh-CN/" hreflang="zh-CN"'), "English homepage must link to the Chinese version.");
+check(chineseHomepage.includes('href="/" hreflang="en"'), "Chinese homepage must link back to the English version.");
+check(homepage.includes('rel="alternate" hreflang="zh-CN" href="https://www.aicodebackup.com/zh-CN/"'), "English homepage must include zh-CN hreflang.");
+check(chineseHomepage.includes('rel="alternate" hreflang="en" href="https://www.aicodebackup.com/"'), "Chinese homepage must include en hreflang.");
 check(homepage.includes('application/ld+json'), "Homepage must include JSON-LD structured data.");
 
 try {
