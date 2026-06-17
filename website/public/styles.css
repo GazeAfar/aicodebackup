@@ -622,7 +622,7 @@ main section {
   min-height: 42px;
   padding: 11px 48px 11px 20px;
   color: var(--ink);
-  font-weight: 760;
+  font-weight: 400;
   cursor: pointer;
   list-style: none;
 }
