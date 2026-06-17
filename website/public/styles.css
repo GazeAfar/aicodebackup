@@ -348,17 +348,20 @@ main section {
 }
 
 .risk-strip {
-  padding: 8px 0 46px;
+  width: 100%;
+  max-width: none;
+  padding: 64px 0 56px;
+  background: linear-gradient(180deg, #eff8f4, #f8fcfa);
 }
 
 .risk-panel {
   display: grid;
   grid-template-columns: 1fr;
   gap: 34px;
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
   min-height: 220px;
-  padding: 54px 58px 46px;
-  border-radius: 8px;
-  background: linear-gradient(180deg, #eff8f4, #f8fcfa);
+  padding: 0 58px;
 }
 
 .risk-lead {
@@ -932,11 +935,14 @@ main section {
   }
 
   .risk-strip {
-    padding-bottom: 34px;
+    width: 100vw;
+    max-width: 100vw;
+    padding: 42px 0 34px;
   }
 
   .risk-panel {
-    padding: 30px 22px;
+    width: calc(100vw - 36px);
+    padding: 0 22px;
   }
 
   .risk-lead {
