@@ -121,7 +121,7 @@ for (const url of sitemapUrls) {
   } else {
     const htmlWithoutLanguageSwitch = html
       .replace(/<a class="language-link" href="\/zh-CN\/" hreflang="zh-CN" lang="zh-CN">中文<\/a>/g, "")
-      .replace(/<a class="mobile-language-link" href="\/zh-CN\/" hreflang="zh-CN" lang="zh-CN">中文<\/a>/g, "");
+      .replace(/<a class="mobile-language-link" href="\/zh-CN\/" hreflang="zh-CN" lang="zh-CN"[\s\S]*?<\/a>/g, "");
     check(!/[\u4e00-\u9fff]/.test(htmlWithoutLanguageSwitch), `${pageLabel}: English page must be English-only except for the language switch.`);
   }
   check(!/vercel\.app/i.test(html), `${pageLabel}: page must not promote vercel.app URLs.`);
