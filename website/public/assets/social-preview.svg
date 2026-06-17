@@ -8,12 +8,12 @@
   <circle cx="144" cy="108" r="10" fill="#FFD166"/>
   <circle cx="176" cy="108" r="10" fill="#19C37D"/>
   <text x="220" y="116" fill="#DDEBE4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" font-weight="700">aicodebackup setup</text>
-  <text x="116" y="228" fill="#8CF4BF" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="900">Never lose your</text>
-  <text x="116" y="306" fill="#8CF4BF" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="900">AI-generated code again.</text>
-  <text x="120" y="382" fill="#DDEBE4" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="600">Automatic private GitHub backups for AI coding projects.</text>
+  <text x="116" y="222" fill="#8CF4BF" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="900">Never lose your</text>
+  <text x="116" y="292" fill="#8CF4BF" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="900">AI-generated code again.</text>
+  <text x="120" y="368" fill="#DDEBE4" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="600">Automatic private GitHub backups for AI coding projects.</text>
   <rect x="120" y="430" width="520" height="62" rx="8" fill="#17211D" stroke="#2A3A34"/>
   <text x="150" y="470" fill="#DDEBE4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24">npm install -g aicodebackup@alpha</text>
-  <path d="M972 250C1014 250 1048 284 1048 326C1048 368 1014 402 972 402C930 402 896 368 896 326C896 284 930 250 972 250Z" fill="#19C37D"/>
-  <path d="M942 328L963 349L1005 298" stroke="#101413" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M982 252C1024 252 1058 286 1058 328C1058 370 1024 404 982 404C940 404 906 370 906 328C906 286 940 252 982 252Z" fill="#19C37D"/>
+  <path d="M952 330L973 351L1015 300" stroke="#101413" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
   <text x="846" y="456" fill="#8EA29A" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800">Private by default</text>
 </svg>

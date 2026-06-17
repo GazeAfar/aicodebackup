@@ -13,7 +13,7 @@
         }
       ],
       "destination": "https://www.aicodebackup.com/$1",
-      "permanent": true
+      "statusCode": 301
     }
   ],
   "headers": [

@@ -34,7 +34,7 @@ Use this production URL everywhere:
 https://www.aicodebackup.com
 ```
 
-Required permanent redirects:
+Required 301 redirects:
 
 ```text
 http://aicodebackup.com        -> https://www.aicodebackup.com
@@ -42,7 +42,7 @@ https://aicodebackup.com       -> https://www.aicodebackup.com
 http://www.aicodebackup.com    -> https://www.aicodebackup.com
 ```
 
-Vercel configuration must keep `www.aicodebackup.com` as the primary production domain and redirect the apex domain to the `www` domain. Do not promote `*.vercel.app` URLs as public URLs.
+Vercel configuration must keep `www.aicodebackup.com` as the primary production domain and redirect the apex domain to the `www` domain with status code `301`. Do not promote `*.vercel.app` URLs as public URLs.
 
 ## Content Structure
 
@@ -91,7 +91,7 @@ hello@aicodebackup.com
 - Title is unique and descriptive.
 - Meta description is unique and useful.
 - Canonical URL points to `https://www.aicodebackup.com`.
-- Apex domain redirects permanently to `https://www.aicodebackup.com`.
+- Apex domain redirects with `301` to `https://www.aicodebackup.com`.
 - `robots.txt` is available and references the canonical sitemap.
 - `sitemap.xml` includes only canonical URLs.
 - Open Graph and Twitter card tags are present.

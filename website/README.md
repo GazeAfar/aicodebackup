@@ -61,6 +61,17 @@ Set `www.aicodebackup.com` as the primary production domain. Configure the apex 
 - Confirm `https://aicodebackup.com` returns a 301 to `https://www.aicodebackup.com`.
 - Confirm `https://www.aicodebackup.com` returns 200.
 
+## Cloudflare 301 Redirect Rules
+
+Use Cloudflare Redirect Rules when strict `301` status codes are required before traffic reaches Vercel.
+
+Create these redirect rules in Cloudflare:
+
+- If hostname equals `aicodebackup.com`, redirect with status code `301` to `https://www.aicodebackup.com${uri}`.
+- If hostname equals `www.aicodebackup.com` and scheme equals `http`, redirect with status code `301` to `https://www.aicodebackup.com${uri}`.
+
+Enable query string preservation for both rules.
+
 ## SEO Checklist
 
 - `index.html` includes title, description, keywords, canonical URL, Open Graph tags, Twitter card tags, and JSON-LD.
