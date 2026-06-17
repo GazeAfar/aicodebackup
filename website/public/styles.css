@@ -127,35 +127,38 @@ p {
 .hero {
   width: min(1200px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 86px 0 78px;
+  padding: 82px 0 78px;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(460px, 1.05fr);
-  gap: 64px;
-  align-items: center;
+  gap: 56px;
+  justify-items: center;
 }
 
 .hero-copy {
   display: grid;
+  justify-items: center;
   gap: 26px;
+  max-width: 920px;
+  text-align: center;
 }
 
 h1 {
-  max-width: 740px;
+  max-width: 920px;
   font-size: 64px;
-  line-height: 0.98;
+  line-height: 1;
   letter-spacing: 0;
 }
 
 h1 span {
-  display: block;
+  display: inline;
   white-space: nowrap;
 }
 
 .hero-copy p {
   max-width: 640px;
+  margin: 0 auto;
   color: var(--muted);
   font-size: 21px;
   line-height: 1.52;
@@ -187,12 +190,15 @@ h1 span {
 .footer-links {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 12px;
 }
 
 .proof-list {
-  display: grid;
-  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 12px;
   margin: 0;
   padding: 0;
   color: var(--muted);
@@ -205,6 +211,11 @@ h1 span {
   display: flex;
   gap: 10px;
   align-items: flex-start;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(12, 18, 18, 0.04);
 }
 
 .proof-list li::before {
@@ -218,6 +229,7 @@ h1 span {
 }
 
 .hero-visual {
+  width: min(860px, 100%);
   margin: 0;
 }
 
@@ -240,8 +252,10 @@ main section {
 
 .section-heading {
   display: grid;
+  justify-items: center;
   gap: 14px;
-  margin-bottom: 42px;
+  margin: 0 auto 42px;
+  text-align: center;
 }
 
 .section-heading.wide {
@@ -260,6 +274,7 @@ main section {
 .split-section p,
 .faq-layout > div > p {
   max-width: 760px;
+  margin: 0 auto;
   color: var(--muted);
   font-size: 19px;
 }
@@ -273,9 +288,10 @@ main section {
 
 .split-section {
   display: grid;
-  grid-template-columns: minmax(0, 0.88fr) minmax(420px, 1.12fr);
-  gap: 72px;
+  justify-items: center;
+  gap: 42px;
   align-items: start;
+  text-align: center;
 }
 
 .risk-list,
@@ -283,6 +299,7 @@ main section {
 .faq-list {
   display: grid;
   gap: 14px;
+  width: 100%;
 }
 
 .risk-list article,
@@ -291,13 +308,16 @@ main section {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #ffffff;
+  box-shadow: 0 18px 44px rgba(12, 18, 18, 0.05);
 }
 
 .risk-list article {
   display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
-  gap: 22px;
-  padding: 20px 22px;
+  gap: 8px;
+  min-height: 128px;
+  align-content: center;
+  padding: 24px;
+  text-align: left;
 }
 
 .risk-list strong,
@@ -329,12 +349,25 @@ main section {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #ffffff;
+  box-shadow: 0 18px 44px rgba(12, 18, 18, 0.05);
 }
 
 .workflow-step {
   display: grid;
+  justify-items: center;
   align-content: start;
   gap: 18px;
+  text-align: center;
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.workflow-step:hover {
+  border-color: rgba(0, 126, 87, 0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 24px 58px rgba(12, 18, 18, 0.08);
 }
 
 .icon-shell {
@@ -383,6 +416,7 @@ main section {
 
 .platform-list {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 920px;
 }
 
 .platform-list article {
@@ -392,8 +426,10 @@ main section {
 
 .guide-card {
   display: grid;
+  justify-items: center;
   gap: 14px;
   min-height: 210px;
+  text-align: center;
 }
 
 .guide-card span {
@@ -409,16 +445,48 @@ main section {
 
 .faq-layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(460px, 1.18fr);
-  gap: 70px;
+  justify-items: center;
+  gap: 42px;
+  text-align: center;
+}
+
+.faq-layout > div:first-child {
+  max-width: 760px;
+}
+
+.faq-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .faq-list article {
+  display: grid;
+  align-content: start;
+  min-height: 190px;
   padding: 24px 26px;
+  text-align: left;
 }
 
 .faq-list h3 {
+  position: relative;
   margin: 0 0 8px;
+  padding-top: 42px;
+}
+
+.faq-list h3::before {
+  content: "?";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--soft-2);
+  color: var(--green-dark);
+  font-size: 16px;
+  font-weight: 900;
 }
 
 .cta {
@@ -595,7 +663,8 @@ main section {
   .workflow,
   .command-grid,
   .guide-grid,
-  .platform-list {
+  .platform-list,
+  .faq-list {
     grid-template-columns: 1fr;
   }
 
