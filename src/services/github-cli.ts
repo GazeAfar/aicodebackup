@@ -7,10 +7,13 @@ export interface GitHubUser {
   name?: string;
 }
 
+const GITHUB_DEVICE_LOGIN_URL = "https://github.com/login/device";
+
 export class GitHubCliService {
   constructor(
     private readonly runner: CommandRunner,
     private readonly cwd = process.cwd(),
+    private readonly platform: NodeJS.Platform = process.platform,
   ) {}
 
   async isInstalled(): Promise<boolean> {
@@ -24,6 +27,8 @@ export class GitHubCliService {
   }
 
   async login(): Promise<boolean> {
+    await this.openDeviceLoginPage();
+
     const result = await this.runner.run(
       "gh",
       ["auth", "login", "--web", "--hostname", "github.com", "--git-protocol", "https", "--skip-ssh-key"],
@@ -69,5 +74,24 @@ export class GitHubCliService {
     }
 
     return JSON.parse(result.stdout) as GitHubUser;
+  }
+
+  private async openDeviceLoginPage(): Promise<void> {
+    if (this.platform === "win32") {
+      await this.runner.run("powershell", [
+        "-NoProfile",
+        "-Command",
+        "Start-Process",
+        GITHUB_DEVICE_LOGIN_URL,
+      ]);
+      return;
+    }
+
+    if (this.platform === "darwin") {
+      await this.runner.run("open", [GITHUB_DEVICE_LOGIN_URL]);
+      return;
+    }
+
+    await this.runner.run("xdg-open", [GITHUB_DEVICE_LOGIN_URL]);
   }
 }

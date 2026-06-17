@@ -167,6 +167,7 @@ describe("runSetup", () => {
       .queue({ failed: true })
       .queue({})
       .queue({})
+      .queue({})
       .queue({ stdout: "true" })
       .queue({ stdout: "true" })
       .queue({ stdout: "Existing User" })

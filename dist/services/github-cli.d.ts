@@ -7,10 +7,12 @@ export interface GitHubUser {
 export declare class GitHubCliService {
     private readonly runner;
     private readonly cwd;
-    constructor(runner: CommandRunner, cwd?: string);
+    private readonly platform;
+    constructor(runner: CommandRunner, cwd?: string, platform?: NodeJS.Platform);
     isInstalled(): Promise<boolean>;
     isAuthenticated(): Promise<boolean>;
     login(): Promise<boolean>;
     createPrivateRepository(name: string): Promise<void>;
     getCurrentUser(): Promise<GitHubUser>;
+    private openDeviceLoginPage;
 }

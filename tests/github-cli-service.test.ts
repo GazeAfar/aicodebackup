@@ -20,11 +20,15 @@ describe("GitHubCliService", () => {
   });
 
   it("starts browser login", async () => {
-    const runner = new MockRunner().queue({}).queue({});
+    const runner = new MockRunner().queue({}).queue({}).queue({});
     const gh = new GitHubCliService(runner, "C:/project");
 
     await expect(gh.login()).resolves.toBe(true);
     expect(runner.commands).toEqual([
+      {
+        command: "powershell",
+        args: ["-NoProfile", "-Command", "Start-Process", "https://github.com/login/device"],
+      },
       {
         command: "gh",
         args: ["auth", "login", "--web", "--hostname", "github.com", "--git-protocol", "https", "--skip-ssh-key"],
@@ -34,7 +38,7 @@ describe("GitHubCliService", () => {
         args: ["auth", "setup-git", "--hostname", "github.com"],
       },
     ]);
-    expect(runner.commandOptions[0]).toMatchObject({ interactive: true, input: "Y\n" });
+    expect(runner.commandOptions[1]).toMatchObject({ interactive: true, input: "Y\n" });
   });
 
   it("creates private repositories by default", async () => {
