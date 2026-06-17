@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-alpha.1
+
+### Added
+
+- Added `aicodebackup watch` to monitor local project risk from changed files, diff lines, and time since last backup.
+- Added `aicodebackup watch --auto` for explicit automatic backups when risk thresholds are reached.
+- Added watch documentation and tests.
+
 ## 0.1.0-alpha.7
 
 ### Changed

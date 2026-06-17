@@ -52,6 +52,30 @@ export class GitService {
     return status.trim().length > 0;
   }
 
+  async changedFileCount(): Promise<number> {
+    const status = await this.statusPorcelain();
+    return status
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean).length;
+  }
+
+  async diffLineCount(): Promise<number> {
+    const result = await this.runner.run("git", ["diff", "--numstat", "HEAD"], { cwd: this.cwd });
+    if (result.failed) {
+      return 0;
+    }
+
+    return result.stdout
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .reduce((total, line) => {
+        const [additions, deletions] = line.split(/\s+/);
+        return total + parseNumstatValue(additions) + parseNumstatValue(deletions);
+      }, 0);
+  }
+
   async addAll(): Promise<void> {
     await this.mustRun("git add .", "git", ["add", "."]);
   }
@@ -89,4 +113,13 @@ export class GitService {
 
     return result;
   }
+}
+
+function parseNumstatValue(value: string | undefined): number {
+  if (!value || value === "-") {
+    return 0;
+  }
+
+  const parsed = Number.parseInt(value, 10);
+  return Number.isNaN(parsed) ? 0 : parsed;
 }

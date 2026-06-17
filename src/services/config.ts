@@ -19,6 +19,10 @@ export class ConfigService {
     this.conf.set("language", language);
   }
 
+  getLastBackupAt(): string | undefined {
+    return this.conf.get("lastBackupAt");
+  }
+
   setLastBackupAt(timestamp: string): void {
     this.conf.set("lastBackupAt", timestamp);
   }

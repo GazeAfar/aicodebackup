@@ -6,7 +6,7 @@
 
 Never lose your AI-generated code again.
 
-> Status: V0.1 Alpha. AICodeBackup is published on npm for small-group testing, but not yet recommended for broad production use.
+> Status: V0.2 Alpha. AICodeBackup is published on npm for small-group testing, but not yet recommended for broad production use.
 
 AICodeBackup is an automatic backup tool for people building software with AI coding agents such as Codex, Claude Code, Cursor, Trae, and Gemini CLI.
 
@@ -163,21 +163,32 @@ Example output:
 aicodebackup watch
 ```
 
-Planned for a later version. It is not included in V0.1 Alpha.
+Watches the current project and recommends a backup when local AI coding changes become risky.
 
-In a future release, it will watch project changes and warn when an AI coding session becomes risky.
+Default risk thresholds:
 
-Example warning:
+- 5 changed files
+- 200 changed lines
+- 30 minutes since the last backup
+
+When a threshold is reached, AICodeBackup asks before running a backup:
 
 ```text
-⚠ High Risk AI Session Detected
-
-12 files changed
-640 lines modified
-Last backup: 2 hours ago
+Risky AI coding session detected.
+7 files changed
+286 lines modified
+Last backup: 34 minutes ago
 
 Backup now?
 ```
+
+To back up automatically when risk is detected:
+
+```bash
+aicodebackup watch --auto
+```
+
+V0.2 watch is terminal-based. It does not yet include IDE plugins, system notifications, or direct AI tool process detection.
 
 ## Language Support
 
@@ -228,8 +239,8 @@ Repositories should be private by default.
 
 ## V0.1 Limitations
 
-- `watch` is not implemented.
 - `restore` is not implemented.
+- `watch` is terminal-based and does not include IDE plugins or system notifications yet.
 - Automatic Git and GitHub CLI installation is best-effort and currently focused on Windows and macOS.
 - AICodeBackup does not overwrite an existing Git remote.
 - AICodeBackup does not run destructive Git commands such as `git reset --hard`.
@@ -250,6 +261,7 @@ Repositories should be private by default.
 - File change monitoring
 - Diff size monitoring
 - Backup reminders
+- Optional automatic backup with `watch --auto`
 
 ### V0.3
 

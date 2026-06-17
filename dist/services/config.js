@@ -10,6 +10,9 @@ export class ConfigService {
     setLanguage(language) {
         this.conf.set("language", language);
     }
+    getLastBackupAt() {
+        return this.conf.get("lastBackupAt");
+    }
     setLastBackupAt(timestamp) {
         this.conf.set("lastBackupAt", timestamp);
     }

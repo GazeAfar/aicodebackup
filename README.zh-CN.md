@@ -6,7 +6,7 @@
 
 别让 AI 写出来的代码丢失。
 
-> 状态：V0.1 Alpha。AICodeBackup 已发布到 npm，用于小范围测试，但暂不建议大规模生产使用。
+> 状态：V0.2 Alpha。AICodeBackup 已发布到 npm，用于小范围测试，但暂不建议大规模生产使用。
 
 AICodeBackup 是一款面向 AI 编程用户的自动备份工具，适合使用 Codex、Claude Code、Cursor、Trae、Gemini CLI 等 AI 编程工具的人。
 
@@ -163,21 +163,32 @@ aicodebackup doctor
 aicodebackup watch
 ```
 
-计划在后续版本实现。V0.1 Alpha 不包含该功能。
+监控当前项目，并在本地 AI 编程改动变得有风险时提醒备份。
 
-未来版本会监控项目变更，并在 AI 编程会话风险升高时提醒用户备份。
+默认风险阈值：
 
-示例提醒：
+- 5 个变更文件
+- 200 行变更
+- 距离上次备份 30 分钟
+
+达到阈值后，AICodeBackup 会先询问再执行备份：
 
 ```text
-⚠ High Risk AI Session Detected
+检测到高风险 AI 编程会话。
+7 个文件已变更
+286 行已修改
+上次备份：34 分钟前
 
-12 files changed
-640 lines modified
-Last backup: 2 hours ago
-
-Backup now?
+现在备份吗？
 ```
+
+如果希望检测到风险后自动备份：
+
+```bash
+aicodebackup watch --auto
+```
+
+V0.2 的 watch 仍然是 terminal-based，不包含 IDE 插件、系统通知或 AI 工具进程识别。
 
 ## 语言支持
 
@@ -228,8 +239,8 @@ git push
 
 ## V0.1 限制
 
-- 尚未实现 `watch`。
 - 尚未实现 `restore`。
+- `watch` 目前仍是 terminal-based，暂不包含 IDE 插件或系统通知。
 - 自动安装 Git 和 GitHub CLI 是 best-effort，目前主要面向 Windows 和 macOS。
 - AICodeBackup 不会覆盖已有 Git remote。
 - AICodeBackup 不会执行 `git reset --hard` 等破坏性 Git 命令。
@@ -250,6 +261,7 @@ git push
 - 文件变更监控
 - Diff 大小监控
 - 备份提醒
+- 支持 `watch --auto` 可选自动备份
 
 ### V0.3
 

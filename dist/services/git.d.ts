@@ -12,6 +12,8 @@ export declare class GitService {
     setLocalAuthorIdentity(name: string, email: string): Promise<void>;
     statusPorcelain(): Promise<string>;
     hasChanges(): Promise<boolean>;
+    changedFileCount(): Promise<number>;
+    diffLineCount(): Promise<number>;
     addAll(): Promise<void>;
     commit(message: string): Promise<void>;
     push(): Promise<void>;

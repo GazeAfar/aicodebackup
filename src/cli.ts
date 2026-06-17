@@ -5,6 +5,7 @@ import { ConsoleOutput } from "./core/output.js";
 import { runBackup } from "./commands/backup.js";
 import { runDoctor } from "./commands/doctor.js";
 import { runSetup } from "./commands/setup.js";
+import { defaultWatchThresholds, runWatch } from "./commands/watch.js";
 import { resolveLanguage } from "./i18n/index.js";
 import { ConfigService } from "./services/config.js";
 import { GitService } from "./services/git.js";
@@ -58,11 +59,58 @@ export function createCli(): Command {
       );
     });
 
+  program
+    .command("watch")
+    .description("Watch local changes and recommend backups before risky work is left unprotected.")
+    .option("--lang <language>", "Output language: en or zh-CN")
+    .option("--auto", "Automatically back up when risk thresholds are reached.")
+    .option("--interval <seconds>", "Watch interval in seconds.", "30")
+    .option("--files <count>", "Changed file threshold.", String(defaultWatchThresholds.changedFiles))
+    .option("--lines <count>", "Diff line threshold.", String(defaultWatchThresholds.diffLines))
+    .option(
+      "--minutes <count>",
+      "Minutes since last backup threshold.",
+      String(defaultWatchThresholds.minutesSinceLastBackup),
+    )
+    .option("--once", "Run one watch check and exit.")
+    .action(async (options: WatchCommandOptions, command: Command) => {
+      await withServices(readLanguageOption(options, command), async ({ git, output, language, config }) => {
+        await runWatch(git, output, language, config, {
+          auto: Boolean(options.auto),
+          intervalMs: parsePositiveNumber(options.interval, 30) * 1000,
+          once: Boolean(options.once),
+          thresholds: {
+            changedFiles: parsePositiveNumber(options.files, defaultWatchThresholds.changedFiles),
+            diffLines: parsePositiveNumber(options.lines, defaultWatchThresholds.diffLines),
+            minutesSinceLastBackup: parsePositiveNumber(
+              options.minutes,
+              defaultWatchThresholds.minutesSinceLastBackup,
+            ),
+          },
+        });
+      });
+    });
+
   return program;
 }
 
 function readLanguageOption(options: { lang?: string }, command: Command): string | undefined {
   return options.lang ?? (command.parent?.opts<{ lang?: string }>().lang);
+}
+
+interface WatchCommandOptions {
+  lang?: string;
+  auto?: boolean;
+  interval?: string;
+  files?: string;
+  lines?: string;
+  minutes?: string;
+  once?: boolean;
+}
+
+function parsePositiveNumber(value: string | undefined, fallback: number): number {
+  const parsed = Number.parseInt(value ?? "", 10);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
 }
 
 interface Services {

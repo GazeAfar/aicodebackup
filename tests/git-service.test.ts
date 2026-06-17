@@ -48,4 +48,27 @@ describe("GitService", () => {
       ["config", "user.email", "33276444+GazeAfar@users.noreply.github.com"],
     ]);
   });
+
+  it("counts changed files from porcelain status", async () => {
+    const runner = new MockRunner().queue({ stdout: " M app.ts\n?? notes.md\nA  src/new.ts\n" });
+    const git = new GitService(runner, "C:/project");
+
+    await expect(git.changedFileCount()).resolves.toBe(3);
+    expect(runner.commands[0].args).toEqual(["status", "--porcelain"]);
+  });
+
+  it("counts diff lines from numstat output", async () => {
+    const runner = new MockRunner().queue({ stdout: "10\t5\tapp.ts\n-\t-\timage.png\n2\t3\tREADME.md" });
+    const git = new GitService(runner, "C:/project");
+
+    await expect(git.diffLineCount()).resolves.toBe(20);
+    expect(runner.commands[0].args).toEqual(["diff", "--numstat", "HEAD"]);
+  });
+
+  it("returns zero diff lines when HEAD diff is unavailable", async () => {
+    const runner = new MockRunner().queue({ failed: true, stderr: "bad revision HEAD" });
+    const git = new GitService(runner, "C:/project");
+
+    await expect(git.diffLineCount()).resolves.toBe(0);
+  });
 });
