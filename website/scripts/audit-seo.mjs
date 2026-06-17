@@ -17,6 +17,7 @@ const sitemap = readFileSync(sitemapPath, "utf8");
 const canonicalHost = "https://www.aicodebackup.com";
 const canonicalHome = `${canonicalHost}/`;
 const contactEmail = "hello@aicodebackup.com";
+const googleAnalyticsId = "G-GFXRD8S8RV";
 const failures = [];
 
 function check(condition, message) {
@@ -43,6 +44,32 @@ function count(html, pattern) {
 
 function attr(tag, name) {
   return tag.match(new RegExp(`${name}="([^"]*)"`))?.[1] ?? "";
+}
+
+function isAllowedScriptBlock(block) {
+  return (
+    block.includes('type="application/ld+json"') ||
+    block.includes(`src="https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}"`) ||
+    (block.includes("window.dataLayer = window.dataLayer || [];") &&
+      block.includes("function gtag(){dataLayer.push(arguments);}") &&
+      block.includes(`gtag('config', '${googleAnalyticsId}')`))
+  );
+}
+
+function localFileFromHref(href) {
+  const hrefWithoutHash = href.split("#")[0];
+  if (hrefWithoutHash === "" || hrefWithoutHash === "/") {
+    return join(publicRoot, "index.html");
+  }
+  if (hrefWithoutHash.endsWith("/")) {
+    return join(publicRoot, hrefWithoutHash, "index.html");
+  }
+  return join(publicRoot, hrefWithoutHash);
+}
+
+function idExists(html, id) {
+  const escaped = id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(`\\bid="${escaped}"`).test(html);
 }
 
 const sitemapUrls = [...sitemap.matchAll(/<loc>(https:\/\/www\.aicodebackup\.com\/[^<]*)<\/loc>/g)].map(
@@ -78,13 +105,35 @@ for (const url of sitemapUrls) {
   check(!html.includes("twitter:site"), `${pageLabel}: twitter:site must not be set before an official X account exists.`);
   check(!/[\u4e00-\u9fff]/.test(html), `${pageLabel}: public page must be English-only.`);
   check(!/vercel\.app/i.test(html), `${pageLabel}: page must not promote vercel.app URLs.`);
-  check(!/<script(?![^>]*type="application\/ld\+json")/i.test(html), `${pageLabel}: page must not depend on client-side JavaScript.`);
+  const scriptBlocks = [...html.matchAll(/<script\b[\s\S]*?<\/script>/gi)].map((match) => match[0]);
+  for (const scriptBlock of scriptBlocks) {
+    check(isAllowedScriptBlock(scriptBlock), `${pageLabel}: unexpected script block: ${scriptBlock.slice(0, 80)}...`);
+  }
+  check(
+    html.includes(`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`) &&
+      html.includes(`gtag('config', '${googleAnalyticsId}')`),
+    `${pageLabel}: missing Google Analytics tag ${googleAnalyticsId}.`,
+  );
 
   const anchorTags = [...html.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)];
   check(anchorTags.length >= 3, `${pageLabel}: page should expose crawlable navigation and contact links.`);
   for (const [, href, body] of anchorTags) {
     check(!href.startsWith("javascript:"), `${pageLabel}: link must be crawlable: ${href}`);
     check(body.replace(/<[^>]*>/g, "").trim().length > 0, `${pageLabel}: link needs visible anchor text: ${href}`);
+
+    const localHref = href.startsWith(canonicalHost) ? href.replace(canonicalHost, "") : href;
+    if (!localHref.startsWith("/")) {
+      continue;
+    }
+
+    const localFile = localFileFromHref(localHref);
+    check(existsSync(localFile), `${pageLabel}: internal link target is missing: ${href}`);
+
+    const fragment = localHref.split("#")[1];
+    if (fragment && existsSync(localFile)) {
+      const targetHtml = readFileSync(localFile, "utf8");
+      check(idExists(targetHtml, decodeURIComponent(fragment)), `${pageLabel}: internal link anchor is missing: ${href}`);
+    }
   }
 }
 
