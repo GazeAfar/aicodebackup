@@ -1,5 +1,8 @@
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="64" rx="16" fill="#101413"/>
-  <path d="M18 20H46V28H38V44H26V28H18V20Z" fill="#19C37D"/>
-  <path d="M26 36H38" stroke="#101413" stroke-width="4" stroke-linecap="round"/>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">AICodeBackup logo</title>
+  <desc id="desc">A dark rounded app icon with a minimal green backup mark.</desc>
+  <rect width="64" height="64" rx="16" fill="#07100D"/>
+  <path d="M20 38V46H44V38" stroke="#24F28F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M32 42V18" stroke="#24F28F" stroke-width="5" stroke-linecap="round"/>
+  <path d="M23 27L32 18L41 27" stroke="#24F28F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
