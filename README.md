@@ -1,5 +1,9 @@
 ﻿# AICodeBackup
 
+<p align="right">
+  <a href="./README.md">English</a> | <a href="./README.zh-CN.md">简体中文</a>
+</p>
+
 Never lose your AI-generated code again.
 
 > Status: V0.1 Alpha. AICodeBackup is published on npm for small-group testing, but not yet recommended for broad production use.
@@ -269,6 +273,3 @@ It is a code safety net for the AI coding era.
 
 Let AI write the code. Let AICodeBackup protect it.
 
-## 中文简介
-
-AICodeBackup 是一款面向 AI 编程用户的自动备份工具，帮助不会 Git 和 GitHub 的用户把本地项目自动备份到 GitHub 私有仓库，避免 AI 会话结束、额度耗尽、上下文丢失、误操作或电脑故障导致代码丢失。
