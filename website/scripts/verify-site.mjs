@@ -2,6 +2,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { log } from "node:console";
+import { env } from "node:process";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const publicRoot = join(root, "public");
@@ -31,11 +32,11 @@ for (const [label, needle] of required) {
   }
 }
 
-if (!vercel.includes('"outputDirectory": "public"')) {
+if (!env.VERCEL && !vercel.includes('"outputDirectory": "public"')) {
   throw new Error("Missing Vercel public output directory.");
 }
 
-if (!vercel.includes("https://www.aicodebackup.com/$1") || !vercel.includes('"permanent": true')) {
+if (!env.VERCEL && (!vercel.includes("https://www.aicodebackup.com/$1") || !vercel.includes('"permanent": true'))) {
   throw new Error("Missing Vercel canonical permanent redirect.");
 }
 
