@@ -127,6 +127,7 @@ check(socialPreview.includes('width="1200"') && socialPreview.includes('height="
 
 if (!env.VERCEL) {
   check(vercel.includes('"outputDirectory": "public"'), "Vercel output directory must be public.");
+  check(vercel.includes('"trailingSlash": true'), "Vercel trailingSlash must match canonical URLs with trailing slash.");
   check(vercel.includes("https://www.aicodebackup.com/$1"), "Vercel redirect must target canonical www URL.");
   check(vercel.includes('"statusCode": 301'), "Vercel apex redirect must explicitly use statusCode 301.");
   check(!vercel.includes('"permanent": true'), "Vercel redirect must not rely on permanent:true because it emits 308.");
