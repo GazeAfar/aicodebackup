@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.0-alpha.7
+
+### Changed
+
+- Split README documentation into English and Simplified Chinese versions with language switch links.
+- Documented that `--lang en` and `--lang zh-CN` save the local language preference for future commands.
+- Included `README.zh-CN.md` in the npm package.
+
+### Removed
+
+- Removed `agent.md` from the public repository and ignored it for future commits.
+
+## 0.1.0-alpha.6
+
+### Changed
+
+- Updated package metadata for the next npm alpha release.
+
 ## 0.1.0-alpha.5
 
 ### Changed
