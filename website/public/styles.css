@@ -100,13 +100,18 @@ svg {
   font-weight: 760;
 }
 
-.language-link {
+.language-link,
+.mobile-language-link {
   display: inline-flex;
   align-items: center;
   min-height: 34px;
   padding: 0 10px;
   border: 1px solid var(--line);
   border-radius: 999px;
+}
+
+.mobile-language-link {
+  display: none;
 }
 
 .nav-links > a:not(.nav-cta):hover,
@@ -850,7 +855,7 @@ main section {
   .hero,
   main section,
   .site-footer {
-    width: min(100% - 36px, 1200px);
+    width: calc(100% - 36px);
   }
 
   .nav {
@@ -859,6 +864,7 @@ main section {
     align-items: center;
     min-height: 64px;
     padding: 10px 0;
+    gap: 10px;
   }
 
   .nav-links {
@@ -866,7 +872,7 @@ main section {
     justify-content: flex-end;
     width: auto;
     margin-left: auto;
-    gap: 0;
+    gap: 8px;
   }
 
   .nav-links > a:not(.nav-cta):not(.language-link) {
@@ -876,6 +882,15 @@ main section {
   .language-link {
     min-height: 40px;
     padding: 0 12px;
+  }
+
+  .mobile-language-link {
+    display: inline-flex;
+    min-height: 40px;
+    padding: 0 12px;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 760;
   }
 
   .nav-cta {
@@ -997,8 +1012,16 @@ main section {
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 520px) {
+  .nav {
+    position: relative;
+  }
+
   .brand > span:last-child {
+    display: none;
+  }
+
+  .site-header .nav-cta {
     display: none;
   }
 }
