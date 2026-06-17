@@ -2,6 +2,7 @@ node_modules/
 coverage/
 .env
 .DS_Store
+agent.md
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
