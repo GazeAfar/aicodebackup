@@ -47,8 +47,9 @@ export declare const messages: {
         readonly "setup.ghInstallFailed": "AICodeBackup could not install GitHub CLI automatically.";
         readonly "setup.ghMissingHelp": "Install GitHub CLI from https://cli.github.com/, then run setup again.";
         readonly "setup.ghNotLoggedIn": "GitHub is not connected yet.";
-        readonly "setup.openingSignup": "Opening GitHub signup. Create an account if you do not have one yet.";
-        readonly "setup.startingGhLogin": "Starting GitHub login in your browser. Sign in or create an account there.";
+        readonly "setup.openingSignup": "Opening GitHub. Create an account or sign in, then return here.";
+        readonly "setup.githubAccountReadyQuestion": "Have you finished signing in to GitHub in the browser?";
+        readonly "setup.startingGhLogin": "Starting GitHub CLI authorization in your browser.";
         readonly "setup.ghLoginFailed": "AICodeBackup could not complete GitHub login automatically.";
         readonly "setup.ghLoginHelp": "Check your GitHub connection or proxy, then run: aicodebackup setup";
         readonly "setup.repoInitialized": "Git repository initialized.";
@@ -108,8 +109,9 @@ export declare const messages: {
         readonly "setup.ghInstallFailed": "AICodeBackup 无法自动安装 GitHub CLI。";
         readonly "setup.ghMissingHelp": "请从 https://cli.github.com/ 安装 GitHub CLI，然后重新运行 setup。";
         readonly "setup.ghNotLoggedIn": "GitHub 尚未连接。";
-        readonly "setup.openingSignup": "正在打开 GitHub 注册页。如果你还没有 GitHub 账号，请先注册。";
-        readonly "setup.startingGhLogin": "正在浏览器中启动 GitHub 登录。请在浏览器中登录或注册 GitHub。";
+        readonly "setup.openingSignup": "正在打开 GitHub。请先注册或登录 GitHub，然后回到这里继续。";
+        readonly "setup.githubAccountReadyQuestion": "你已经在浏览器中完成 GitHub 注册或登录了吗？";
+        readonly "setup.startingGhLogin": "正在浏览器中启动 GitHub CLI 授权。";
         readonly "setup.ghLoginFailed": "AICodeBackup 无法自动完成 GitHub 登录。";
         readonly "setup.ghLoginHelp": "请检查 GitHub 网络连接或代理设置，然后重新运行：aicodebackup setup";
         readonly "setup.repoInitialized": "Git 仓库已初始化。";

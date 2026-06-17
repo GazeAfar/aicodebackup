@@ -4,6 +4,16 @@ import { AICodeBackupError } from "../core/errors.js";
 import { t } from "../i18n/index.js";
 import { runBackup } from "./backup.js";
 export class InquirerSetupPrompt {
+    async githubAccountReady(language) {
+        await inquirer.prompt([
+            {
+                type: "confirm",
+                name: "ready",
+                message: t(language, "setup.githubAccountReadyQuestion"),
+                default: true,
+            },
+        ]);
+    }
     async repositoryName(defaultName, language) {
         const answers = await inquirer.prompt([
             {
@@ -34,6 +44,9 @@ export async function runSetup(git, gh, installer, output, language, prompt = ne
     }
     if (!(await gh.isAuthenticated())) {
         output.info(t(language, "setup.ghNotLoggedIn"));
+        output.info(t(language, "setup.openingSignup"));
+        await installer.openGitHubSignup();
+        await prompt.githubAccountReady(language);
         output.info(t(language, "setup.startingGhLogin"));
         await gh.login();
         if (!(await gh.isAuthenticated())) {

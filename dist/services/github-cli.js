@@ -1,13 +1,10 @@
 import { CommandFailedError } from "../core/errors.js";
-const GITHUB_DEVICE_LOGIN_URL = "https://github.com/login/device";
 export class GitHubCliService {
     runner;
     cwd;
-    platform;
-    constructor(runner, cwd = process.cwd(), platform = process.platform) {
+    constructor(runner, cwd = process.cwd()) {
         this.runner = runner;
         this.cwd = cwd;
-        this.platform = platform;
     }
     async isInstalled() {
         const result = await this.runner.run("gh", ["--version"], { cwd: this.cwd });
@@ -18,7 +15,6 @@ export class GitHubCliService {
         return !result.failed;
     }
     async login() {
-        await this.openDeviceLoginPage();
         const result = await this.runner.run("gh", ["auth", "login", "--web", "--hostname", "github.com", "--git-protocol", "https", "--skip-ssh-key"], {
             cwd: this.cwd,
             interactive: true,
@@ -44,22 +40,6 @@ export class GitHubCliService {
             throw new CommandFailedError("gh api user", result);
         }
         return JSON.parse(result.stdout);
-    }
-    async openDeviceLoginPage() {
-        if (this.platform === "win32") {
-            await this.runner.run("powershell", [
-                "-NoProfile",
-                "-Command",
-                "Start-Process",
-                GITHUB_DEVICE_LOGIN_URL,
-            ]);
-            return;
-        }
-        if (this.platform === "darwin") {
-            await this.runner.run("open", [GITHUB_DEVICE_LOGIN_URL]);
-            return;
-        }
-        await this.runner.run("xdg-open", [GITHUB_DEVICE_LOGIN_URL]);
     }
 }
 //# sourceMappingURL=github-cli.js.map

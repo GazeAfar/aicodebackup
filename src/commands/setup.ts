@@ -10,9 +10,21 @@ import { runBackup } from "./backup.js";
 
 export interface SetupPrompt {
   repositoryName(defaultName: string, language: Language): Promise<string>;
+  githubAccountReady(language: Language): Promise<void>;
 }
 
 export class InquirerSetupPrompt implements SetupPrompt {
+  async githubAccountReady(language: Language): Promise<void> {
+    await inquirer.prompt<{ ready: boolean }>([
+      {
+        type: "confirm",
+        name: "ready",
+        message: t(language, "setup.githubAccountReadyQuestion"),
+        default: true,
+      },
+    ]);
+  }
+
   async repositoryName(defaultName: string, language: Language): Promise<string> {
     const answers = await inquirer.prompt<{ repositoryName: string }>([
       {
@@ -58,6 +70,9 @@ export async function runSetup(
 
   if (!(await gh.isAuthenticated())) {
     output.info(t(language, "setup.ghNotLoggedIn"));
+    output.info(t(language, "setup.openingSignup"));
+    await installer.openGitHubSignup();
+    await prompt.githubAccountReady(language);
     output.info(t(language, "setup.startingGhLogin"));
     await gh.login();
 

@@ -7,6 +7,7 @@ import { InstallerService } from "../src/services/installer.js";
 import { MockRunner } from "./helpers/mock-runner.js";
 
 const prompt: SetupPrompt = {
+  async githubAccountReady() {},
   async repositoryName() {
     return "demo";
   },
@@ -167,7 +168,6 @@ describe("runSetup", () => {
       .queue({ failed: true })
       .queue({})
       .queue({})
-      .queue({})
       .queue({ stdout: "true" })
       .queue({ stdout: "true" })
       .queue({ stdout: "Existing User" })
@@ -189,7 +189,7 @@ describe("runSetup", () => {
       "C:/project",
     );
 
-    expect(installer.openGitHubSignupCalls).toBe(0);
+    expect(installer.openGitHubSignupCalls).toBe(1);
     expect(runner.commands.map((entry) => entry.args)).toContainEqual([
       "auth",
       "login",
