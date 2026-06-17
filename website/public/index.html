@@ -85,30 +85,36 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-grid">
           <div class="hero-copy">
-            <h1 id="hero-title">
-              Never lose your
-              <span>AI-generated</span>
-              <span>code again.</span>
-            </h1>
+            <h1 id="hero-title">Never lose your AI-generated code again.</h1>
             <p>
-              AICodeBackup backs up AI coding projects to private GitHub repositories
-              without making new builders learn Git first.
+              AICodeBackup automatically backs up your AI coding projects to private
+              GitHub repositories without making you learn Git.
             </p>
             <div class="command-line" aria-label="npm install command">
-              <code>npm install -g aicodebackup@alpha</code>
+              <code id="install-command">npm install -g aicodebackup@alpha</code>
+              <span class="copy-button" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="9" y="9" width="10" height="10" rx="2" />
+                  <path d="M5 15V7a2 2 0 0 1 2-2h8" />
+                </svg>
+              </span>
             </div>
             <div class="hero-actions">
               <a class="button primary" href="https://www.npmjs.com/package/aicodebackup"
                 >Install alpha</a
               >
-              <a class="button secondary" href="https://github.com/GazeAfar/aicodebackup"
-                >View GitHub</a
-              >
+              <a class="button secondary" href="https://github.com/GazeAfar/aicodebackup">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.9c-2.7.6-3.3-1.1-3.3-1.1-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.6 1.1 1.6 1.1.9 1.5 2.4 1.1 2.9.8.1-.7.4-1.1.7-1.3-2.2-.2-4.5-1.1-4.5-4.8 0-1.1.4-1.9 1-2.6-.1-.2-.4-1.2.1-2.5 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 4.9 0c1.8-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.5.6.7 1 1.6 1 2.6 0 3.8-2.3 4.6-4.5 4.8.4.3.8 1 .8 2v3c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"
+                  />
+                </svg>
+                View on GitHub
+              </a>
             </div>
             <ul class="proof-list" aria-label="Product guarantees">
-              <li>Creates private GitHub repositories by default</li>
-              <li>Helps install Git and GitHub CLI on Windows and macOS</li>
-              <li>Built for Codex, Claude Code, Cursor, Trae, and Gemini CLI workflows</li>
+              <li>Private by default</li>
+              <li>Works on Windows and macOS</li>
             </ul>
           </div>
           <figure class="hero-visual">
@@ -122,203 +128,279 @@
         </div>
       </section>
 
-      <section class="risk-band" aria-labelledby="risk-title">
-        <div class="section-inner split-section">
-          <div>
-            <h2 id="risk-title">AI coding moves fast. Backups often do not.</h2>
-            <p>
-              One agent session can edit dozens of files before context, credits, or local
-              state disappears. AICodeBackup gives that work a safe remote copy.
-            </p>
+      <section class="risk-strip" aria-labelledby="risk-title">
+        <div class="risk-panel">
+          <div class="risk-lead">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3 5 6v5c0 4.5 2.9 7 7 8 4.1-1 7-3.5 7-8V6z" />
+              <path d="M12 8v5" />
+              <path d="M12 16h.01" />
+            </svg>
+            <h2 id="risk-title">AI code is fragile. Losing it is easy.</h2>
           </div>
-          <div class="risk-list">
+          <div class="risk-items">
             <article>
-              <strong>Session ends</strong>
-              <span>Work is still only local.</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 7h16" />
+                <path d="M10 11v6" />
+                <path d="M14 11v6" />
+                <path d="M6 7l1 14h10l1-14" />
+                <path d="M9 7V4h6v3" />
+              </svg>
+              <strong>Lost work</strong>
+              <p>Crash, reset, or accidentally delete your project.</p>
             </article>
             <article>
-              <strong>AI breaks code</strong>
-              <span>No commit means no clean rollback point.</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 5h16v12H4z" />
+                <path d="M9 9h6" />
+                <path d="M9 13h6" />
+                <path d="M8 21h8" />
+              </svg>
+              <strong>No backup</strong>
+              <p>AI tools do not save your code for you.</p>
             </article>
             <article>
-              <strong>Laptop fails</strong>
-              <span>The project was never pushed anywhere private.</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m7 7 10 10" />
+                <path d="M17 7h-4a5 5 0 0 0-5 5v5" />
+                <path d="M7 17h4a5 5 0 0 0 5-5V7" />
+              </svg>
+              <strong>Messy copies</strong>
+              <p>Scattered files and versions create confusion.</p>
+            </article>
+            <article>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="5" y="10" width="14" height="10" rx="2" />
+                <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+              </svg>
+              <strong>Privacy risk</strong>
+              <p>Public repos or cloud syncs leak sensitive code.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="how-it-works" aria-labelledby="how-title">
-        <div class="section-inner">
-          <div class="section-heading wide">
-            <h2 id="how-title">From local folder to private GitHub backup.</h2>
-            <p>
-              Setup checks your environment, helps connect GitHub, creates a private
-              repository, and pushes the first backup.
-            </p>
-          </div>
-          <div class="workflow">
-            <article class="workflow-step">
-              <div class="icon-shell" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 3v11" />
-                  <path d="m7 10 5 5 5-5" />
-                  <path d="M5 19h14" />
-                </svg>
-              </div>
-              <strong>Install the alpha</strong>
-              <p>Install the CLI once, then run it from any AI-generated project folder.</p>
-            </article>
-            <article class="workflow-step">
-              <div class="icon-shell" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 6h16v12H4z" />
-                  <path d="m8 10 2 2-2 2" />
-                  <path d="M13 14h4" />
-                </svg>
-              </div>
-              <strong>Run setup</strong>
-              <p>Setup helps install missing tools and starts browser-based GitHub login.</p>
-            </article>
-            <article class="workflow-step">
-              <div class="icon-shell" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 4 5 7v5c0 4.5 2.9 7 7 8 4.1-1 7-3.5 7-8V7z" />
-                  <path d="m9 12 2 2 4-5" />
-                </svg>
-              </div>
-              <strong>Back up safely</strong>
-              <p>Your project is committed and pushed to a private GitHub repository.</p>
-            </article>
-          </div>
+      <section id="how-it-works" class="steps-section" aria-labelledby="how-title">
+        <div class="section-heading">
+          <h2 id="how-title">Three simple steps.</h2>
+          <p>Set it up once. We handle the rest.</p>
+        </div>
+        <div class="workflow">
+          <article class="workflow-step">
+            <div class="icon-shell" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M13 4c3.5.8 5.2 2.5 6 6l-4.8 4.8-4.9-4.9z" />
+                <path d="M9.3 9.9 5.5 11l-1.2 3.9 4.3-.8" />
+                <path d="m14.2 14.8-.8 4.3 3.9-1.2 1.1-3.8" />
+                <path d="M7 17c-1.1.3-2 .9-2.8 1.8C5.1 18 5.7 17.1 6 16" />
+              </svg>
+            </div>
+            <strong>Create the safety layer</strong>
+            <p>We install Git and GitHub CLI, create a private repo, and run your first backup.</p>
+          </article>
+          <article class="workflow-step">
+            <div class="icon-shell" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M17.5 17a4.5 4.5 0 0 0-1-8.9 6 6 0 0 0-11.3 2.2A3.7 3.7 0 0 0 6.7 17" />
+                <path d="M12 19V9" />
+                <path d="m8 13 4-4 4 4" />
+              </svg>
+            </div>
+            <strong>Save your work</strong>
+            <p>AICodeBackup adds, commits, and pushes changes. No Git knowledge needed.</p>
+          </article>
+          <article class="workflow-step">
+            <div class="icon-shell" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 4 5 7v5c0 4.5 2.9 7 7 8 4.1-1 7-3.5 7-8V7z" />
+                <path d="m9 12 2 2 4-5" />
+              </svg>
+            </div>
+            <strong>Back up safely</strong>
+            <p>Your project is backed up to a private GitHub repository by default.</p>
+          </article>
         </div>
       </section>
 
-      <section id="commands" class="soft-section" aria-labelledby="commands-title">
-        <div class="section-inner">
-          <div class="section-heading wide">
-            <h2 id="commands-title">Alpha commands.</h2>
-            <p>The first release focuses on the safety layer: setup, backup, and health checks.</p>
-          </div>
-          <div class="command-grid">
-            <article class="command-card">
-              <code>aicodebackup setup</code>
-              <strong>Create the safety layer</strong>
-              <p>Initializes Git, connects GitHub, creates a private repo, and runs the first backup.</p>
-            </article>
-            <article class="command-card">
-              <code>aicodebackup backup</code>
-              <strong>Save the current work</strong>
-              <p>Adds, commits, and pushes changes without requiring the user to understand Git.</p>
-            </article>
-            <article class="command-card">
-              <code>aicodebackup doctor</code>
-              <strong>Check backup health</strong>
-              <p>Checks Git, GitHub CLI, auth, remote, working tree, and the latest backup.</p>
-            </article>
-          </div>
+      <section id="commands" class="commands-panel" aria-labelledby="commands-title">
+        <div class="section-heading">
+          <h2 id="commands-title">Commands that do the heavy lifting.</h2>
+          <p>Three commands. That's it.</p>
+        </div>
+        <div class="command-grid">
+          <article class="command-card">
+            <code>aicodebackup setup</code>
+            <p>Initial setup. Installs requirements, connects GitHub, and creates your private repository.</p>
+          </article>
+          <article class="command-card">
+            <code>aicodebackup backup</code>
+            <p>Save your current project. Commits, and pushes changes to GitHub.</p>
+          </article>
+          <article class="command-card">
+            <code>aicodebackup doctor</code>
+            <p>Check backup health, repo status, authentication, and more.</p>
+          </article>
         </div>
       </section>
 
-      <section id="platforms" aria-labelledby="platforms-title">
-        <div class="section-inner split-section">
-          <div>
-            <h2 id="platforms-title">Built for Windows and macOS.</h2>
-            <p>
-              AICodeBackup is designed around the onboarding paths new AI coding users are
-              most likely to hit first.
-            </p>
-          </div>
-          <div class="platform-list">
-            <article>
+      <section id="platforms" class="platform-section" aria-labelledby="platforms-title">
+        <div class="section-heading">
+          <h2 id="platforms-title">Built for Windows and macOS.</h2>
+          <p>A smooth setup on the platforms you use every day.</p>
+        </div>
+        <div class="platform-list">
+          <article>
+            <svg class="platform-logo" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 5.2 10.7 4v7.4H3z" />
+              <path d="M12 3.8 21 2.5v8.9h-9z" />
+              <path d="M3 12.6h7.7V20L3 18.8z" />
+              <path d="M12 12.6h9v8.9L12 20.2z" />
+            </svg>
+            <div>
               <strong>Windows PowerShell</strong>
               <p>Setup attempts Git and GitHub CLI installation through winget when tools are missing.</p>
-            </article>
-            <article>
-              <strong>Apple macOS Terminal</strong>
-              <p>Setup uses Homebrew when available and starts browser-based GitHub login.</p>
-            </article>
-          </div>
+              <a href="/guides/">View Windows guide</a>
+            </div>
+          </article>
+          <article>
+            <svg class="platform-logo filled" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M16.8 12.8c0-2 1.6-3 1.7-3.1-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.3.7-2.9.7-.6 0-1.5-.7-2.5-.7-1.3 0-2.5.8-3.2 2-1.4 2.4-.4 6 1 8 .7 1 1.5 2.2 2.6 2.1 1 0 1.4-.7 2.7-.7 1.2 0 1.6.7 2.7.7 1.1 0 1.8-1 2.5-2 .8-1.2 1.1-2.3 1.1-2.4 0 0-2.8-1.1-2.8-3Zm-2-6c.6-.7 1-1.6.9-2.6-.9 0-1.9.6-2.5 1.3-.6.6-1 1.6-.9 2.5 1 0 2-.5 2.5-1.2Z"
+              />
+            </svg>
+            <div>
+              <strong>macOS Terminal</strong>
+              <p>Setup uses Homebrew when available and starts a secure browser login to GitHub.</p>
+              <a href="/guides/">View macOS guide</a>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section class="soft-section" aria-labelledby="guides-title">
-        <div class="section-inner">
-          <div class="section-heading wide">
-            <h2 id="guides-title">Guides for safer AI coding.</h2>
-            <p>
-              Practical pages for the search intents that matter: protecting AI-generated
-              code and giving vibe coders a simple GitHub backup path.
-            </p>
-          </div>
-          <div class="guide-grid">
-            <a class="guide-card" href="/guides/backup-ai-generated-code/">
-              <span>Guide</span>
-              <strong>How to back up AI-generated code</strong>
-              <p>Use private GitHub backups to protect Codex, Claude Code, Cursor, and Gemini CLI projects.</p>
-            </a>
-            <a class="guide-card" href="/guides/github-backup-for-vibe-coders/">
-              <span>Guide</span>
-              <strong>GitHub backup for vibe coders</strong>
-              <p>A beginner-friendly workflow for builders who do not want to learn Git first.</p>
-            </a>
-          </div>
+      <section class="resources-section" aria-labelledby="guides-title">
+        <div class="section-heading">
+          <h2 id="guides-title">Guides & resources.</h2>
+          <p>Everything you need to get started and stay safe.</p>
+        </div>
+        <div class="resource-grid">
+          <a class="resource-card" href="/guides/">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 6.5A5.5 5.5 0 0 0 6.5 4H4v15h2.5A5.5 5.5 0 0 1 12 21" />
+              <path d="M12 6.5A5.5 5.5 0 0 1 17.5 4H20v15h-2.5A5.5 5.5 0 0 0 12 21" />
+              <path d="M12 6.5V21" />
+            </svg>
+            <strong>Getting started</strong>
+            <p>Step-by-step setup and your first backup.</p>
+            <span>Read guide</span>
+          </a>
+          <a class="resource-card" href="/guides/github-backup-for-vibe-coders/">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="5" y="10" width="14" height="10" rx="2" />
+              <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+            </svg>
+            <strong>Private by default</strong>
+            <p>How privacy works and why it matters.</p>
+            <span>Read guide</span>
+          </a>
+          <a class="resource-card" href="/guides/backup-ai-generated-code/">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 4 5 7v5c0 4.5 2.9 7 7 8 4.1-1 7-3.5 7-8V7z" />
+              <path d="m9 12 2 2 4-5" />
+            </svg>
+            <strong>Security practices</strong>
+            <p>Recommended settings for safe AI coding.</p>
+            <span>Read guide</span>
+          </a>
+          <a class="resource-card" href="#faq">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M9.5 9a2.8 2.8 0 0 1 5 1.7c0 1.8-2.5 2.1-2.5 3.8" />
+              <path d="M12 17h.01" />
+            </svg>
+            <strong>Troubleshooting</strong>
+            <p>Solutions to common setup issues.</p>
+            <span>Read guide</span>
+          </a>
         </div>
       </section>
 
-      <section id="faq" aria-labelledby="faq-title">
-        <div class="section-inner faq-layout">
-          <div>
-            <h2 id="faq-title">Questions before installing.</h2>
-            <p>Short answers for new AI builders, indie developers, and early testers.</p>
-          </div>
-          <div class="faq-list">
-            <article>
-              <h3>Does AICodeBackup create private repositories?</h3>
-              <p>Yes. The setup flow creates GitHub repositories as private by default.</p>
-            </article>
-            <article>
-              <h3>Do I need to know Git?</h3>
-              <p>No. The alpha wraps the setup, commit, and push workflow behind simple commands.</p>
-            </article>
-            <article>
-              <h3>Is this production-ready?</h3>
-              <p>AICodeBackup is currently an alpha release for small-group testing and feedback.</p>
-            </article>
-          </div>
+      <section id="faq" class="faq-section" aria-labelledby="faq-title">
+        <div class="section-heading">
+          <h2 id="faq-title">Frequently asked questions.</h2>
         </div>
-      </section>
-
-      <section class="cta" aria-labelledby="cta-title">
-        <div class="section-inner">
-          <div>
-            <h2 id="cta-title">Start with one private backup.</h2>
-            <p>
-              Install the alpha, run setup inside a project folder, and give your AI-generated
-              code a private remote copy.
-            </p>
-          </div>
-          <a class="button" href="https://www.npmjs.com/package/aicodebackup">Install alpha</a>
+        <div class="faq-list">
+          <details>
+            <summary>Do I need to know Git?</summary>
+            <p>No. AICodeBackup wraps Git setup, commits, and pushes behind simple commands.</p>
+          </details>
+          <details>
+            <summary>Is my code really private?</summary>
+            <p>Yes. The setup flow creates GitHub repositories as private by default.</p>
+          </details>
+          <details>
+            <summary>Where is my code stored?</summary>
+            <p>Your code is stored in your own private GitHub repository.</p>
+          </details>
+          <details>
+            <summary>What happens if I uninstall?</summary>
+            <p>Your GitHub repository and backups stay in your GitHub account.</p>
+          </details>
+          <details>
+            <summary>Is AICodeBackup free?</summary>
+            <p>The alpha CLI is free and open source under the MIT License.</p>
+          </details>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="footer-inner">
-        <a class="brand" href="/" aria-label="AICodeBackup home">
-          <span class="brand-mark" aria-hidden="true">AC</span>
-          <span>AICodeBackup</span>
-        </a>
-        <div class="footer-links">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a class="brand" href="/" aria-label="AICodeBackup home">
+            <span class="brand-mark" aria-hidden="true">AC</span>
+            <span>AICodeBackup</span>
+          </a>
+          <p>Automatic private GitHub backups for AI coding projects.</p>
+          <div class="social-links" aria-label="Social links">
+            <a href="https://github.com/GazeAfar/aicodebackup" aria-label="GitHub">GitHub</a>
+            <a href="https://www.npmjs.com/package/aicodebackup" aria-label="npm">npm</a>
+            <a href="mailto:hello@aicodebackup.com" aria-label="Email">Email</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <strong>Product</strong>
+          <a href="#how-it-works">How it works</a>
+          <a href="#commands">Commands</a>
           <a href="/guides/">Guides</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="footer-column">
+          <strong>Resources</strong>
+          <a href="/guides/">Windows guide</a>
+          <a href="/guides/">macOS guide</a>
+          <a href="/guides/backup-ai-generated-code/">Security</a>
+          <a href="https://github.com/GazeAfar/aicodebackup/releases">Changelog</a>
+        </div>
+        <div class="footer-column">
+          <strong>Company</strong>
+          <a href="mailto:hello@aicodebackup.com">Contact</a>
           <a href="/privacy/">Privacy Policy</a>
           <a href="/terms/">Terms of Use</a>
-          <a href="https://github.com/GazeAfar/aicodebackup">GitHub</a>
-          <a href="https://www.npmjs.com/package/aicodebackup">npm</a>
+        </div>
+        <div class="footer-column">
+          <strong>Contact</strong>
           <a href="mailto:hello@aicodebackup.com">hello@aicodebackup.com</a>
         </div>
-        <span class="copyright">&copy; 2026 AICodeBackup</span>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 AICodeBackup. All rights reserved.</span>
+        <div>
+          <a href="/privacy/">Privacy Policy</a>
+          <a href="/terms/">Terms of Use</a>
+        </div>
       </div>
     </footer>
+
   </body>
 </html>
