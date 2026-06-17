@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Back Up Claude Code Projects | AICodeBackup</title>
+    <meta name="description" content="Protect Claude Code projects with private GitHub backups, clear recovery points, and a simple command-line workflow for AI coding sessions." />
+    <meta name="keywords" content="backup Claude Code projects, Claude Code backup, Claude Code GitHub backup, AI coding backup" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.aicodebackup.com/guides/backup-claude-code-projects/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="AICodeBackup" />
+    <meta property="og:title" content="Back Up Claude Code Projects | AICodeBackup" />
+    <meta property="og:description" content="Protect Claude Code projects with private GitHub backups, clear recovery points, and a simple command-line workflow for AI coding sessions." />
+    <meta property="og:url" content="https://www.aicodebackup.com/guides/backup-claude-code-projects/" />
+    <meta property="og:image" content="https://www.aicodebackup.com/assets/social-preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Back Up Claude Code Projects | AICodeBackup" />
+    <meta name="twitter:description" content="Protect Claude Code projects with private GitHub backups, clear recovery points, and a simple command-line workflow for AI coding sessions." />
+    <meta name="twitter:image" content="https://www.aicodebackup.com/assets/social-preview.png" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">AC</span><span>AICodeBackup</span></a>
+        <div class="nav-links">
+          <a href="/#how-it-works">How it works</a>
+          <a href="/#commands">Commands</a>
+          <a href="/guides/">Guides</a>
+          <a href="/#faq">FAQ</a>
+          <a href="mailto:hello@aicodebackup.com">Contact</a>
+          <a class="nav-cta" href="https://www.npmjs.com/package/aicodebackup">Install alpha</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="page-hero">
+        <h1>Back up Claude Code projects.</h1>
+        <p>Claude Code can make broad project changes fast. A private GitHub backup keeps those changes recoverable when the session, terminal, or local machine stops being reliable.</p>
+      </section>
+      <article class="content-page guide-article">
+        <h2>The common Claude Code backup problem</h2>
+        <p>Claude Code often works across many files at once: source code, tests, package files, and documentation. If the changes are useful but never committed or pushed, the project still has a single point of failure.</p>
+        <p>This is especially risky for non-traditional developers who are building with AI but do not yet have a Git habit.</p>
+        <h2>What to save before the session ends</h2>
+        <ul>
+          <li>A working feature after Claude Code finishes a successful edit.</li>
+          <li>A stable state before asking for a major refactor.</li>
+          <li>A clean checkpoint before installing new dependencies.</li>
+          <li>Any project state that would be painful to recreate from prompts alone.</li>
+        </ul>
+        <h2>How AICodeBackup fits this workflow</h2>
+        <p>Run <code>aicodebackup setup</code> once in the project folder. The tool checks the environment, helps connect GitHub, creates a private repository if one is missing, and performs the first backup.</p>
+        <p>After that, <code>aicodebackup backup</code> gives Claude Code users a repeatable safety action without forcing them to remember <code>git add</code>, <code>git commit</code>, and <code>git push</code>.</p>
+        <h2>Recovery mindset</h2>
+        <p>A backup does not make every AI change correct. It gives you a known point to return to, a private remote copy, and a visible latest backup status through <code>aicodebackup doctor</code>.</p>
+        <section class="related-guides" aria-labelledby="related-backup-claude-code-projects">
+          <h2 id="related-backup-claude-code-projects">Related guides</h2>
+          <div class="related-guide-grid">
+          <a href="/guides/backup-ai-generated-code/"><strong>Back up AI-generated code</strong><span>A practical starting point for protecting local AI coding work.</span></a>
+          <a href="/guides/github-backup-without-git/"><strong>GitHub backup without Git</strong><span>Use GitHub as a safety net without learning Git commands first.</span></a>
+          <a href="/guides/private-github-backup-for-ai-code/"><strong>Private GitHub backup</strong><span>Understand why private repositories matter for AI-built code.</span></a>
+          </div>
+        </section>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a class="brand" href="/" aria-label="AICodeBackup home">
+            <span class="brand-mark" aria-hidden="true">AC</span>
+            <span>AICodeBackup</span>
+          </a>
+          <p>Automatic private GitHub backups for AI coding projects.</p>
+          <div class="social-links" aria-label="Social links">
+            <a href="https://github.com/GazeAfar/aicodebackup" aria-label="GitHub">GitHub</a>
+            <a href="https://www.npmjs.com/package/aicodebackup" aria-label="npm">npm</a>
+            <a href="mailto:hello@aicodebackup.com" aria-label="Email">Email</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <strong>Product</strong>
+          <a href="/#how-it-works">How it works</a>
+          <a href="/#commands">Commands</a>
+          <a href="/guides/">Guides</a>
+          <a href="/#faq">FAQ</a>
+        </div>
+        <div class="footer-column">
+          <strong>Resources</strong>
+          <a href="/guides/github-backup-without-git/">No-Git backup</a>
+          <a href="/guides/private-github-backup-for-ai-code/">Private backup</a>
+          <a href="/guides/how-to-not-lose-ai-generated-code/">Avoid lost code</a>
+          <a href="https://github.com/GazeAfar/aicodebackup/releases">Changelog</a>
+        </div>
+        <div class="footer-column">
+          <strong>Company</strong>
+          <a href="mailto:hello@aicodebackup.com">Contact</a>
+          <a href="/privacy/">Privacy Policy</a>
+          <a href="/terms/">Terms of Use</a>
+        </div>
+        <div class="footer-column">
+          <strong>Contact</strong>
+          <a href="mailto:hello@aicodebackup.com">hello@aicodebackup.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 AICodeBackup. All rights reserved.</span>
+      </div>
+    </footer>
+  </body>
+</html>

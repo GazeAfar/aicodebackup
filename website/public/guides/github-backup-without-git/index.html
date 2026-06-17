@@ -3,30 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>How to Back Up AI-Generated Code | AICodeBackup</title>
-    <meta
-      name="description"
-      content="Learn how to back up AI-generated code to a private GitHub repository, protect local work, and avoid losing projects after AI coding sessions end."
-    />
-    <meta
-      name="keywords"
-      content="back up AI-generated code, AI code backup, Codex backup, Claude Code backup, Cursor backup"
-    />
+    <title>GitHub Backup Without Learning Git | AICodeBackup</title>
+    <meta name="description" content="Create private GitHub backups without learning Git commands first. AICodeBackup guides setup, backup, and health checks for AI-built projects." />
+    <meta name="keywords" content="GitHub backup without Git, backup without Git commands, no Git backup tool, private GitHub backup" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://www.aicodebackup.com/guides/backup-ai-generated-code/" />
+    <link rel="canonical" href="https://www.aicodebackup.com/guides/github-backup-without-git/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="AICodeBackup" />
-    <meta property="og:title" content="How to Back Up AI-Generated Code | AICodeBackup" />
-    <meta property="og:description" content="A practical guide to protecting AI-generated code with private GitHub backups." />
-    <meta property="og:url" content="https://www.aicodebackup.com/guides/backup-ai-generated-code/" />
+    <meta property="og:title" content="GitHub Backup Without Learning Git | AICodeBackup" />
+    <meta property="og:description" content="Create private GitHub backups without learning Git commands first. AICodeBackup guides setup, backup, and health checks for AI-built projects." />
+    <meta property="og:url" content="https://www.aicodebackup.com/guides/github-backup-without-git/" />
     <meta property="og:image" content="https://www.aicodebackup.com/assets/social-preview.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="How to Back Up AI-Generated Code | AICodeBackup" />
-    <meta name="twitter:description" content="A practical guide to protecting AI-generated code with private GitHub backups." />
+    <meta name="twitter:title" content="GitHub Backup Without Learning Git | AICodeBackup" />
+    <meta name="twitter:description" content="Create private GitHub backups without learning Git commands first. AICodeBackup guides setup, backup, and health checks for AI-built projects." />
     <meta name="twitter:image" content="https://www.aicodebackup.com/assets/social-preview.png" />
   </head>
   <body>
@@ -45,38 +39,31 @@
     </header>
     <main>
       <section class="page-hero">
-        <h1>How to back up AI-generated code.</h1>
-        <p>
-          AI coding tools can create valuable work quickly. The safest habit is to move
-          that work from a local folder into a private GitHub repository before the session ends.
-        </p>
+        <h1>GitHub backup without learning Git.</h1>
+        <p>You can use GitHub as a private safety layer before you understand branches, remotes, commits, and push commands. AICodeBackup wraps the backup path in plain commands.</p>
       </section>
-      <article class="content-page">
-        <h2>Why AI-generated code needs a backup habit</h2>
-        <p>
-          Codex, Claude Code, Cursor, Trae, and Gemini CLI can change many files in one
-          session. If the session ends, the model loses context, or your local machine fails,
-          the project can become difficult or impossible to recover.
-        </p>
-        <h2>The simple backup workflow</h2>
-        <ol>
-          <li>Install AICodeBackup from npm.</li>
-          <li>Run <code>aicodebackup setup</code> inside the project folder.</li>
-          <li>Let setup connect GitHub and create a private repository.</li>
-          <li>Run <code>aicodebackup backup</code> after meaningful AI coding changes.</li>
-          <li>Use <code>aicodebackup doctor</code> to confirm the backup path is healthy.</li>
-        </ol>
-        <h2>Why private GitHub repositories matter</h2>
-        <p>
-          A private GitHub repository gives the project a remote copy without exposing source
-          code publicly. It also creates recovery points through commits, even for users who
-          do not want to learn Git commands first.
-        </p>
-        <h2>Start with one command</h2>
-        <p>
-          Install the alpha with <code>npm install -g aicodebackup@alpha</code>, then run
-          <code>aicodebackup setup</code> in a test project before relying on it for critical work.
-        </p>
+      <article class="content-page guide-article">
+        <h2>The problem with teaching Git first</h2>
+        <p>Many AI builders need protection today, not a full Git course. They may be product managers, designers, founders, operators, or vibe coders who are using AI to build an MVP.</p>
+        <p>Telling them to learn Git before backing up code creates a delay exactly when the project is most fragile.</p>
+        <h2>The simpler mental model</h2>
+        <ul>
+          <li><code>aicodebackup setup</code> creates the safety layer.</li>
+          <li><code>aicodebackup backup</code> saves the current project state.</li>
+          <li><code>aicodebackup doctor</code> checks whether the backup path is healthy.</li>
+        </ul>
+        <h2>What still happens under the hood</h2>
+        <p>AICodeBackup still uses Git and GitHub. The difference is that the user does not need to remember the exact command sequence. The tool runs the setup, add, commit, and push workflow in a guided way.</p>
+        <h2>Who this is for</h2>
+        <p>This approach is useful for people who are serious about not losing code but are not ready to become traditional software developers before validating an idea.</p>
+        <section class="related-guides" aria-labelledby="related-github-backup-without-git">
+          <h2 id="related-github-backup-without-git">Related guides</h2>
+          <div class="related-guide-grid">
+          <a href="/guides/github-backup-for-vibe-coders/"><strong>GitHub backup for vibe coders</strong><span>A beginner-friendly path for AI-first builders.</span></a>
+          <a href="/guides/private-github-backup-for-ai-code/"><strong>Private GitHub backup</strong><span>Keep AI-built source code private by default.</span></a>
+          <a href="/guides/automatic-github-backup-for-ai-coding/"><strong>Automatic GitHub backup</strong><span>Understand where automation helps and where user control still matters.</span></a>
+          </div>
+        </section>
       </article>
     </main>
     <footer class="site-footer">

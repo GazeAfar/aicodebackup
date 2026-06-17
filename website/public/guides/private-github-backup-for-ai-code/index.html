@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Private GitHub Backup for AI Code | AICodeBackup</title>
+    <meta name="description" content="Learn why AI-generated code should be backed up to private GitHub repositories and how AICodeBackup helps avoid public exposure." />
+    <meta name="keywords" content="private GitHub backup for AI code, private repo AI code, AI-generated code privacy, GitHub private backup" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.aicodebackup.com/guides/private-github-backup-for-ai-code/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="AICodeBackup" />
+    <meta property="og:title" content="Private GitHub Backup for AI Code | AICodeBackup" />
+    <meta property="og:description" content="Learn why AI-generated code should be backed up to private GitHub repositories and how AICodeBackup helps avoid public exposure." />
+    <meta property="og:url" content="https://www.aicodebackup.com/guides/private-github-backup-for-ai-code/" />
+    <meta property="og:image" content="https://www.aicodebackup.com/assets/social-preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Private GitHub Backup for AI Code | AICodeBackup" />
+    <meta name="twitter:description" content="Learn why AI-generated code should be backed up to private GitHub repositories and how AICodeBackup helps avoid public exposure." />
+    <meta name="twitter:image" content="https://www.aicodebackup.com/assets/social-preview.png" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">AC</span><span>AICodeBackup</span></a>
+        <div class="nav-links">
+          <a href="/#how-it-works">How it works</a>
+          <a href="/#commands">Commands</a>
+          <a href="/guides/">Guides</a>
+          <a href="/#faq">FAQ</a>
+          <a href="mailto:hello@aicodebackup.com">Contact</a>
+          <a class="nav-cta" href="https://www.npmjs.com/package/aicodebackup">Install alpha</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="page-hero">
+        <h1>Private GitHub backup for AI code.</h1>
+        <p>AI-generated code often contains product ideas, unfinished logic, credentials in local files, and business context. Backups should be private by default.</p>
+      </section>
+      <article class="content-page guide-article">
+        <h2>Why privacy matters for AI coding projects</h2>
+        <p>A project created with AI may start as an experiment and become valuable quickly. Publishing it by mistake can expose implementation details, product direction, or sensitive local configuration.</p>
+        <p>A private GitHub repository gives the project a remote copy without turning it into a public portfolio item.</p>
+        <h2>What private by default means</h2>
+        <p>When AICodeBackup creates a missing GitHub repository during setup, it creates that repository as private by default. The user can still manage permissions in GitHub, but the first backup starts from a safer default.</p>
+        <h2>What to check before backing up</h2>
+        <ul>
+          <li>Remove secrets from source files before any backup workflow.</li>
+          <li>Use environment files carefully and understand what is ignored by Git.</li>
+          <li>Confirm the GitHub account is the one you expect to use.</li>
+          <li>Run <code>aicodebackup doctor</code> to verify the remote connection.</li>
+        </ul>
+        <h2>Private backup is not secret storage</h2>
+        <p>Private repositories are appropriate for source backup, but they are not a dedicated secrets manager. API keys and credentials should still be managed separately and kept out of committed files whenever possible.</p>
+        <section class="related-guides" aria-labelledby="related-private-github-backup-for-ai-code">
+          <h2 id="related-private-github-backup-for-ai-code">Related guides</h2>
+          <div class="related-guide-grid">
+          <a href="/guides/backup-ai-generated-code/"><strong>Back up AI-generated code</strong><span>A practical starting point for protecting local AI coding work.</span></a>
+          <a href="/guides/github-backup-without-git/"><strong>GitHub backup without Git</strong><span>Use GitHub as a safety net without learning Git commands first.</span></a>
+          <a href="/guides/private-github-backup-for-ai-code/"><strong>Private GitHub backup</strong><span>Understand why private repositories matter for AI-built code.</span></a>
+          </div>
+        </section>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a class="brand" href="/" aria-label="AICodeBackup home">
+            <span class="brand-mark" aria-hidden="true">AC</span>
+            <span>AICodeBackup</span>
+          </a>
+          <p>Automatic private GitHub backups for AI coding projects.</p>
+          <div class="social-links" aria-label="Social links">
+            <a href="https://github.com/GazeAfar/aicodebackup" aria-label="GitHub">GitHub</a>
+            <a href="https://www.npmjs.com/package/aicodebackup" aria-label="npm">npm</a>
+            <a href="mailto:hello@aicodebackup.com" aria-label="Email">Email</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <strong>Product</strong>
+          <a href="/#how-it-works">How it works</a>
+          <a href="/#commands">Commands</a>
+          <a href="/guides/">Guides</a>
+          <a href="/#faq">FAQ</a>
+        </div>
+        <div class="footer-column">
+          <strong>Resources</strong>
+          <a href="/guides/github-backup-without-git/">No-Git backup</a>
+          <a href="/guides/private-github-backup-for-ai-code/">Private backup</a>
+          <a href="/guides/how-to-not-lose-ai-generated-code/">Avoid lost code</a>
+          <a href="https://github.com/GazeAfar/aicodebackup/releases">Changelog</a>
+        </div>
+        <div class="footer-column">
+          <strong>Company</strong>
+          <a href="mailto:hello@aicodebackup.com">Contact</a>
+          <a href="/privacy/">Privacy Policy</a>
+          <a href="/terms/">Terms of Use</a>
+        </div>
+        <div class="footer-column">
+          <strong>Contact</strong>
+          <a href="mailto:hello@aicodebackup.com">hello@aicodebackup.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 AICodeBackup. All rights reserved.</span>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Back Up Codex Projects Safely | AICodeBackup</title>
+    <meta name="description" content="Learn how to back up Codex coding projects to private GitHub repositories before sessions end, context changes, or local files are lost." />
+    <meta name="keywords" content="backup Codex projects, Codex backup, Codex GitHub backup, OpenAI Codex code backup" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.aicodebackup.com/guides/backup-codex-projects/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="AICodeBackup" />
+    <meta property="og:title" content="Back Up Codex Projects Safely | AICodeBackup" />
+    <meta property="og:description" content="Learn how to back up Codex coding projects to private GitHub repositories before sessions end, context changes, or local files are lost." />
+    <meta property="og:url" content="https://www.aicodebackup.com/guides/backup-codex-projects/" />
+    <meta property="og:image" content="https://www.aicodebackup.com/assets/social-preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Back Up Codex Projects Safely | AICodeBackup" />
+    <meta name="twitter:description" content="Learn how to back up Codex coding projects to private GitHub repositories before sessions end, context changes, or local files are lost." />
+    <meta name="twitter:image" content="https://www.aicodebackup.com/assets/social-preview.png" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">AC</span><span>AICodeBackup</span></a>
+        <div class="nav-links">
+          <a href="/#how-it-works">How it works</a>
+          <a href="/#commands">Commands</a>
+          <a href="/guides/">Guides</a>
+          <a href="/#faq">FAQ</a>
+          <a href="mailto:hello@aicodebackup.com">Contact</a>
+          <a class="nav-cta" href="https://www.npmjs.com/package/aicodebackup">Install alpha</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="page-hero">
+        <h1>Back up Codex projects safely.</h1>
+        <p>Codex can move quickly through a project. A backup workflow makes sure the useful work ends up in a private GitHub repository before the session disappears.</p>
+      </section>
+      <article class="content-page guide-article">
+        <h2>Why Codex projects need a backup step</h2>
+        <p>A productive Codex session can touch routes, components, tests, configuration, and generated assets in one sitting. That speed is useful, but it also means the local folder can become the only place where hours of work exist.</p>
+        <p>The risk is not only a broken laptop. A prompt can move in the wrong direction, a context window can end, or a user can close a terminal before creating a clean recovery point.</p>
+        <h2>A safer Codex backup workflow</h2>
+        <ol>
+          <li>Run Codex in the project folder where the files actually live.</li>
+          <li>After setup succeeds, run <code>aicodebackup backup</code> after each meaningful change set.</li>
+          <li>Use private GitHub repositories by default so source code is not published accidentally.</li>
+          <li>Run <code>aicodebackup doctor</code> when you are unsure whether the latest work is backed up.</li>
+        </ol>
+        <h2>What AICodeBackup handles</h2>
+        <p>AICodeBackup is designed for users who need the result of Git without first learning Git vocabulary. It checks the local environment, helps connect GitHub, creates a private repository when needed, and pushes a backup through one command.</p>
+        <ul>
+          <li>Git and GitHub CLI checks before backup work starts.</li>
+          <li>Browser-based GitHub login through GitHub CLI.</li>
+          <li>Private repository creation when no remote exists.</li>
+          <li>Automatic add, commit, and push for the current project state.</li>
+        </ul>
+        <h2>When to back up during a Codex session</h2>
+        <p>Back up before asking Codex to make risky cross-file changes, after a feature starts working, and before ending a long session. The goal is not a perfect history. The goal is a reliable private copy of the work you care about.</p>
+        <section class="related-guides" aria-labelledby="related-backup-codex-projects">
+          <h2 id="related-backup-codex-projects">Related guides</h2>
+          <div class="related-guide-grid">
+          <a href="/guides/backup-ai-generated-code/"><strong>Back up AI-generated code</strong><span>A practical starting point for protecting local AI coding work.</span></a>
+          <a href="/guides/github-backup-without-git/"><strong>GitHub backup without Git</strong><span>Use GitHub as a safety net without learning Git commands first.</span></a>
+          <a href="/guides/private-github-backup-for-ai-code/"><strong>Private GitHub backup</strong><span>Understand why private repositories matter for AI-built code.</span></a>
+          </div>
+        </section>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a class="brand" href="/" aria-label="AICodeBackup home">
+            <span class="brand-mark" aria-hidden="true">AC</span>
+            <span>AICodeBackup</span>
+          </a>
+          <p>Automatic private GitHub backups for AI coding projects.</p>
+          <div class="social-links" aria-label="Social links">
+            <a href="https://github.com/GazeAfar/aicodebackup" aria-label="GitHub">GitHub</a>
+            <a href="https://www.npmjs.com/package/aicodebackup" aria-label="npm">npm</a>
+            <a href="mailto:hello@aicodebackup.com" aria-label="Email">Email</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <strong>Product</strong>
+          <a href="/#how-it-works">How it works</a>
+          <a href="/#commands">Commands</a>
+          <a href="/guides/">Guides</a>
+          <a href="/#faq">FAQ</a>
+        </div>
+        <div class="footer-column">
+          <strong>Resources</strong>
+          <a href="/guides/github-backup-without-git/">No-Git backup</a>
+          <a href="/guides/private-github-backup-for-ai-code/">Private backup</a>
+          <a href="/guides/how-to-not-lose-ai-generated-code/">Avoid lost code</a>
+          <a href="https://github.com/GazeAfar/aicodebackup/releases">Changelog</a>
+        </div>
+        <div class="footer-column">
+          <strong>Company</strong>
+          <a href="mailto:hello@aicodebackup.com">Contact</a>
+          <a href="/privacy/">Privacy Policy</a>
+          <a href="/terms/">Terms of Use</a>
+        </div>
+        <div class="footer-column">
+          <strong>Contact</strong>
+          <a href="mailto:hello@aicodebackup.com">hello@aicodebackup.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 AICodeBackup. All rights reserved.</span>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -3,30 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>How to Back Up AI-Generated Code | AICodeBackup</title>
-    <meta
-      name="description"
-      content="Learn how to back up AI-generated code to a private GitHub repository, protect local work, and avoid losing projects after AI coding sessions end."
-    />
-    <meta
-      name="keywords"
-      content="back up AI-generated code, AI code backup, Codex backup, Claude Code backup, Cursor backup"
-    />
+    <title>How to Not Lose AI-Generated Code | AICodeBackup</title>
+    <meta name="description" content="Learn practical habits for not losing AI-generated code, including private GitHub backups, checkpoints, and backup health checks." />
+    <meta name="keywords" content="how to not lose AI-generated code, lost AI code, AI code safety, protect AI-generated code" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://www.aicodebackup.com/guides/backup-ai-generated-code/" />
+    <link rel="canonical" href="https://www.aicodebackup.com/guides/how-to-not-lose-ai-generated-code/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="AICodeBackup" />
-    <meta property="og:title" content="How to Back Up AI-Generated Code | AICodeBackup" />
-    <meta property="og:description" content="A practical guide to protecting AI-generated code with private GitHub backups." />
-    <meta property="og:url" content="https://www.aicodebackup.com/guides/backup-ai-generated-code/" />
+    <meta property="og:title" content="How to Not Lose AI-Generated Code | AICodeBackup" />
+    <meta property="og:description" content="Learn practical habits for not losing AI-generated code, including private GitHub backups, checkpoints, and backup health checks." />
+    <meta property="og:url" content="https://www.aicodebackup.com/guides/how-to-not-lose-ai-generated-code/" />
     <meta property="og:image" content="https://www.aicodebackup.com/assets/social-preview.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="How to Back Up AI-Generated Code | AICodeBackup" />
-    <meta name="twitter:description" content="A practical guide to protecting AI-generated code with private GitHub backups." />
+    <meta name="twitter:title" content="How to Not Lose AI-Generated Code | AICodeBackup" />
+    <meta name="twitter:description" content="Learn practical habits for not losing AI-generated code, including private GitHub backups, checkpoints, and backup health checks." />
     <meta name="twitter:image" content="https://www.aicodebackup.com/assets/social-preview.png" />
   </head>
   <body>
@@ -45,38 +39,36 @@
     </header>
     <main>
       <section class="page-hero">
-        <h1>How to back up AI-generated code.</h1>
-        <p>
-          AI coding tools can create valuable work quickly. The safest habit is to move
-          that work from a local folder into a private GitHub repository before the session ends.
-        </p>
+        <h1>How to not lose AI-generated code.</h1>
+        <p>AI can create a useful project faster than your backup habits can catch up. A small safety routine prevents local-only code from becoming a single point of failure.</p>
       </section>
-      <article class="content-page">
-        <h2>Why AI-generated code needs a backup habit</h2>
-        <p>
-          Codex, Claude Code, Cursor, Trae, and Gemini CLI can change many files in one
-          session. If the session ends, the model loses context, or your local machine fails,
-          the project can become difficult or impossible to recover.
-        </p>
-        <h2>The simple backup workflow</h2>
+      <article class="content-page guide-article">
+        <h2>The failure modes are simple</h2>
+        <ul>
+          <li>The AI session ends before you create a recovery point.</li>
+          <li>A new prompt breaks files that were working a few minutes earlier.</li>
+          <li>The project exists only on one machine.</li>
+          <li>You create manual folder copies and later cannot tell which one is current.</li>
+        </ul>
+        <h2>A lightweight safety routine</h2>
         <ol>
-          <li>Install AICodeBackup from npm.</li>
-          <li>Run <code>aicodebackup setup</code> inside the project folder.</li>
-          <li>Let setup connect GitHub and create a private repository.</li>
-          <li>Run <code>aicodebackup backup</code> after meaningful AI coding changes.</li>
-          <li>Use <code>aicodebackup doctor</code> to confirm the backup path is healthy.</li>
+          <li>Set up a private GitHub backup while the project is still small.</li>
+          <li>Back up after meaningful AI edits, not only at the end of the day.</li>
+          <li>Use clear automatic commit messages so the latest backup is visible.</li>
+          <li>Check backup health before making risky changes.</li>
         </ol>
-        <h2>Why private GitHub repositories matter</h2>
-        <p>
-          A private GitHub repository gives the project a remote copy without exposing source
-          code publicly. It also creates recovery points through commits, even for users who
-          do not want to learn Git commands first.
-        </p>
-        <h2>Start with one command</h2>
-        <p>
-          Install the alpha with <code>npm install -g aicodebackup@alpha</code>, then run
-          <code>aicodebackup setup</code> in a test project before relying on it for critical work.
-        </p>
+        <h2>Why GitHub instead of folders</h2>
+        <p>Manual folder copies are better than nothing, but they do not provide a clean remote history. A private GitHub repository gives you a remote copy, a timeline of commits, and a standard place to recover from.</p>
+        <h2>Start with a throwaway test</h2>
+        <p>If you are new to GitHub, test AICodeBackup on a small project first. Run setup, edit a file, run backup, and confirm the private repository exists in GitHub.</p>
+        <section class="related-guides" aria-labelledby="related-how-to-not-lose-ai-generated-code">
+          <h2 id="related-how-to-not-lose-ai-generated-code">Related guides</h2>
+          <div class="related-guide-grid">
+          <a href="/guides/backup-ai-generated-code/"><strong>Back up AI-generated code</strong><span>A practical starting point for protecting local AI coding work.</span></a>
+          <a href="/guides/github-backup-without-git/"><strong>GitHub backup without Git</strong><span>Use GitHub as a safety net without learning Git commands first.</span></a>
+          <a href="/guides/private-github-backup-for-ai-code/"><strong>Private GitHub backup</strong><span>Understand why private repositories matter for AI-built code.</span></a>
+          </div>
+        </section>
       </article>
     </main>
     <footer class="site-footer">
