@@ -79,6 +79,7 @@ const sitemapUrls = [...sitemap.matchAll(/<loc>(https:\/\/www\.aicodebackup\.com
 check(sitemapUrls.length >= 6, "sitemap.xml should include homepage, guides, legal pages, and guide articles.");
 check(new Set(sitemapUrls).size === sitemapUrls.length, "sitemap.xml must not include duplicate URLs.");
 check(sitemapUrls.includes(`${canonicalHost}/zh-CN/`), "sitemap.xml must include the Chinese homepage.");
+check(sitemapUrls.includes(`${canonicalHost}/about/`), "sitemap.xml must include the About page.");
 
 for (const url of sitemapUrls) {
   const filePath = pagePathFromUrl(url);
@@ -160,6 +161,7 @@ const homepage = readFileSync(join(publicRoot, "index.html"), "utf8");
 const chineseHomepage = readFileSync(join(publicRoot, "zh-CN", "index.html"), "utf8");
 check(homepage.includes(contactEmail), "Homepage must include the official contact email.");
 check(homepage.includes("&copy; 2026 AICodeBackup"), "Footer must use the HTML copyright entity.");
+check(homepage.includes("/about/"), "Homepage footer must link to About.");
 check(homepage.includes("/privacy/") && homepage.includes("/terms/"), "Homepage footer must link to Privacy Policy and Terms of Use.");
 check(homepage.includes("/guides/backup-ai-generated-code/"), "Homepage must link to the AI-generated code backup guide.");
 check(homepage.includes("/guides/github-backup-for-vibe-coders/"), "Homepage must link to the vibe coder GitHub backup guide.");
@@ -174,11 +176,20 @@ check(homepage.includes('application/ld+json'), "Homepage must include JSON-LD s
 try {
   const jsonLd = JSON.parse(extract(homepage, /<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/));
   check(jsonLd["@type"] === "SoftwareApplication", "JSON-LD must describe the visible software application.");
+  check(jsonLd.inLanguage === "en", "Homepage JSON-LD must declare inLanguage=en.");
   check(jsonLd.url === canonicalHome, "JSON-LD URL must use canonical homepage URL.");
   check(jsonLd.publisher?.email === contactEmail, "JSON-LD publisher email must use official contact email.");
   check(jsonLd.operatingSystem === "Windows, macOS", "JSON-LD must declare Windows and macOS support.");
 } catch (error) {
   failures.push(`Homepage JSON-LD must be valid JSON: ${error.message}`);
+}
+
+try {
+  const jsonLd = JSON.parse(extract(chineseHomepage, /<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/));
+  check(jsonLd.inLanguage === "zh-CN", "Chinese homepage JSON-LD must declare inLanguage=zh-CN.");
+  check(jsonLd.url === `${canonicalHost}/zh-CN/`, "Chinese homepage JSON-LD URL must use the localized canonical URL.");
+} catch (error) {
+  failures.push(`Chinese homepage JSON-LD must be valid JSON: ${error.message}`);
 }
 
 const imgTags = [...homepage.matchAll(/<img\b[^>]*>/g)].map((match) => match[0]);

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AICodeBackup - Never lose your AI-generated code again</title>
+    <title>AI Code Backup for Private GitHub Repos | AICodeBackup</title>
     <meta
       name="description"
       content="AICodeBackup helps AI coding users back up local projects to private GitHub repositories, with setup, backup, and doctor commands for Windows and macOS."
@@ -24,7 +24,7 @@
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="AICodeBackup" />
-    <meta property="og:title" content="AICodeBackup - Never lose your AI-generated code again" />
+    <meta property="og:title" content="AI Code Backup for Private GitHub Repos | AICodeBackup" />
     <meta
       property="og:description"
       content="Back up AI coding projects to private GitHub repositories without learning Git."
@@ -34,7 +34,7 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="AICodeBackup - Never lose your AI-generated code again" />
+    <meta name="twitter:title" content="AI Code Backup for Private GitHub Repos | AICodeBackup" />
     <meta
       name="twitter:description"
       content="Back up AI coding projects to private GitHub repositories without learning Git."
@@ -48,6 +48,7 @@
         "name": "AICodeBackup",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Windows, macOS",
+        "inLanguage": "en",
         "description": "A CLI tool that backs up AI coding projects to private GitHub repositories without making users learn Git.",
         "url": "https://www.aicodebackup.com/",
         "downloadUrl": "https://www.npmjs.com/package/aicodebackup",
@@ -95,10 +96,11 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-grid">
           <div class="hero-copy">
-            <h1 id="hero-title">Never lose your AI-generated code again.</h1>
+            <h1 id="hero-title">Back up AI-generated code before you lose it.</h1>
             <p>
-              AICodeBackup automatically backs up your AI coding projects to private
-              GitHub repositories without making you learn Git.
+              AICodeBackup is an AI code backup CLI that protects local projects by
+              creating private GitHub recovery points before a crash, reset, or long
+              AI coding session leaves important work unprotected.
             </p>
             <div class="command-line" aria-label="npm install command">
               <code id="install-command">npm install -g aicodebackup@alpha</code>
@@ -207,7 +209,7 @@
               </svg>
             </div>
             <strong>Install the safety layer</strong>
-            <p>AICodeBackup checks Git and GitHub CLI, then installs missing tools when possible.</p>
+            <p>AICodeBackup checks Git and GitHub CLI, then installs missing tools when possible so the first backup does not depend on manual setup notes.</p>
           </article>
           <article class="workflow-step">
             <div class="icon-shell" aria-hidden="true">
@@ -218,7 +220,7 @@
               </svg>
             </div>
             <strong>Connect GitHub</strong>
-            <p>New users can create a GitHub account. Existing users can sign in. GitHub authorization is handled in the default browser.</p>
+            <p>New users can create a GitHub account. Existing users can sign in. GitHub authorization is handled in the default browser and stays under the user's own account.</p>
           </article>
           <article class="workflow-step">
             <div class="icon-shell" aria-hidden="true">
@@ -228,7 +230,7 @@
               </svg>
             </div>
             <strong>Back up safely</strong>
-            <p>Your project is backed up to a private GitHub repository by default.</p>
+            <p>Your project is backed up to a private GitHub repository by default, giving each useful milestone a remote recovery point.</p>
           </article>
           <article class="workflow-step">
             <div class="icon-shell" aria-hidden="true">
@@ -240,7 +242,7 @@
               </svg>
             </div>
             <strong>Keep watching</strong>
-            <p>Use watch mode to detect risky AI coding sessions and back up before work is left unprotected.</p>
+            <p>Use watch mode to detect risky AI coding sessions, large file changes, or stale backup age before work is left unprotected.</p>
           </article>
         </div>
       </section>
@@ -248,20 +250,20 @@
       <section id="commands" class="commands-panel" aria-labelledby="commands-title">
         <div class="section-heading">
           <h2 id="commands-title">Commands that do the heavy lifting.</h2>
-          <p>Setup, backup, health checks, and risk monitoring.</p>
+          <p>Setup, backup, health checks, and risk monitoring for AI-built projects.</p>
         </div>
         <div class="command-grid">
           <article class="command-card">
             <code>aicodebackup setup</code>
-            <p>Initial setup. Installs requirements, connects GitHub, and creates your private repository.</p>
+            <p>Initial setup. Installs requirements, connects GitHub, and creates your private repository with the right remote origin.</p>
           </article>
           <article class="command-card">
             <code>aicodebackup backup</code>
-            <p>Save your current project. Commits, and pushes changes to GitHub.</p>
+            <p>Save your current project. Commits, pushes changes to GitHub, and leaves a clear recovery point outside the local folder.</p>
           </article>
           <article class="command-card">
             <code>aicodebackup doctor</code>
-            <p>Check backup health, repo status, authentication, and more.</p>
+            <p>Check backup health, repo status, authentication, remote configuration, and whether the latest local work is protected.</p>
           </article>
           <article class="command-card">
             <code>aicodebackup watch</code>
@@ -370,7 +372,11 @@
           </details>
           <details>
             <summary>Where is my code stored?</summary>
-            <p>Your code is stored in your own private GitHub repository.</p>
+            <p>Your code is stored in your own private GitHub repository, not on an AICodeBackup-hosted code storage service.</p>
+          </details>
+          <details>
+            <summary>When should I run a backup?</summary>
+            <p>Run a backup after a working feature, before risky cross-file AI edits, and before ending a long coding session.</p>
           </details>
           <details>
             <summary>What happens if I uninstall?</summary>
@@ -414,6 +420,7 @@
         </div>
         <div class="footer-column">
           <strong>Company</strong>
+          <a href="/about/">About</a>
           <a href="mailto:hello@aicodebackup.com">Contact</a>
           <a href="/privacy/">Privacy Policy</a>
           <a href="/terms/">Terms of Use</a>
