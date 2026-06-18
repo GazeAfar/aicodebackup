@@ -439,8 +439,8 @@ main section {
 
 .workflow {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 90px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 54px;
 }
 
 .workflow-step {
@@ -478,8 +478,8 @@ main section {
 
 .command-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
 }
 
 .command-card {

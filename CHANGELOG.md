@@ -7,6 +7,12 @@
 - Added `aicodebackup watch` to monitor local project risk from changed files, diff lines, and time since last backup.
 - Added `aicodebackup watch --auto` for explicit automatic backups when risk thresholds are reached.
 - Added watch documentation and tests.
+- Added GitHub account onboarding that separates new-user signup from existing-user login.
+- Added default-browser GitHub CLI authorization after account signup or login.
+
+### Changed
+
+- `setup` now defaults to the no-GitHub-account path for beginner users, while still allowing existing users to choose the login path.
 
 ## 0.1.0-alpha.7
 

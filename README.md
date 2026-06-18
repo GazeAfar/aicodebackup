@@ -113,7 +113,9 @@ What it does:
 
 - Check whether Git is installed, and try to install it when missing.
 - Check whether GitHub CLI is installed, and try to install it when missing.
-- Start GitHub browser login, where users can sign in or create a GitHub account.
+- Ask whether the user already has a GitHub account.
+- Open GitHub signup for new users, or GitHub login for existing users.
+- Start GitHub CLI authorization in the default browser. GitHub requires the user to confirm this authorization before AICodeBackup can create repositories.
 - Configure GitHub CLI to use HTTPS for Git operations.
 - Initialize Git if needed.
 - Create a private GitHub repository.
@@ -242,6 +244,7 @@ Repositories should be private by default.
 - `restore` is not implemented.
 - `watch` is terminal-based and does not include IDE plugins or system notifications yet.
 - Automatic Git and GitHub CLI installation is best-effort and currently focused on Windows and macOS.
+- GitHub account creation and GitHub CLI authorization require browser confirmation for security reasons.
 - AICodeBackup does not overwrite an existing Git remote.
 - AICodeBackup does not run destructive Git commands such as `git reset --hard`.
 

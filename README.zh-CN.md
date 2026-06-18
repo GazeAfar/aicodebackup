@@ -113,7 +113,9 @@ aicodebackup setup
 
 - 检查 Git 是否已安装，缺失时尝试安装。
 - 检查 GitHub CLI 是否已安装，缺失时尝试安装。
-- 启动 GitHub 浏览器登录，用户可以在那里登录或注册 GitHub 账号。
+- 询问用户是否已有 GitHub 账号。
+- 新用户打开 GitHub 注册页，已有账号用户打开 GitHub 登录页。
+- 在默认浏览器中启动 GitHub CLI 授权。出于安全原因，GitHub 需要用户在浏览器中确认授权后，AICodeBackup 才能创建仓库。
 - 将 GitHub CLI 配置为使用 HTTPS 执行 Git 操作。
 - 在需要时初始化 Git。
 - 创建 GitHub 私有仓库。
@@ -242,6 +244,7 @@ git push
 - 尚未实现 `restore`。
 - `watch` 目前仍是 terminal-based，暂不包含 IDE 插件或系统通知。
 - 自动安装 Git 和 GitHub CLI 是 best-effort，目前主要面向 Windows 和 macOS。
+- GitHub 账号注册和 GitHub CLI 授权需要用户在浏览器中确认，这是 GitHub 的安全要求。
 - AICodeBackup 不会覆盖已有 Git remote。
 - AICodeBackup 不会执行 `git reset --hard` 等破坏性 Git 命令。
 
