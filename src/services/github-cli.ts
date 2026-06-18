@@ -1,3 +1,4 @@
+import { spawn } from "node:child_process";
 import type { CommandRunner } from "../core/command-runner.js";
 import { CommandFailedError } from "../core/errors.js";
 
@@ -8,12 +9,14 @@ export interface GitHubUser {
 }
 
 const GITHUB_DEVICE_LOGIN_URL = "https://github.com/login/device";
+type BrowserOpener = (url: string, platform: NodeJS.Platform) => void;
 
 export class GitHubCliService {
   constructor(
     private readonly runner: CommandRunner,
     private readonly cwd = process.cwd(),
     private readonly platform: NodeJS.Platform = process.platform,
+    private readonly openBrowser: BrowserOpener = openExternalUrl,
   ) {}
 
   async isInstalled(): Promise<boolean> {
@@ -27,7 +30,7 @@ export class GitHubCliService {
   }
 
   async login(): Promise<boolean> {
-    await this.openDeviceLoginPage();
+    this.openDeviceLoginPage();
 
     const result = await this.runner.run(
       "gh",
@@ -76,22 +79,22 @@ export class GitHubCliService {
     return JSON.parse(result.stdout) as GitHubUser;
   }
 
-  private async openDeviceLoginPage(): Promise<void> {
-    if (this.platform === "win32") {
-      await this.runner.run("powershell", [
-        "-NoProfile",
-        "-Command",
-        "Start-Process",
-        GITHUB_DEVICE_LOGIN_URL,
-      ]);
-      return;
+  private openDeviceLoginPage(): void {
+    try {
+      this.openBrowser(GITHUB_DEVICE_LOGIN_URL, this.platform);
+    } catch {
+      // GitHub CLI still prints the device URL, so browser launch failure is non-fatal.
     }
-
-    if (this.platform === "darwin") {
-      await this.runner.run("open", [GITHUB_DEVICE_LOGIN_URL]);
-      return;
-    }
-
-    await this.runner.run("xdg-open", [GITHUB_DEVICE_LOGIN_URL]);
   }
+}
+
+function openExternalUrl(url: string, platform: NodeJS.Platform): void {
+  const command = platform === "win32" ? "cmd" : platform === "darwin" ? "open" : "xdg-open";
+  const args = platform === "win32" ? ["/c", "start", "", url] : [url];
+  const child = spawn(command, args, {
+    detached: true,
+    stdio: "ignore",
+    windowsHide: true,
+  });
+  child.unref();
 }

@@ -1,13 +1,16 @@
+import { spawn } from "node:child_process";
 import { CommandFailedError } from "../core/errors.js";
 const GITHUB_DEVICE_LOGIN_URL = "https://github.com/login/device";
 export class GitHubCliService {
     runner;
     cwd;
     platform;
-    constructor(runner, cwd = process.cwd(), platform = process.platform) {
+    openBrowser;
+    constructor(runner, cwd = process.cwd(), platform = process.platform, openBrowser = openExternalUrl) {
         this.runner = runner;
         this.cwd = cwd;
         this.platform = platform;
+        this.openBrowser = openBrowser;
     }
     async isInstalled() {
         const result = await this.runner.run("gh", ["--version"], { cwd: this.cwd });
@@ -18,7 +21,7 @@ export class GitHubCliService {
         return !result.failed;
     }
     async login() {
-        await this.openDeviceLoginPage();
+        this.openDeviceLoginPage();
         const result = await this.runner.run("gh", ["auth", "login", "--web", "--hostname", "github.com", "--git-protocol", "https", "--skip-ssh-key"], {
             cwd: this.cwd,
             interactive: true,
@@ -45,21 +48,23 @@ export class GitHubCliService {
         }
         return JSON.parse(result.stdout);
     }
-    async openDeviceLoginPage() {
-        if (this.platform === "win32") {
-            await this.runner.run("powershell", [
-                "-NoProfile",
-                "-Command",
-                "Start-Process",
-                GITHUB_DEVICE_LOGIN_URL,
-            ]);
-            return;
+    openDeviceLoginPage() {
+        try {
+            this.openBrowser(GITHUB_DEVICE_LOGIN_URL, this.platform);
         }
-        if (this.platform === "darwin") {
-            await this.runner.run("open", [GITHUB_DEVICE_LOGIN_URL]);
-            return;
+        catch {
+            // GitHub CLI still prints the device URL, so browser launch failure is non-fatal.
         }
-        await this.runner.run("xdg-open", [GITHUB_DEVICE_LOGIN_URL]);
     }
+}
+function openExternalUrl(url, platform) {
+    const command = platform === "win32" ? "cmd" : platform === "darwin" ? "open" : "xdg-open";
+    const args = platform === "win32" ? ["/c", "start", "", url] : [url];
+    const child = spawn(command, args, {
+        detached: true,
+        stdio: "ignore",
+        windowsHide: true,
+    });
+    child.unref();
 }
 //# sourceMappingURL=github-cli.js.map
