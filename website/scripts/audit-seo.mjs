@@ -17,7 +17,7 @@ const sitemap = readFileSync(sitemapPath, "utf8");
 const canonicalHost = "https://www.aicodebackup.com";
 const canonicalHome = `${canonicalHost}/`;
 const contactEmail = "hello@aicodebackup.com";
-const googleAnalyticsId = "G-GFXRD8S8RV";
+const googleAnalyticsId = "G-6HCDQVXH36";
 const failures = [];
 
 function check(condition, message) {
