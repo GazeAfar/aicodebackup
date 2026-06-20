@@ -192,6 +192,18 @@ aicodebackup watch --auto
 
 V0.2 的 watch 仍然是 terminal-based，不包含 IDE 插件、系统通知或 AI 工具进程识别。
 
+### Restore
+
+```bash
+aicodebackup restore --list
+aicodebackup restore --to ../my-project-restored
+aicodebackup restore --to ../my-project-restored --ref <commit>
+```
+
+将已连接的 GitHub 备份恢复到当前项目外的新目录。
+
+当前 restore MVP 采用保守安全边界：只克隆到不存在或空目录的目标路径，拒绝当前项目目录、项目内部目录和非空目录；指定 `--ref` 时以 detached checkout 检出对应版本。
+
 ## 语言支持
 
 AICodeBackup 首次使用默认英文。
@@ -239,9 +251,9 @@ git push
 
 仓库默认应为私有仓库。
 
-## V0.1 限制
+## 当前 Alpha 限制
 
-- 尚未实现 `restore`。
+- `restore` 是安全目录 MVP：只恢复到当前项目外的新目录，不做原地回滚或覆盖。
 - `watch` 目前仍是 terminal-based，暂不包含 IDE 插件或系统通知。
 - 自动安装 Git 和 GitHub CLI 是 best-effort，目前主要面向 Windows 和 macOS。
 - GitHub 账号注册和 GitHub CLI 授权需要用户在浏览器中确认，这是 GitHub 的安全要求。
@@ -261,10 +273,12 @@ git push
 ### V0.2
 
 - `aicodebackup watch`
+- `aicodebackup restore`
 - 文件变更监控
 - Diff 大小监控
 - 备份提醒
 - 支持 `watch --auto` 可选自动备份
+- 安全恢复到新目录
 
 ### V0.3
 
@@ -275,9 +289,8 @@ git push
 
 ### V1.0
 
-- `aicodebackup restore`
-- 备份历史
-- 恢复指定版本
+- 备份历史增强
+- 引导式版本选择恢复
 - 多项目管理
 - VS Code 插件
 - Cursor 插件

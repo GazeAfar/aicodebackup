@@ -31,6 +31,41 @@ export class GitService {
     return result.failed ? undefined : result.stdout.trim();
   }
 
+  async remoteHeadBranch(remote = "origin"): Promise<string | undefined> {
+    const result = await this.runner.run("git", ["ls-remote", "--symref", remote, "HEAD"], {
+      cwd: this.cwd,
+    });
+    if (result.failed) {
+      return undefined;
+    }
+
+    const match = result.stdout.match(/^ref:\s+refs\/heads\/(.+?)\s+HEAD$/m);
+    return match?.[1];
+  }
+
+  async fetch(remote: string, branch: string): Promise<void> {
+    await this.mustRun("git fetch", "git", [
+      "fetch",
+      remote,
+      `${branch}:refs/remotes/${remote}/${branch}`,
+      "--quiet",
+    ]);
+  }
+
+  async listRecentCommits(ref: string, limit: number): Promise<string[]> {
+    const result = await this.mustRun("git log", "git", [
+      "log",
+      `--max-count=${limit}`,
+      "--format=%h %s",
+      ref,
+    ]);
+
+    return result.stdout
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean);
+  }
+
   async hasAuthorIdentity(): Promise<boolean> {
     const name = await this.getConfig("user.name");
     const email = await this.getConfig("user.email");
@@ -93,6 +128,17 @@ export class GitService {
       cwd: this.cwd,
     });
     return result.failed ? undefined : result.stdout.trim();
+  }
+
+  async clone(remoteUrl: string, targetPath: string): Promise<void> {
+    await this.mustRun("git clone", "git", ["clone", remoteUrl, targetPath]);
+  }
+
+  async checkoutDetached(targetPath: string, ref: string): Promise<void> {
+    const result = await this.runner.run("git", ["checkout", "--detach", ref], { cwd: targetPath });
+    if (result.failed) {
+      throw new CommandFailedError("git checkout", result);
+    }
   }
 
   private async getConfig(key: string): Promise<string | undefined> {

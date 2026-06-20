@@ -52,7 +52,7 @@
         "description": "A CLI tool that backs up AI coding projects to private GitHub repositories without making users learn Git.",
         "url": "https://www.aicodebackup.com/",
         "downloadUrl": "https://www.npmjs.com/package/aicodebackup",
-        "softwareVersion": "0.2.0-alpha.1",
+        "softwareVersion": "0.2.0-alpha.2",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -250,8 +250,8 @@
 
       <section id="commands" class="commands-panel" aria-labelledby="commands-title">
         <div class="section-heading">
-          <h2 id="commands-title">Commands that do the heavy lifting.</h2>
-          <p>Setup, backup, health checks, and risk monitoring for AI-built projects.</p>
+          <h2 id="commands-title">Commands that protect the full loop.</h2>
+          <p>Setup, backup, restore, health checks, and risk monitoring for AI-built projects.</p>
         </div>
         <div class="command-grid">
           <article class="command-card">
@@ -269,6 +269,10 @@
           <article class="command-card">
             <code>aicodebackup watch</code>
             <p>Monitor changed files, diff size, and backup age. Use <code>--auto</code> to back up when risk thresholds are reached.</p>
+          </article>
+          <article class="command-card">
+            <code>aicodebackup restore</code>
+            <p>List recent remote backups or restore into a new folder outside the current project without overwriting local work.</p>
           </article>
         </div>
       </section>

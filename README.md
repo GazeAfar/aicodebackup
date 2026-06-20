@@ -192,6 +192,18 @@ aicodebackup watch --auto
 
 V0.2 watch is terminal-based. It does not yet include IDE plugins, system notifications, or direct AI tool process detection.
 
+### Restore
+
+```bash
+aicodebackup restore --list
+aicodebackup restore --to ../my-project-restored
+aicodebackup restore --to ../my-project-restored --ref <commit>
+```
+
+Restores the connected GitHub backup into a new folder outside the current project.
+
+The restore MVP is intentionally conservative: it clones into a missing or empty target folder, rejects the current project folder and nested project folders, rejects non-empty targets, and checks out `--ref` in detached mode when a specific version is requested.
+
 ## Language Support
 
 AICodeBackup defaults to English on first use.
@@ -239,9 +251,9 @@ git push
 
 Repositories should be private by default.
 
-## V0.1 Limitations
+## Current Alpha Limits
 
-- `restore` is not implemented.
+- `restore` is a safe-folder MVP: it restores into a new folder outside the current project and does not perform in-place rollback or overwrite.
 - `watch` is terminal-based and does not include IDE plugins or system notifications yet.
 - Automatic Git and GitHub CLI installation is best-effort and currently focused on Windows and macOS.
 - GitHub account creation and GitHub CLI authorization require browser confirmation for security reasons.
@@ -261,10 +273,12 @@ Repositories should be private by default.
 ### V0.2
 
 - `aicodebackup watch`
+- `aicodebackup restore`
 - File change monitoring
 - Diff size monitoring
 - Backup reminders
 - Optional automatic backup with `watch --auto`
+- Safe restore into a new folder
 
 ### V0.3
 
@@ -275,9 +289,8 @@ Repositories should be private by default.
 
 ### V1.0
 
-- `aicodebackup restore`
-- Backup history
-- Restore selected versions
+- Backup history improvements
+- Guided restore version selection
 - Multi-project management
 - VS Code extension
 - Cursor extension

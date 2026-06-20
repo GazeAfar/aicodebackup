@@ -4,6 +4,7 @@ import { normalizeError } from "./core/errors.js";
 import { ConsoleOutput } from "./core/output.js";
 import { runBackup } from "./commands/backup.js";
 import { runDoctor } from "./commands/doctor.js";
+import { runRestore } from "./commands/restore.js";
 import { runSetup } from "./commands/setup.js";
 import { defaultWatchThresholds, runWatch } from "./commands/watch.js";
 import { resolveLanguage } from "./i18n/index.js";
@@ -38,6 +39,25 @@ export function createCli() {
             if (result.backedUp) {
                 config.setLastBackupAt(new Date().toISOString());
             }
+        });
+    });
+    program
+        .command("restore")
+        .description("Restore this project's GitHub backup into a new folder.")
+        .option("--lang <language>", "Output language: en or zh-CN")
+        .option("--list", "List recent remote backup commits.")
+        .option("--to <folder>", "Restore into a new folder outside the current project.")
+        .option("--ref <ref>", "Restore a specific commit, branch, or tag.")
+        .option("--limit <count>", "Recent backup count for --list.", "5")
+        .action(async (options, command) => {
+        await withServices(readLanguageOption(options, command), async ({ git, output, language }) => {
+            await runRestore(git, output, language, {
+                cwd: process.cwd(),
+                list: Boolean(options.list),
+                limit: parsePositiveNumber(options.limit, 5),
+                ref: options.ref,
+                target: options.to,
+            });
         });
     });
     program

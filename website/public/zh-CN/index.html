@@ -52,7 +52,7 @@
         "description": "AICodeBackup 是一款帮助 AI 编程用户把本地项目备份到 GitHub 私有仓库的 CLI 工具。",
         "url": "https://www.aicodebackup.com/zh-CN/",
         "downloadUrl": "https://www.npmjs.com/package/aicodebackup",
-        "softwareVersion": "0.2.0-alpha.1",
+        "softwareVersion": "0.2.0-alpha.2",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -237,8 +237,8 @@
 
       <section id="commands" class="commands-panel" aria-labelledby="commands-title">
         <div class="section-heading">
-          <h2 id="commands-title">三个核心命令。</h2>
-          <p>第一版只解决最重要的备份问题。</p>
+          <h2 id="commands-title">核心命令覆盖备份和恢复。</h2>
+          <p>初始化、备份、恢复、健康检查和风险监控覆盖 AI 编程项目的关键保护流程。</p>
         </div>
         <div class="command-grid">
           <article class="command-card">
@@ -252,6 +252,14 @@
           <article class="command-card">
             <code>aicodebackup doctor</code>
             <p>检查 Git、GitHub CLI、登录状态、远程仓库和最近备份状态。</p>
+          </article>
+          <article class="command-card">
+            <code>aicodebackup watch</code>
+            <p>监控文件变更、Diff 大小和备份间隔；达到风险阈值时提醒备份，也可使用 <code>--auto</code> 自动备份。</p>
+          </article>
+          <article class="command-card">
+            <code>aicodebackup restore</code>
+            <p>列出最近远程备份，或恢复到当前项目外的新目录，避免覆盖本地工作。</p>
           </article>
         </div>
       </section>

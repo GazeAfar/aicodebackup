@@ -163,6 +163,7 @@ for (const url of sitemapUrls) {
 
 const homepage = readFileSync(join(publicRoot, "index.html"), "utf8");
 const chineseHomepage = readFileSync(join(publicRoot, "zh-CN", "index.html"), "utf8");
+const privacyPage = readFileSync(join(publicRoot, "privacy", "index.html"), "utf8");
 const requiredAnalyticsEvents = [
   "copy_install_command",
   "click_npm_package",
@@ -176,6 +177,10 @@ for (const eventName of requiredAnalyticsEvents) {
 }
 check(analyticsEvents.includes('transport_type: "beacon"'), "analytics-events.js should use beacon transport for outbound click tracking.");
 check(homepage.includes(contactEmail), "Homepage must include the official contact email.");
+check(privacyPage.includes("Google Analytics"), "Privacy page must disclose Google Analytics.");
+check(/product-interest\s+events/.test(privacyPage), "Privacy page must explain analytics event usage.");
+check(privacyPage.includes("source code"), "Privacy page must state analytics does not collect source code.");
+check(privacyPage.includes("CLI backup data"), "Privacy page must state analytics does not collect CLI backup data.");
 check(homepage.includes('data-analytics-copy="install-command"'), "Homepage install command should be tracked as a copy control.");
 check(chineseHomepage.includes('data-analytics-copy="install-command"'), "Chinese homepage install command should be tracked as a copy control.");
 check(homepage.includes("&copy; 2026 AICodeBackup"), "Footer must use the HTML copyright entity.");

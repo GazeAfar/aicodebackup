@@ -37,6 +37,46 @@ describe("GitService", () => {
     expect(runner.commands[0].args).toEqual(["remote", "get-url", "origin"]);
   });
 
+  it("reads the remote default branch", async () => {
+    const runner = new MockRunner().queue({ stdout: "ref: refs/heads/main\tHEAD\n" });
+    const git = new GitService(runner, "C:/project");
+
+    await expect(git.remoteHeadBranch()).resolves.toBe("main");
+    expect(runner.commands[0].args).toEqual(["ls-remote", "--symref", "origin", "HEAD"]);
+  });
+
+  it("lists recent commits from a ref", async () => {
+    const runner = new MockRunner().queue({
+      stdout: "abc1234 Backup: 2026-06-20 10:00:00\nfed9876 Backup: 2026-06-19 10:00:00\n",
+    });
+    const git = new GitService(runner, "C:/project");
+
+    await expect(git.listRecentCommits("origin/main", 2)).resolves.toEqual([
+      "abc1234 Backup: 2026-06-20 10:00:00",
+      "fed9876 Backup: 2026-06-19 10:00:00",
+    ]);
+    expect(runner.commands[0].args).toEqual([
+      "log",
+      "--max-count=2",
+      "--format=%h %s",
+      "origin/main",
+    ]);
+  });
+
+  it("clones and checks out a detached restore ref", async () => {
+    const runner = new MockRunner().queue({}).queue({});
+    const git = new GitService(runner, "C:/project");
+
+    await git.clone("https://github.com/user/repo.git", "C:/restored");
+    await git.checkoutDetached("C:/restored", "abc1234");
+
+    expect(runner.commands.map((entry) => entry.args)).toEqual([
+      ["clone", "https://github.com/user/repo.git", "C:/restored"],
+      ["checkout", "--detach", "abc1234"],
+    ]);
+    expect(runner.commandOptions.map((entry) => entry?.cwd)).toEqual(["C:/project", "C:/restored"]);
+  });
+
   it("configures local author identity", async () => {
     const runner = new MockRunner().queue({}).queue({});
     const git = new GitService(runner, "C:/project");
