@@ -5,7 +5,7 @@
 ## 1. 当前状态
 
 - Site: `AICodeBackup`
-- Stage: `08 增长外链 -> 09 数据复盘 -> 06 SEO 内容优化 -> 07 生产健康复查 -> stable 发布准备`
+- Stage: `上线后持续运营：08 增长外链 / 09 数据复盘 / 06B 持续 SEO / 07B 生产健康复查 / Stable 发布准备`
 - Current owner: Codex
 - Last updated: `待更新`
 - Current task: `待填写`
