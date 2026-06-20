@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>不用学习 Git 也能做 GitHub 备份 | AICodeBackup</title>
+    <meta name="description" content="了解如何在不先掌握 Git 命令的情况下，把 AI 编程项目备份到私有 GitHub 仓库，并用健康检查确认备份状态。" />
+    <meta name="keywords" content="不用学习 Git 也能做 GitHub 备份, AI 代码备份, GitHub 私有备份, AICodeBackup" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="AICodeBackup" />
+    <link rel="canonical" href="https://www.aicodebackup.com/zh-CN/guides/github-backup-without-git/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://www.aicodebackup.com/zh-CN/guides/github-backup-without-git/" />
+    <link rel="alternate" hreflang="en" href="https://www.aicodebackup.com/guides/github-backup-without-git/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.aicodebackup.com/guides/github-backup-without-git/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="AICodeBackup" />
+    <meta property="og:title" content="不用学习 Git 也能做 GitHub 备份 | AICodeBackup" />
+    <meta property="og:description" content="不用先背 Git 命令，也能建立私有 GitHub 备份。" />
+    <meta property="og:url" content="https://www.aicodebackup.com/zh-CN/guides/github-backup-without-git/" />
+    <meta property="og:image" content="https://www.aicodebackup.com/assets/social-preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="不用学习 Git 也能做 GitHub 备份 | AICodeBackup" />
+    <meta name="twitter:description" content="不用先背 Git 命令，也能建立私有 GitHub 备份。" />
+    <meta name="twitter:image" content="https://www.aicodebackup.com/assets/social-preview.png" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HCDQVXH36"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6HCDQVXH36');
+    </script>
+    <script src="/analytics-events.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="/zh-CN/" aria-label="AICodeBackup 中文首页">
+          <span class="brand-mark" aria-hidden="true">AC</span>
+          <span>AICodeBackup</span>
+        </a>
+        <div class="nav-links">
+          <a href="/zh-CN/#how-it-works">工作流程</a>
+          <a href="/zh-CN/#commands">命令</a>
+          <a href="/zh-CN/guides/">指南</a>
+          <a href="/zh-CN/#faq">FAQ</a>
+          <a href="mailto:hello@aicodebackup.com">联系</a>
+        </div>
+        <a class="language-switch" href="/guides/github-backup-without-git/" hreflang="en" lang="en" aria-label="Switch to English" title="English"><svg class="language-switch-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span class="sr-only">English</span></a>
+      </nav>
+    </header>
+    <main>
+      <section class="page-hero">
+        <h1>不用学习 Git 也能做 GitHub 备份。</h1>
+        <p>很多 AI 编程用户知道应该备份，但不想在第一个恢复点之前先学习一整套 Git 工作流。</p>
+      </section>
+      <article class="content-page guide-article">
+        <h2>快速答案</h2>
+        <p>AICodeBackup 不替代 Git 和 GitHub，而是把最常用的安全路径包装成少量命令。你可以先建立私有备份习惯，再逐步学习更完整的 Git 工作流。</p>
+        <p>setup 会检查环境、连接 GitHub、创建或连接私有仓库；backup 会提交并推送当前项目；doctor 会告诉你当前工作是否已经被远端保护。</p>
+        <section class="guide-install-panel" aria-labelledby="install-github-backup-without-git">
+          <h2 id="install-github-backup-without-git">试用备份流程</h2>
+          <p>
+            先用测试项目验证。安装 alpha 版本，在项目目录中运行 setup，再创建私有恢复点。
+          </p>
+          <div class="guide-install-actions">
+            <div class="command-line" aria-label="npm 安装命令" role="button" tabindex="0" data-analytics-copy="install-command">
+              <code id="install-command">npm install -g aicodebackup@alpha</code>
+              <span class="copy-button" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="9" y="9" width="10" height="10" rx="2" />
+                  <path d="M5 15V7a2 2 0 0 1 2-2h8" />
+                </svg>
+              </span>
+            </div>
+            <a class="button primary" href="https://www.npmjs.com/package/aicodebackup">安装 alpha</a>
+          </div>
+        </section>
+        <h2>你不需要先记住的内容</h2>
+        <p>第一次备份前，你不必先记住 init、remote、add、commit、push 的所有细节。AICodeBackup 仍然使用这些基础能力，但把它们放进更清晰的命令里。</p>
+        <h2>推荐命令顺序</h2>
+        <ol>
+          <li>npm install -g aicodebackup@alpha</li>
+          <li>aicodebackup setup</li>
+          <li>aicodebackup backup</li>
+          <li>aicodebackup doctor</li>
+          <li>aicodebackup watch</li>
+          <li>aicodebackup restore --to ../safe-copy</li>
+        </ol>
+        <h2>什么时候再深入学习 Git</h2>
+        <p>当你开始协作、需要分支、需要代码评审或要发布正式版本时，应该学习更完整的 Git 工作流。备份层解决的是第一阶段的丢代码风险。</p>
+        <section class="related-guides" aria-labelledby="related-github-backup-without-git">
+          <h2 id="related-github-backup-without-git">相关指南</h2>
+          <div class="related-guide-grid">
+            <a href="/zh-CN/guides/github-backup-for-vibe-coders/"><strong>面向 vibe coder 的 GitHub 备份</strong><span>不用先成为 Git 专家，也能理解私有 GitHub 备份为什么重要。</span></a>
+            <a href="/zh-CN/guides/ai-coding-safety-layer/"><strong>AI 编程安全层</strong><span>理解更安全的 AI 编程流程背后的备份层、检查层和恢复习惯。</span></a>
+            <a href="/zh-CN/guides/private-github-backup-for-ai-code/"><strong>AI 代码的私有 GitHub 备份</strong><span>理解为什么 AI 项目默认应该进入私有仓库，而不是公开暴露。</span></a>
+          </div>
+        </section>
+        <h2>FAQ</h2>
+        <h3>我需要先学会 Git 吗？</h3>
+        <p>不需要。AICodeBackup 仍然使用 Git 和 GitHub，但日常流程是 setup、backup、watch、doctor 和 restore。</p>
+        <h3>备份会让仓库公开吗？</h3>
+        <p>不会。为项目创建新仓库时，setup 默认创建私有 GitHub 仓库。</p>
+        <h3>这能替代专业 Git 工作流吗？</h3>
+        <p>不能。它是 AI 编程用户的安全层，用来在完整 Git 习惯建立之前先获得可靠的私有恢复点。</p>
+      </article>
+    </main>
+    <footer id="site-footer" class="site-footer">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a class="brand" href="/zh-CN/" aria-label="AICodeBackup 中文首页">
+            <span class="brand-mark" aria-hidden="true">AC</span>
+            <span>AICodeBackup</span>
+          </a>
+          <p>自动把 AI 编程项目备份到私有 GitHub 仓库。</p>
+          <div class="social-links" aria-label="社交链接">
+            <a href="https://github.com/GazeAfar/aicodebackup" aria-label="GitHub">GitHub</a>
+            <a href="https://www.npmjs.com/package/aicodebackup" aria-label="npm">npm</a>
+            <a href="mailto:hello@aicodebackup.com" aria-label="Email">Email</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <strong>产品</strong>
+          <a href="/zh-CN/#how-it-works">工作流程</a>
+          <a href="/zh-CN/#commands">命令</a>
+          <a href="/zh-CN/guides/">指南</a>
+          <a href="/zh-CN/#faq">FAQ</a>
+        </div>
+        <div class="footer-column">
+          <strong>资源</strong>
+          <a href="/zh-CN/guides/github-backup-without-git/">无 Git 备份</a>
+          <a href="/zh-CN/guides/private-github-backup-for-ai-code/">私有备份</a>
+          <a href="/zh-CN/guides/how-to-not-lose-ai-generated-code/">避免丢代码</a>
+          <a href="https://github.com/GazeAfar/aicodebackup/releases">更新记录</a>
+        </div>
+        <div class="footer-column">
+          <strong>项目</strong>
+          <a href="/zh-CN/about/">关于</a>
+          <a href="mailto:hello@aicodebackup.com">联系</a>
+          <a href="/zh-CN/privacy/">隐私政策</a>
+          <a href="/zh-CN/terms/">使用条款</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 AICodeBackup. 保留所有权利。</span>
+      </div>
+    </footer>
+  </body>
+</html>

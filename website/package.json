@@ -6,6 +6,7 @@
     "audit": "node scripts/audit-seo.mjs",
     "build": "npm run audit",
     "dev": "npx serve public",
+    "sync:zh": "node scripts/sync-zh-cn-pages.mjs",
     "verify": "npm run audit"
   },
   "devDependencies": {}

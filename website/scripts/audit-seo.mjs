@@ -82,9 +82,11 @@ const sitemapUrls = [...sitemap.matchAll(/<loc>(https:\/\/www\.aicodebackup\.com
   (match) => match[1],
 );
 
-check(sitemapUrls.length >= 6, "sitemap.xml should include homepage, guides, legal pages, and guide articles.");
+check(sitemapUrls.length >= 30, "sitemap.xml should include English and Chinese homepage, guides, legal pages, and guide articles.");
 check(new Set(sitemapUrls).size === sitemapUrls.length, "sitemap.xml must not include duplicate URLs.");
 check(sitemapUrls.includes(`${canonicalHost}/zh-CN/`), "sitemap.xml must include the Chinese homepage.");
+check(sitemapUrls.includes(`${canonicalHost}/zh-CN/guides/`), "sitemap.xml must include the Chinese guides index.");
+check(sitemapUrls.includes(`${canonicalHost}/zh-CN/guides/backup-ai-generated-code/`), "sitemap.xml must include the Chinese AI-generated code backup guide.");
 check(sitemapUrls.includes(`${canonicalHost}/about/`), "sitemap.xml must include the About page.");
 
 for (const url of sitemapUrls) {
@@ -97,6 +99,10 @@ for (const url of sitemapUrls) {
   const html = readFileSync(filePath, "utf8");
   const pageLabel = url.replace(canonicalHost, "") || "/";
   const isChinesePage = pageLabel.startsWith("/zh-CN/");
+  const englishPageLabel = isChinesePage ? pageLabel.replace(/^\/zh-CN/, "") || "/" : pageLabel;
+  const chinesePageLabel = isChinesePage ? pageLabel : pageLabel === "/" ? "/zh-CN/" : `/zh-CN${pageLabel}`;
+  const englishUrl = `${canonicalHost}${englishPageLabel}`;
+  const chineseUrl = `${canonicalHost}${chinesePageLabel}`;
   const title = extract(html, /<title>([^<]+)<\/title>/);
   const description = extract(html, /<meta\s+name="description"\s+content="([^"]+)"\s*\/>/);
   const canonical = extract(html, /<link rel="canonical" href="([^"]+)"\s*\/>/);
@@ -118,6 +124,24 @@ for (const url of sitemapUrls) {
   );
   check(html.includes('<meta name="viewport" content="width=device-width, initial-scale=1" />'), `${pageLabel}: missing mobile viewport.`);
   check(canonical === url, `${pageLabel}: canonical must match sitemap URL.`);
+  check(html.includes(`rel="alternate" hreflang="en" href="${englishUrl}"`), `${pageLabel}: missing page-level en hreflang.`);
+  check(html.includes(`rel="alternate" hreflang="zh-CN" href="${chineseUrl}"`), `${pageLabel}: missing page-level zh-CN hreflang.`);
+  check(html.includes(`rel="alternate" hreflang="x-default" href="${englishUrl}"`), `${pageLabel}: missing page-level x-default hreflang.`);
+  check(sitemapUrls.includes(englishUrl), `${pageLabel}: English counterpart must be listed in sitemap: ${englishUrl}`);
+  check(sitemapUrls.includes(chineseUrl), `${pageLabel}: Chinese counterpart must be listed in sitemap: ${chineseUrl}`);
+  if (isChinesePage) {
+    check(
+      html.includes(`class="language-switch" href="${englishPageLabel}"`) &&
+        html.includes('hreflang="en"'),
+      `${pageLabel}: Chinese page language switch must target the English counterpart.`,
+    );
+  } else {
+    check(
+      html.includes(`class="language-switch" href="${chinesePageLabel}"`) &&
+        html.includes('hreflang="zh-CN"'),
+      `${pageLabel}: English page language switch must target the Chinese counterpart.`,
+    );
+  }
   check(html.includes(`property="og:url" content="${url}"`), `${pageLabel}: Open Graph URL must match canonical URL.`);
   check(html.includes('property="og:image" content="https://www.aicodebackup.com/assets/social-preview.png"'), `${pageLabel}: missing canonical Open Graph image.`);
   check(html.includes('name="twitter:card" content="summary_large_image"'), `${pageLabel}: missing Twitter summary_large_image card.`);
@@ -126,8 +150,7 @@ for (const url of sitemapUrls) {
   if (isChinesePage) {
     check(/[\u4e00-\u9fff]/.test(html), `${pageLabel}: Chinese page must contain Chinese content.`);
   } else {
-    const htmlWithoutLanguageSwitch = html
-      .replace(/<a class="language-switch" href="\/zh-CN\/" hreflang="zh-CN" lang="zh-CN"[\s\S]*?<\/a>/g, "");
+    const htmlWithoutLanguageSwitch = html.replace(/<a class="language-switch"[\s\S]*?<\/a>/g, "");
     check(!/[\u4e00-\u9fff]/.test(htmlWithoutLanguageSwitch), `${pageLabel}: English page must be English-only except for the language switch.`);
   }
   check(!/vercel\.app/i.test(html), `${pageLabel}: page must not promote vercel.app URLs.`);
@@ -167,11 +190,16 @@ for (const url of sitemapUrls) {
 const homepage = readFileSync(join(publicRoot, "index.html"), "utf8");
 const chineseHomepage = readFileSync(join(publicRoot, "zh-CN", "index.html"), "utf8");
 const privacyPage = readFileSync(join(publicRoot, "privacy", "index.html"), "utf8");
+const chinesePrivacyPage = readFileSync(join(publicRoot, "zh-CN", "privacy", "index.html"), "utf8");
 const installIntentGuidePaths = [
   "/guides/backup-ai-generated-code/",
   "/guides/backup-codex-projects/",
   "/guides/backup-claude-code-projects/",
   "/guides/backup-cursor-projects/",
+  "/zh-CN/guides/backup-ai-generated-code/",
+  "/zh-CN/guides/backup-codex-projects/",
+  "/zh-CN/guides/backup-claude-code-projects/",
+  "/zh-CN/guides/backup-cursor-projects/",
 ];
 const requiredAnalyticsEvents = [
   "copy_install_command",
@@ -194,6 +222,9 @@ check(privacyPage.includes("Google Analytics"), "Privacy page must disclose Goog
 check(/product-interest\s+events/.test(privacyPage), "Privacy page must explain analytics event usage.");
 check(privacyPage.includes("source code"), "Privacy page must state analytics does not collect source code.");
 check(privacyPage.includes("CLI backup data"), "Privacy page must state analytics does not collect CLI backup data.");
+check(chinesePrivacyPage.includes("Google Analytics"), "Chinese privacy page must disclose Google Analytics.");
+check(chinesePrivacyPage.includes("源代码"), "Chinese privacy page must state analytics does not collect source code.");
+check(chinesePrivacyPage.includes("CLI 备份数据"), "Chinese privacy page must state analytics does not collect CLI backup data.");
 check(homepage.includes('data-analytics-copy="install-command"'), "Homepage install command should be tracked as a copy control.");
 check(chineseHomepage.includes('data-analytics-copy="install-command"'), "Chinese homepage install command should be tracked as a copy control.");
 for (const guidePath of installIntentGuidePaths) {
@@ -212,6 +243,8 @@ check(homepage.includes('class="language-switch" href="/zh-CN/"'), "English home
 check(chineseHomepage.includes('class="language-switch" href="/"'), "Chinese homepage must expose the English language switch.");
 check(homepage.includes('rel="alternate" hreflang="zh-CN" href="https://www.aicodebackup.com/zh-CN/"'), "English homepage must include zh-CN hreflang.");
 check(chineseHomepage.includes('rel="alternate" hreflang="en" href="https://www.aicodebackup.com/"'), "Chinese homepage must include en hreflang.");
+check(chineseHomepage.includes("四步建立安全备份"), "Chinese homepage must be synchronized with the four-step English homepage flow.");
+check(chineseHomepage.includes("指南和资源"), "Chinese homepage must include the synchronized guides and resources section.");
 check(homepage.includes('application/ld+json'), "Homepage must include JSON-LD structured data.");
 
 try {
