@@ -9,10 +9,12 @@ const publicRoot = join(root, "public");
 const vercelPath = join(root, "vercel.json");
 const robotsPath = join(publicRoot, "robots.txt");
 const sitemapPath = join(publicRoot, "sitemap.xml");
+const analyticsEventsPath = join(publicRoot, "analytics-events.js");
 
 const vercel = readFileSync(vercelPath, "utf8");
 const robots = readFileSync(robotsPath, "utf8");
 const sitemap = readFileSync(sitemapPath, "utf8");
+const analyticsEvents = readFileSync(analyticsEventsPath, "utf8");
 
 const canonicalHost = "https://www.aicodebackup.com";
 const canonicalHome = `${canonicalHost}/`;
@@ -50,6 +52,7 @@ function isAllowedScriptBlock(block) {
   return (
     block.includes('type="application/ld+json"') ||
     block.includes(`src="https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}"`) ||
+    (block.includes('src="/analytics-events.js"') && block.includes("defer")) ||
     (block.includes("window.dataLayer = window.dataLayer || [];") &&
       block.includes("function gtag(){dataLayer.push(arguments);}") &&
       block.includes(`gtag('config', '${googleAnalyticsId}')`))
@@ -134,6 +137,7 @@ for (const url of sitemapUrls) {
       html.includes(`gtag('config', '${googleAnalyticsId}')`),
     `${pageLabel}: missing Google Analytics tag ${googleAnalyticsId}.`,
   );
+  check(html.includes('<script src="/analytics-events.js" defer></script>'), `${pageLabel}: missing GA4 event tracking script.`);
 
   const anchorTags = [...html.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)];
   check(anchorTags.length >= 3, `${pageLabel}: page should expose crawlable navigation and contact links.`);
@@ -159,7 +163,21 @@ for (const url of sitemapUrls) {
 
 const homepage = readFileSync(join(publicRoot, "index.html"), "utf8");
 const chineseHomepage = readFileSync(join(publicRoot, "zh-CN", "index.html"), "utf8");
+const requiredAnalyticsEvents = [
+  "copy_install_command",
+  "click_npm_package",
+  "click_github_repo",
+  "click_email_contact",
+  "switch_language",
+  "click_primary_cta",
+];
+for (const eventName of requiredAnalyticsEvents) {
+  check(analyticsEvents.includes(`"${eventName}"`), `analytics-events.js must track ${eventName}.`);
+}
+check(analyticsEvents.includes('transport_type: "beacon"'), "analytics-events.js should use beacon transport for outbound click tracking.");
 check(homepage.includes(contactEmail), "Homepage must include the official contact email.");
+check(homepage.includes('data-analytics-copy="install-command"'), "Homepage install command should be tracked as a copy control.");
+check(chineseHomepage.includes('data-analytics-copy="install-command"'), "Chinese homepage install command should be tracked as a copy control.");
 check(homepage.includes("&copy; 2026 AICodeBackup"), "Footer must use the HTML copyright entity.");
 check(homepage.includes("/about/"), "Homepage footer must link to About.");
 check(homepage.includes("/privacy/") && homepage.includes("/terms/"), "Homepage footer must link to Privacy Policy and Terms of Use.");
@@ -204,7 +222,7 @@ check(robots.includes(`Sitemap: ${canonicalHost}/sitemap.xml`), "robots.txt must
 check(!/Disallow:\s*\//i.test(robots), "robots.txt must not block the public site.");
 check(!/vercel\.app/i.test(sitemap), "sitemap.xml must not include Vercel preview URLs.");
 
-for (const path of ["styles.css", "assets/product-preview.svg", "assets/social-preview.svg", "assets/social-preview.png", "favicon.svg"]) {
+for (const path of ["styles.css", "analytics-events.js", "assets/product-preview.svg", "assets/social-preview.svg", "assets/social-preview.png", "favicon.svg"]) {
   check(existsSync(join(publicRoot, path)), `Missing public asset: ${path}`);
 }
 
