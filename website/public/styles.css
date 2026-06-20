@@ -478,28 +478,64 @@ main section {
 
 .command-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+  counter-reset: command-step;
 }
 
 .command-card {
-  min-height: 150px;
-  padding: 24px 26px;
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  min-height: 228px;
+  padding: 22px 18px 24px;
   border-radius: 8px;
   background: #ffffff;
-  box-shadow: 0 16px 36px rgba(9, 15, 13, 0.055);
+  border: 1px solid rgba(220, 231, 226, 0.92);
+  box-shadow: 0 18px 38px rgba(9, 15, 13, 0.055);
+  counter-increment: command-step;
+  overflow: hidden;
 }
 
-.command-card code {
-  display: block;
-  margin-bottom: 22px;
-  color: var(--ink);
+.command-card::before {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  color: #b7cac2;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 17px;
+  font-size: 12px;
+  font-weight: 800;
+  content: "0" counter(command-step);
 }
 
-.command-card code::before {
-  margin-right: 9px;
+.command-card::after {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--green-dark);
+  content: "";
+}
+
+.command-card > code {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 38px;
+  padding: 8px 12px;
+  color: var(--ink);
+  background: var(--soft);
+  border: 1px solid rgba(220, 231, 226, 0.96);
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.command-card > code::before {
+  margin-right: 8px;
   color: var(--green-dark);
   font-weight: 900;
   content: "$";
@@ -507,6 +543,18 @@ main section {
 
 .command-card p {
   color: var(--muted);
+  font-size: 15px;
+  line-height: 1.48;
+}
+
+.command-card p code {
+  padding: 1px 5px;
+  color: var(--green-dark);
+  background: var(--soft-2);
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.95em;
+  white-space: nowrap;
 }
 
 .platform-list {
@@ -792,6 +840,36 @@ main section {
   font-size: 0.92em;
 }
 
+.guide-install-panel {
+  display: grid;
+  gap: 18px;
+  max-width: 1040px;
+  margin: 28px 0 12px;
+  padding: 24px;
+  border: 1px solid rgba(220, 231, 226, 0.96);
+  border-radius: 8px;
+  background: var(--soft);
+}
+
+.guide-install-panel h2 {
+  margin: 0;
+}
+
+.guide-install-panel p {
+  max-width: 820px;
+}
+
+.guide-install-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.guide-install-panel .command-line {
+  background: #ffffff;
+}
+
 .related-guides {
   max-width: 1040px;
   margin-top: 34px;
@@ -858,7 +936,10 @@ main section {
     gap: 34px;
   }
 
-  .command-grid,
+  .command-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .platform-list {
     grid-template-columns: 1fr;
   }
@@ -983,6 +1064,14 @@ main section {
 
   .commands-panel {
     padding: 26px 18px;
+  }
+
+  .command-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .command-card {
+    min-height: 0;
   }
 
   .platform-list article {

@@ -51,27 +51,79 @@
         <p>Claude Code can make broad project changes fast. A private GitHub backup keeps those changes recoverable when the session, terminal, or local machine stops being reliable.</p>
       </section>
       <article class="content-page guide-article">
+        <h2>Quick answer for Claude Code backup</h2>
+        <p>
+          Claude Code backup should happen at stable checkpoints: after a useful edit works, before
+          a major refactor, before dependency changes, and before ending the terminal session. A
+          private GitHub repository gives those checkpoints somewhere recoverable to live.
+        </p>
+        <section class="guide-install-panel" aria-labelledby="install-claude-code-backup">
+          <h2 id="install-claude-code-backup">Create a private recovery point</h2>
+          <p>
+            Install the alpha, run setup in the project folder Claude Code is editing, then use
+            <code>aicodebackup backup</code> whenever the session reaches a useful state.
+          </p>
+          <div class="guide-install-actions">
+            <div class="command-line" aria-label="npm install command" role="button" tabindex="0" data-analytics-copy="install-command">
+              <code id="install-command">npm install -g aicodebackup@alpha</code>
+              <span class="copy-button" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="9" y="9" width="10" height="10" rx="2" />
+                  <path d="M5 15V7a2 2 0 0 1 2-2h8" />
+                </svg>
+              </span>
+            </div>
+            <a class="button primary" href="https://www.npmjs.com/package/aicodebackup">Install alpha</a>
+          </div>
+        </section>
         <h2>The common Claude Code backup problem</h2>
         <p>Claude Code often works across many files at once: source code, tests, package files, and documentation. If the changes are useful but never committed or pushed, the project still has a single point of failure.</p>
         <p>This is especially risky for non-traditional developers who are building with AI but do not yet have a Git habit.</p>
+        <h2>Why terminal AI sessions need checkpoints</h2>
+        <p>
+          Terminal-driven AI coding can feel like a conversation, but the output is still a real
+          project on disk. Once the conversation moves on, it may be hard to explain exactly which
+          files changed and which state was working. A backup checkpoint turns that state into a
+          remote recovery point.
+        </p>
         <h2>What to save before the session ends</h2>
         <ul>
           <li>A working feature after Claude Code finishes a successful edit.</li>
           <li>A stable state before asking for a major refactor.</li>
           <li>A clean checkpoint before installing new dependencies.</li>
           <li>Any project state that would be painful to recreate from prompts alone.</li>
+          <li>Documentation, tests, and configuration changes that make the code usable later.</li>
         </ul>
         <h2>How AICodeBackup fits this workflow</h2>
         <p>Run <code>aicodebackup setup</code> once in the project folder. The tool checks the environment, helps connect GitHub, creates a private repository if one is missing, and performs the first backup.</p>
         <p>After that, <code>aicodebackup backup</code> gives Claude Code users a repeatable safety action without forcing them to remember <code>git add</code>, <code>git commit</code>, and <code>git push</code>.</p>
+        <h2>Suggested Claude Code backup routine</h2>
+        <ol>
+          <li>Start with <code>aicodebackup doctor</code> if you are unsure the project is connected.</li>
+          <li>Ask Claude Code for one meaningful change set, then test or inspect the result.</li>
+          <li>Run <code>aicodebackup backup</code> when the project reaches a useful state.</li>
+          <li>Use <code>aicodebackup watch</code> for longer sessions where backup reminders help.</li>
+          <li>Restore into a new folder when you need to inspect a previous backup safely.</li>
+        </ol>
         <h2>Recovery mindset</h2>
         <p>A backup does not make every AI change correct. It gives you a known point to return to, a private remote copy, and a visible latest backup status through <code>aicodebackup doctor</code>.</p>
+        <h2>FAQ</h2>
+        <h3>Should I back up before every Claude Code command?</h3>
+        <p>
+          Not usually. Back up when the result has value or when the next prompt could damage a
+          working state.
+        </p>
+        <h3>Can I restore without overwriting my current folder?</h3>
+        <p>
+          Yes. The restore MVP is designed to restore into a new folder outside the current project,
+          so you can inspect the recovered copy before moving anything manually.
+        </p>
         <section class="related-guides" aria-labelledby="related-backup-claude-code-projects">
           <h2 id="related-backup-claude-code-projects">Related guides</h2>
           <div class="related-guide-grid">
           <a href="/guides/backup-ai-generated-code/"><strong>Back up AI-generated code</strong><span>A practical starting point for protecting local AI coding work.</span></a>
-          <a href="/guides/github-backup-without-git/"><strong>GitHub backup without Git</strong><span>Use GitHub as a safety net without learning Git commands first.</span></a>
-          <a href="/guides/private-github-backup-for-ai-code/"><strong>Private GitHub backup</strong><span>Understand why private repositories matter for AI-built code.</span></a>
+          <a href="/guides/backup-cursor-projects/"><strong>Cursor backup</strong><span>Protect Cursor projects with private GitHub recovery points.</span></a>
+          <a href="/guides/backup-codex-projects/"><strong>Codex backup</strong><span>Back up Codex work before context changes or local files are lost.</span></a>
           </div>
         </section>
       </article>

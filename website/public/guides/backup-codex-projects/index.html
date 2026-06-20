@@ -51,14 +51,50 @@
         <p>Codex can move quickly through a project. A backup workflow makes sure the useful work ends up in a private GitHub repository before the session disappears.</p>
       </section>
       <article class="content-page guide-article">
+        <h2>Quick answer for Codex backup</h2>
+        <p>
+          Back up Codex projects whenever the local project reaches a useful state. Codex can help
+          move through code quickly, but the durable copy still needs to live outside one local
+          folder. A private GitHub backup gives you a recovery point before context changes or the
+          next prompt moves the project in a risky direction.
+        </p>
+        <section class="guide-install-panel" aria-labelledby="install-codex-backup">
+          <h2 id="install-codex-backup">Install a Codex project backup layer</h2>
+          <p>
+            Use AICodeBackup from the same project folder you are editing with Codex. Setup connects
+            GitHub once; backup creates repeatable private recovery points after that.
+          </p>
+          <div class="guide-install-actions">
+            <div class="command-line" aria-label="npm install command" role="button" tabindex="0" data-analytics-copy="install-command">
+              <code id="install-command">npm install -g aicodebackup@alpha</code>
+              <span class="copy-button" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="9" y="9" width="10" height="10" rx="2" />
+                  <path d="M5 15V7a2 2 0 0 1 2-2h8" />
+                </svg>
+              </span>
+            </div>
+            <a class="button primary" href="https://www.npmjs.com/package/aicodebackup">Install alpha</a>
+          </div>
+        </section>
         <h2>Why Codex projects need a backup step</h2>
         <p>A productive Codex session can touch routes, components, tests, configuration, and generated assets in one sitting. That speed is useful, but it also means the local folder can become the only place where hours of work exist.</p>
         <p>The risk is not only a broken laptop. A prompt can move in the wrong direction, a context window can end, or a user can close a terminal before creating a clean recovery point.</p>
+        <h2>Common Codex backup moments</h2>
+        <ul>
+          <li>After Codex creates a working feature or test fix.</li>
+          <li>Before asking Codex to refactor many files at once.</li>
+          <li>Before changing build tools, package scripts, or deployment configuration.</li>
+          <li>Before switching from a local agent session to another AI coding tool.</li>
+          <li>Before ending the session when the project would be hard to recreate from prompts.</li>
+        </ul>
         <h2>A safer Codex backup workflow</h2>
         <ol>
           <li>Run Codex in the project folder where the files actually live.</li>
+          <li>Run <code>aicodebackup setup</code> once when the project starts to matter.</li>
           <li>After setup succeeds, run <code>aicodebackup backup</code> after each meaningful change set.</li>
           <li>Use private GitHub repositories by default so source code is not published accidentally.</li>
+          <li>Use <code>aicodebackup watch</code> to catch long sessions where changes pile up.</li>
           <li>Run <code>aicodebackup doctor</code> when you are unsure whether the latest work is backed up.</li>
         </ol>
         <h2>What AICodeBackup handles</h2>
@@ -71,12 +107,29 @@
         </ul>
         <h2>When to back up during a Codex session</h2>
         <p>Back up before asking Codex to make risky cross-file changes, after a feature starts working, and before ending a long session. The goal is not a perfect history. The goal is a reliable private copy of the work you care about.</p>
+        <h2>Safe restore for Codex projects</h2>
+        <p>
+          If a later Codex session moves the project in the wrong direction, restore into a new
+          folder instead of overwriting the current project. Run <code>aicodebackup restore --list</code>
+          to find recent remote backup commits, then restore to a sibling directory for inspection.
+        </p>
+        <h2>FAQ</h2>
+        <h3>Does Codex replace project backup?</h3>
+        <p>
+          No. Codex can help create and modify code, but your local project still needs a durable
+          backup path outside the machine and session.
+        </p>
+        <h3>Why private GitHub instead of a public repository?</h3>
+        <p>
+          AI-generated projects can include unfinished ideas, API experiments, and proprietary
+          implementation details. A private repository is the safer default recovery target.
+        </p>
         <section class="related-guides" aria-labelledby="related-backup-codex-projects">
           <h2 id="related-backup-codex-projects">Related guides</h2>
           <div class="related-guide-grid">
           <a href="/guides/backup-ai-generated-code/"><strong>Back up AI-generated code</strong><span>A practical starting point for protecting local AI coding work.</span></a>
-          <a href="/guides/github-backup-without-git/"><strong>GitHub backup without Git</strong><span>Use GitHub as a safety net without learning Git commands first.</span></a>
-          <a href="/guides/private-github-backup-for-ai-code/"><strong>Private GitHub backup</strong><span>Understand why private repositories matter for AI-built code.</span></a>
+          <a href="/guides/backup-cursor-projects/"><strong>Cursor backup</strong><span>Protect Cursor projects with private GitHub recovery points.</span></a>
+          <a href="/guides/backup-claude-code-projects/"><strong>Claude Code backup</strong><span>Save broad terminal-driven AI edits before the session ends.</span></a>
           </div>
         </section>
       </article>

@@ -20,6 +20,7 @@ const canonicalHost = "https://www.aicodebackup.com";
 const canonicalHome = `${canonicalHost}/`;
 const contactEmail = "hello@aicodebackup.com";
 const googleAnalyticsId = "G-6HCDQVXH36";
+const trackedPackageUrl = "https://www.npmjs.com/package/aicodebackup";
 const failures = [];
 
 function check(condition, message) {
@@ -164,6 +165,12 @@ for (const url of sitemapUrls) {
 const homepage = readFileSync(join(publicRoot, "index.html"), "utf8");
 const chineseHomepage = readFileSync(join(publicRoot, "zh-CN", "index.html"), "utf8");
 const privacyPage = readFileSync(join(publicRoot, "privacy", "index.html"), "utf8");
+const installIntentGuidePaths = [
+  "/guides/backup-ai-generated-code/",
+  "/guides/backup-codex-projects/",
+  "/guides/backup-claude-code-projects/",
+  "/guides/backup-cursor-projects/",
+];
 const requiredAnalyticsEvents = [
   "copy_install_command",
   "click_npm_package",
@@ -183,6 +190,11 @@ check(privacyPage.includes("source code"), "Privacy page must state analytics do
 check(privacyPage.includes("CLI backup data"), "Privacy page must state analytics does not collect CLI backup data.");
 check(homepage.includes('data-analytics-copy="install-command"'), "Homepage install command should be tracked as a copy control.");
 check(chineseHomepage.includes('data-analytics-copy="install-command"'), "Chinese homepage install command should be tracked as a copy control.");
+for (const guidePath of installIntentGuidePaths) {
+  const guideHtml = readFileSync(pagePathFromUrl(`${canonicalHost}${guidePath}`), "utf8");
+  check(guideHtml.includes('data-analytics-copy="install-command"'), `${guidePath}: guide must expose a tracked install command copy control.`);
+  check(guideHtml.includes(trackedPackageUrl), `${guidePath}: guide must link to the tracked npm package.`);
+}
 check(homepage.includes("&copy; 2026 AICodeBackup"), "Footer must use the HTML copyright entity.");
 check(homepage.includes("/about/"), "Homepage footer must link to About.");
 check(homepage.includes("/privacy/") && homepage.includes("/terms/"), "Homepage footer must link to Privacy Policy and Terms of Use.");
