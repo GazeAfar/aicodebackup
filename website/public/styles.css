@@ -478,25 +478,36 @@ main section {
 
 .command-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 18px;
   align-items: stretch;
+  width: min(1080px, 100%);
+  margin: 0 auto;
   counter-reset: command-step;
 }
 
 .command-card {
   position: relative;
   display: grid;
+  grid-column: span 2;
   align-content: start;
   gap: 18px;
-  min-height: 228px;
-  padding: 22px 18px 24px;
+  min-height: 212px;
+  padding: 24px;
   border-radius: 8px;
   background: #ffffff;
   border: 1px solid rgba(220, 231, 226, 0.92);
   box-shadow: 0 18px 38px rgba(9, 15, 13, 0.055);
   counter-increment: command-step;
   overflow: hidden;
+}
+
+.command-card:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.command-card:nth-child(5) {
+  grid-column: 4 / span 2;
 }
 
 .command-card::before {
@@ -938,6 +949,12 @@ main section {
 
   .command-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .command-card,
+  .command-card:nth-child(4),
+  .command-card:nth-child(5) {
+    grid-column: auto;
   }
 
   .platform-list {
