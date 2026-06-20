@@ -31,6 +31,7 @@
 
   function linkLocation(anchor) {
     if (anchor.closest(".hero-actions")) return "hero";
+    if (anchor.closest(".mobile-nav-panel")) return "mobile_nav";
     if (anchor.closest(".nav")) return "nav";
     if (anchor.closest(".footer-main")) return "footer";
     if (anchor.closest(".resource-grid")) return "resource_grid";
@@ -110,6 +111,80 @@
     const control = element.closest(`[data-analytics-copy="${installCommandId}"], .command-line`);
     return Boolean(control?.querySelector(`#${installCommandId}`));
   }
+
+  function setupMobileMenu() {
+    const nav = document.querySelector(".site-header .nav");
+    const navLinks = nav?.querySelector(".nav-links");
+
+    if (!nav || !navLinks || nav.querySelector(".mobile-menu-toggle")) {
+      return;
+    }
+
+    const isChinesePage = document.documentElement.lang === "zh-CN";
+    const toggle = document.createElement("button");
+    const panel = document.createElement("div");
+    const panelLinks = document.createElement("div");
+
+    toggle.type = "button";
+    toggle.className = "mobile-menu-toggle";
+    toggle.setAttribute("aria-label", isChinesePage ? "打开导航菜单" : "Open navigation menu");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.innerHTML = "<span></span><span></span><span></span>";
+
+    panel.className = "mobile-nav-panel";
+    panel.hidden = true;
+    panel.setAttribute("aria-label", isChinesePage ? "移动端导航" : "Mobile navigation");
+
+    panelLinks.className = "mobile-nav-list";
+    for (const anchor of navLinks.querySelectorAll("a[href]")) {
+      panelLinks.append(anchor.cloneNode(true));
+    }
+
+    panel.append(panelLinks);
+    nav.append(toggle, panel);
+
+    function setOpen(isOpen) {
+      panel.hidden = !isOpen;
+      nav.classList.toggle("mobile-menu-open", isOpen);
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      toggle.setAttribute("aria-label", isOpen
+        ? isChinesePage ? "关闭导航菜单" : "Close navigation menu"
+        : isChinesePage ? "打开导航菜单" : "Open navigation menu");
+    }
+
+    toggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      setOpen(panel.hidden);
+    });
+
+    panel.addEventListener("pointerleave", () => {
+      setOpen(false);
+    });
+
+    panel.addEventListener("click", (event) => {
+      if (event.target instanceof Element && event.target.closest("a[href]")) {
+        setOpen(false);
+      }
+    });
+
+    document.addEventListener("pointerdown", (event) => {
+      if (panel.hidden || !(event.target instanceof Element)) {
+        return;
+      }
+
+      if (!panel.contains(event.target) && !toggle.contains(event.target)) {
+        setOpen(false);
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    });
+  }
+
+  setupMobileMenu();
 
   document.addEventListener("click", (event) => {
     const target = event.target;

@@ -10,11 +10,13 @@ const vercelPath = join(root, "vercel.json");
 const robotsPath = join(publicRoot, "robots.txt");
 const sitemapPath = join(publicRoot, "sitemap.xml");
 const analyticsEventsPath = join(publicRoot, "analytics-events.js");
+const stylesPath = join(publicRoot, "styles.css");
 
 const vercel = readFileSync(vercelPath, "utf8");
 const robots = readFileSync(robotsPath, "utf8");
 const sitemap = readFileSync(sitemapPath, "utf8");
 const analyticsEvents = readFileSync(analyticsEventsPath, "utf8");
+const styles = readFileSync(stylesPath, "utf8");
 
 const canonicalHost = "https://www.aicodebackup.com";
 const canonicalHome = `${canonicalHost}/`;
@@ -183,6 +185,10 @@ for (const eventName of requiredAnalyticsEvents) {
   check(analyticsEvents.includes(`"${eventName}"`), `analytics-events.js must track ${eventName}.`);
 }
 check(analyticsEvents.includes('transport_type: "beacon"'), "analytics-events.js should use beacon transport for outbound click tracking.");
+check(analyticsEvents.includes("setupMobileMenu"), "analytics-events.js must initialize the mobile navigation menu.");
+check(analyticsEvents.includes('"mobile_nav"'), "analytics-events.js must identify mobile navigation clicks.");
+check(styles.includes(".mobile-menu-toggle"), "styles.css must include the mobile menu toggle.");
+check(styles.includes(".mobile-nav-panel"), "styles.css must include the mobile navigation panel.");
 check(homepage.includes(contactEmail), "Homepage must include the official contact email.");
 check(privacyPage.includes("Google Analytics"), "Privacy page must disclose Google Analytics.");
 check(/product-interest\s+events/.test(privacyPage), "Privacy page must explain analytics event usage.");
