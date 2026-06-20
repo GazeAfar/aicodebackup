@@ -157,13 +157,23 @@
       setOpen(panel.hidden);
     });
 
-    panel.addEventListener("pointerleave", () => {
-      setOpen(false);
+    panel.addEventListener("pointerleave", (event) => {
+      if (event.pointerType === "mouse" || event.pointerType === "pen") {
+        setOpen(false);
+      }
     });
 
     panel.addEventListener("click", (event) => {
       if (event.target instanceof Element && event.target.closest("a[href]")) {
-        setOpen(false);
+        window.setTimeout(() => setOpen(false), 0);
+      }
+    });
+
+    let activeTouchPointerId = null;
+
+    panel.addEventListener("pointerdown", (event) => {
+      if (event.pointerType === "touch") {
+        activeTouchPointerId = event.pointerId;
       }
     });
 
@@ -174,6 +184,29 @@
 
       if (!panel.contains(event.target) && !toggle.contains(event.target)) {
         setOpen(false);
+      }
+    });
+
+    document.addEventListener("pointermove", (event) => {
+      if (panel.hidden || event.pointerType !== "touch" || event.pointerId !== activeTouchPointerId) {
+        return;
+      }
+
+      const currentTarget = document.elementFromPoint(event.clientX, event.clientY);
+      if (currentTarget instanceof Element && !panel.contains(currentTarget) && !toggle.contains(currentTarget)) {
+        setOpen(false);
+      }
+    });
+
+    document.addEventListener("pointerup", (event) => {
+      if (event.pointerId === activeTouchPointerId) {
+        activeTouchPointerId = null;
+      }
+    });
+
+    document.addEventListener("pointercancel", (event) => {
+      if (event.pointerId === activeTouchPointerId) {
+        activeTouchPointerId = null;
       }
     });
 

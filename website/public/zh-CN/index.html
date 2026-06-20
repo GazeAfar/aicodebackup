@@ -83,7 +83,7 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-grid">
           <div class="hero-copy">
-            <h1 id="hero-title">别让 AI 生成的代码丢失。</h1>
+            <h1 id="hero-title">别让 AI 生成的代码丢失</h1>
             <p>
               AICodeBackup 是一个 AI 代码备份 CLI，把本地项目保存为私有 GitHub 恢复点。
               在崩溃、重置或长时间 AI 编程会话结束前，先给重要工作留下一份安全副本。
@@ -130,33 +130,108 @@
               <path d="M12 8v5" />
               <path d="M12 16h.01" />
             </svg>
-            <h2 id="risk-title"><span>AI 写代码很快。</span><span>丢代码也很快。</span></h2>
+            <h2 id="risk-title"><span>AI 写代码很快</span><span>丢代码也很快</span></h2>
           </div>
           <div class="risk-items">
-            <article><strong>工作丢失</strong><p>崩溃、重置或误删都可能让项目消失。</p></article>
-            <article><strong>没有备份</strong><p>AI 工具不会自动替你保存源码。</p></article>
-            <article><strong>副本混乱</strong><p>散落的文件夹和版本会让恢复变困难。</p></article>
-            <article><strong>隐私风险</strong><p>公开仓库或普通同步盘可能暴露敏感代码。</p></article>
+            <article>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 7h16" />
+                <path d="M10 11v6" />
+                <path d="M14 11v6" />
+                <path d="M6 7l1 14h10l1-14" />
+                <path d="M9 7V4h6v3" />
+              </svg>
+              <strong>工作丢失</strong>
+              <p>崩溃、重置或误删都可能让项目消失。</p>
+            </article>
+            <article>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 5h16v12H4z" />
+                <path d="M9 9h6" />
+                <path d="M9 13h6" />
+                <path d="M8 21h8" />
+              </svg>
+              <strong>没有备份</strong>
+              <p>AI 工具不会自动替你保存源码。</p>
+            </article>
+            <article>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m7 7 10 10" />
+                <path d="M17 7h-4a5 5 0 0 0-5 5v5" />
+                <path d="M7 17h4a5 5 0 0 0 5-5V7" />
+              </svg>
+              <strong>副本混乱</strong>
+              <p>散落的文件夹和版本会让恢复变困难。</p>
+            </article>
+            <article>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="5" y="10" width="14" height="10" rx="2" />
+                <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+              </svg>
+              <strong>隐私风险</strong>
+              <p>公开仓库或普通同步盘可能暴露敏感代码。</p>
+            </article>
           </div>
         </div>
       </section>
 
       <section id="how-it-works" class="steps-section" aria-labelledby="how-title">
         <div class="section-heading">
-          <h2 id="how-title">四步建立安全备份。</h2>
+          <h2 id="how-title">四步建立安全备份</h2>
           <p>第一次连接 GitHub，之后在终端里重复备份。</p>
         </div>
         <div class="workflow">
-          <article class="workflow-step"><strong>安装安全层</strong><p>AICodeBackup 检查 Git 和 GitHub CLI，并在可行时安装缺失工具。</p></article>
-          <article class="workflow-step"><strong>连接 GitHub</strong><p>新用户可以创建账号，已有用户通过默认浏览器完成授权。</p></article>
-          <article class="workflow-step"><strong>安全备份</strong><p>项目默认备份到私有 GitHub 仓库，为每个有价值阶段留下恢复点。</p></article>
-          <article class="workflow-step"><strong>持续监控</strong><p>使用 watch 检测长会话、较大改动和过久未备份的风险。</p></article>
+          <article class="workflow-step">
+            <div class="icon-shell" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M13 4c3.5.8 5.2 2.5 6 6l-4.8 4.8-4.9-4.9z" />
+                <path d="M9.3 9.9 5.5 11l-1.2 3.9 4.3-.8" />
+                <path d="m14.2 14.8-.8 4.3 3.9-1.2 1.1-3.8" />
+                <path d="M7 17c-1.1.3-2 .9-2.8 1.8C5.1 18 5.7 17.1 6 16" />
+              </svg>
+            </div>
+            <strong>安装安全层</strong>
+            <p>AICodeBackup 检查 Git 和 GitHub CLI，并在可行时安装缺失工具。</p>
+          </article>
+          <article class="workflow-step">
+            <div class="icon-shell" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M17.5 17a4.5 4.5 0 0 0-1-8.9 6 6 0 0 0-11.3 2.2A3.7 3.7 0 0 0 6.7 17" />
+                <path d="M12 19V9" />
+                <path d="m8 13 4-4 4 4" />
+              </svg>
+            </div>
+            <strong>连接 GitHub</strong>
+            <p>新用户可以创建账号，已有用户通过默认浏览器完成授权。</p>
+          </article>
+          <article class="workflow-step">
+            <div class="icon-shell" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 4 5 7v5c0 4.5 2.9 7 7 8 4.1-1 7-3.5 7-8V7z" />
+                <path d="m9 12 2 2 4-5" />
+              </svg>
+            </div>
+            <strong>安全备份</strong>
+            <p>项目默认备份到私有 GitHub 仓库，为每个有价值阶段留下恢复点。</p>
+          </article>
+          <article class="workflow-step">
+            <div class="icon-shell" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 12a8 8 0 0 1 13.7-5.7" />
+                <path d="M20 6v5h-5" />
+                <path d="M20 12a8 8 0 0 1-13.7 5.7" />
+                <path d="M4 18v-5h5" />
+              </svg>
+            </div>
+            <strong>持续监控</strong>
+            <p>使用 watch 检测长会话、较大改动和过久未备份的风险。</p>
+          </article>
         </div>
       </section>
 
       <section id="commands" class="commands-panel" aria-labelledby="commands-title">
         <div class="section-heading">
-          <h2 id="commands-title">覆盖完整流程的核心命令。</h2>
+          <h2 id="commands-title">覆盖完整流程的核心命令</h2>
           <p>初始化、备份、恢复、健康检查和风险监控都覆盖 AI 编程项目的关键保护流程。</p>
         </div>
         <div class="command-grid">
@@ -170,31 +245,86 @@
 
       <section id="platforms" class="platform-section" aria-labelledby="platforms-title">
         <div class="section-heading">
-          <h2 id="platforms-title">支持 Windows 和 macOS。</h2>
+          <h2 id="platforms-title">支持 Windows 和 macOS</h2>
           <p>面向日常使用平台的顺滑安装和备份体验。</p>
         </div>
         <div class="platform-list">
-          <article><strong>Windows PowerShell</strong><p>setup 会在工具缺失时尝试通过 winget 安装 Git 和 GitHub CLI。</p><a href="/zh-CN/guides/">查看 Windows 指南</a></article>
-          <article><strong>macOS Terminal</strong><p>setup 会在可用时使用 Homebrew，并启动安全的 GitHub 浏览器登录。</p><a href="/zh-CN/guides/">查看 macOS 指南</a></article>
+          <article>
+            <svg class="platform-logo" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 5.2 10.7 4v7.4H3z" />
+              <path d="M12 3.8 21 2.5v8.9h-9z" />
+              <path d="M3 12.6h7.7V20L3 18.8z" />
+              <path d="M12 12.6h9v8.9L12 20.2z" />
+            </svg>
+            <div>
+              <strong>Windows PowerShell</strong>
+              <p>setup 会在工具缺失时尝试通过 winget 安装 Git 和 GitHub CLI。</p>
+              <a href="/zh-CN/guides/">查看 Windows 指南</a>
+            </div>
+          </article>
+          <article>
+            <svg class="platform-logo filled" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M16.8 12.8c0-2 1.6-3 1.7-3.1-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.3.7-2.9.7-.6 0-1.5-.7-2.5-.7-1.3 0-2.5.8-3.2 2-1.4 2.4-.4 6 1 8 .7 1 1.5 2.2 2.6 2.1 1 0 1.4-.7 2.7-.7 1.2 0 1.6.7 2.7.7 1.1 0 1.8-1 2.5-2 .8-1.2 1.1-2.3 1.1-2.4 0 0-2.8-1.1-2.8-3Zm-2-6c.6-.7 1-1.6.9-2.6-.9 0-1.9.6-2.5 1.3-.6.6-1 1.6-.9 2.5 1 0 2-.5 2.5-1.2Z" />
+            </svg>
+            <div>
+              <strong>macOS Terminal</strong>
+              <p>setup 会在可用时使用 Homebrew，并启动安全的 GitHub 浏览器登录。</p>
+              <a href="/zh-CN/guides/">查看 macOS 指南</a>
+            </div>
+          </article>
         </div>
       </section>
 
       <section class="resources-section" aria-labelledby="guides-title">
         <div class="section-heading">
-          <h2 id="guides-title">指南和资源。</h2>
+          <h2 id="guides-title">指南和资源</h2>
           <p>开始使用并保持安全所需的关键说明。</p>
         </div>
         <div class="resource-grid">
-          <a class="resource-card" href="/zh-CN/guides/github-backup-without-git/"><strong>不用学习 Git 也能做 GitHub 备份</strong><p>把 GitHub 当成私有安全层，而不是先背熟每一条 Git 命令。</p><span>阅读指南</span></a>
-          <a class="resource-card" href="/zh-CN/guides/how-to-not-lose-ai-generated-code/"><strong>如何避免丢失 AI 生成的代码</strong><p>围绕高速 AI 编程会话建立备份节奏和恢复点习惯。</p><span>阅读指南</span></a>
-          <a class="resource-card" href="/zh-CN/guides/private-github-backup-for-ai-code/"><strong>AI 代码的私有 GitHub 备份</strong><p>理解为什么 AI 项目默认应该进入私有仓库，而不是公开暴露。</p><span>阅读指南</span></a>
-          <a class="resource-card" href="/zh-CN/guides/automatic-github-backup-for-ai-coding/"><strong>AI 编程的自动 GitHub 备份</strong><p>了解自动提醒、健康检查和可见恢复点如何降低丢代码风险。</p><span>阅读指南</span></a>
+          <a class="resource-card" href="/zh-CN/guides/github-backup-without-git/">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 6.5A5.5 5.5 0 0 0 6.5 4H4v15h2.5A5.5 5.5 0 0 1 12 21" />
+              <path d="M12 6.5A5.5 5.5 0 0 1 17.5 4H20v15h-2.5A5.5 5.5 0 0 0 12 21" />
+              <path d="M12 6.5V21" />
+            </svg>
+            <strong>不用学习 Git 也能做 GitHub 备份</strong>
+            <p>把 GitHub 当成私有安全层，而不是先背熟每一条 Git 命令。</p>
+            <span>阅读指南</span>
+          </a>
+          <a class="resource-card" href="/zh-CN/guides/how-to-not-lose-ai-generated-code/">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M9.5 9a2.8 2.8 0 0 1 5 1.7c0 1.8-2.5 2.1-2.5 3.8" />
+              <path d="M12 17h.01" />
+            </svg>
+            <strong>如何避免丢失 AI 生成的代码</strong>
+            <p>围绕高速 AI 编程会话建立备份节奏和恢复点习惯。</p>
+            <span>阅读指南</span>
+          </a>
+          <a class="resource-card" href="/zh-CN/guides/private-github-backup-for-ai-code/">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="5" y="10" width="14" height="10" rx="2" />
+              <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+            </svg>
+            <strong>AI 代码的私有 GitHub 备份</strong>
+            <p>理解为什么 AI 项目默认应该进入私有仓库，而不是公开暴露。</p>
+            <span>阅读指南</span>
+          </a>
+          <a class="resource-card" href="/zh-CN/guides/automatic-github-backup-for-ai-coding/">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 4 5 7v5c0 4.5 2.9 7 7 8 4.1-1 7-3.5 7-8V7z" />
+              <path d="m9 12 2 2 4-5" />
+            </svg>
+            <strong>AI 编程的自动 GitHub 备份</strong>
+            <p>了解自动提醒、健康检查和可见恢复点如何降低丢代码风险。</p>
+            <span>阅读指南</span>
+          </a>
         </div>
       </section>
 
       <section id="faq" class="faq-section" aria-labelledby="faq-title">
         <div class="section-heading">
-          <h2 id="faq-title">常见问题。</h2>
+          <h2 id="faq-title">常见问题</h2>
         </div>
         <div class="faq-list">
           <details><summary>我需要会 Git 吗？</summary><p>不需要。AICodeBackup 把常见 Git 设置、提交和推送包装成简单命令。</p></details>
