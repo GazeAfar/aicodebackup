@@ -2,7 +2,14 @@ node_modules/
 coverage/
 .env
 .DS_Store
+AGENTS.md
 agent.md
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Internal planning, launch, growth, and audit workspace notes.
+docs/audits/
+docs/growth-plan.md
+docs/ledgers/
+docs/startup-pack/
