@@ -57,6 +57,25 @@
         <h2>Why privacy matters for AI coding projects</h2>
         <p>A project created with AI may start as an experiment and become valuable quickly. Publishing it by mistake can expose implementation details, product direction, or sensitive local configuration.</p>
         <p>A private GitHub repository gives the project a remote copy without turning it into a public portfolio item.</p>
+        <section class="guide-install-panel" aria-labelledby="install-private-ai-code-backup">
+          <h2 id="install-private-ai-code-backup">Back up to a private GitHub repo</h2>
+          <p>
+            Install the alpha, then run setup from a test project to create or connect a private
+            GitHub recovery point.
+          </p>
+          <div class="guide-install-actions">
+            <div class="command-line" aria-label="npm install command" role="button" tabindex="0" data-analytics-copy="install-command">
+              <code id="install-command">npm install -g aicodebackup@alpha</code>
+              <span class="copy-button" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="9" y="9" width="10" height="10" rx="2" />
+                  <path d="M5 15V7a2 2 0 0 1 2-2h8" />
+                </svg>
+              </span>
+            </div>
+            <a class="button primary" href="https://www.npmjs.com/package/aicodebackup">Install alpha</a>
+          </div>
+        </section>
         <h2>What private by default means</h2>
         <p>When AICodeBackup creates a missing GitHub repository during setup, it creates that repository as private by default. The user can still manage permissions in GitHub, but the first backup starts from a safer default.</p>
         <h2>What to check before backing up</h2>

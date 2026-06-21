@@ -57,6 +57,25 @@
         <h2>The problem with teaching Git first</h2>
         <p>Many AI builders need protection today, not a full Git course. They may be product managers, designers, founders, operators, or vibe coders who are using AI to build an MVP.</p>
         <p>Telling them to learn Git before backing up code creates a delay exactly when the project is most fragile.</p>
+        <section class="guide-install-panel" aria-labelledby="install-no-git-backup">
+          <h2 id="install-no-git-backup">Start without memorizing Git</h2>
+          <p>
+            Install the alpha, run setup from the project folder, and let AICodeBackup guide the
+            private GitHub backup path.
+          </p>
+          <div class="guide-install-actions">
+            <div class="command-line" aria-label="npm install command" role="button" tabindex="0" data-analytics-copy="install-command">
+              <code id="install-command">npm install -g aicodebackup@alpha</code>
+              <span class="copy-button" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="9" y="9" width="10" height="10" rx="2" />
+                  <path d="M5 15V7a2 2 0 0 1 2-2h8" />
+                </svg>
+              </span>
+            </div>
+            <a class="button primary" href="https://www.npmjs.com/package/aicodebackup">Install alpha</a>
+          </div>
+        </section>
         <h2>The simpler mental model</h2>
         <ul>
           <li><code>aicodebackup setup</code> creates the safety layer.</li>
