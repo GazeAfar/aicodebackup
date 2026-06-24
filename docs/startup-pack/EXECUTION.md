@@ -39,3 +39,10 @@
 ## 4. 可视化面板口径
 
 后续如果开发可视化面板，面板应读取 `docs/ledgers/PROGRESS_TRACKING.md` 的固定字段，展示 SEO、npm、alpha tester、增长渠道、阻塞项和次日继续项。
+
+## Dashboard 日更规则
+
+- `docs/ledgers/PROGRESS_TRACKING.md` 是 dashboard 的每日进度事实源。
+- 每天开始工作时，如果最新日期块早于今天，先把上一条 `明日待办` 承接为今天的 `今日待办`；如果上一条 `明日待办` 为空，则用本文件的 `Current task`、`Resume point` 或当前阶段生成一条可执行待办。
+- 当天完成的事项必须从 `今日待办` 移到 `今日完成`，并使用 `[x]`；没有证据的事项不得写入完成。
+- 收工前必须补齐下一天 `明日待办`，否则第二天 dashboard 只能显示兜底待办。

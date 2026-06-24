@@ -7,8 +7,22 @@
 - 每个日期块只保留三个小节：`今日待办`、`今日完成`、`明日待办`。
 - `今日待办` 和 `明日待办` 不打勾；事项完成后，从待办移动到 `今日完成`。
 - `今日完成` 必须使用 `[x]`，并写清文件、命令、外部平台状态或用户确认等证据。
-- 不记录 npm token、GitHub token、Vercel token、Cookie、OAuth token、恢复码、账号密码或支付信息。
-- AICodeBackup 的本地 npm publish token 是用户明确保留的发布前提；除非用户明确要求 rotate/remove，不把“删除本地 npm token”写成默认收尾动作。
+- 如果最新日期块早于今天，dashboard 会把上一条 `明日待办` 显示为今天的 `今日待办`；开始工作前应点击或手动生成当天日期块，让 Markdown 事实源和面板保持一致。
+- 如果上一条 `明日待办` 为空，今天的待办应从 `docs/startup-pack/EXECUTION.md` 的 `Current task`、`Resume point` 或当前阶段生成。
+- 不记录账号密码、token、Cookie、支付标识、私人联系信息或无关用户隐私。
+## 2026-06-24
+
+### 今日待办
+- `待填写`
+
+### 今日完成
+- [x] 统一进度台账为 dashboard 三段式滚动规则：当天无记录时，从上一条 `明日待办` 承接到今天的 `今日待办`。
+  - Evidence: `docs/ledgers/PROGRESS_TRACKING.md`
+- [x] 更新启动执行文档，明确每日启动、收工和事实源写回规则。
+  - Evidence: `docs/startup-pack/EXECUTION.md`
+
+### 明日待办
+- 继续处理今天未完成的待办，并在收工前更新 `今日完成` 和下一天 `明日待办`。
 
 ## 2026-06-23
 
