@@ -10,6 +10,22 @@
 - 如果最新日期块早于今天，dashboard 会把上一条 `明日待办` 显示为今天的 `今日待办`；开始工作前应点击或手动生成当天日期块，让 Markdown 事实源和面板保持一致。
 - 如果上一条 `明日待办` 为空，今天的待办应从 `docs/startup-pack/EXECUTION.md` 的 `Current task`、`Resume point` 或当前阶段生成。
 - 不记录账号密码、token、Cookie、支付标识、私人联系信息或无关用户隐私。
+
+## 2026-06-25
+
+### 今日待办
+- 补 npm downloads、GitHub 仓库状态、GSC/analytics 和官网访问数据；缺失数据标记为 `Insufficient Data`。
+- 若进入 stable 准备，运行 package build/test/lint 和 website verify，并核对 README、npm 页面、官网安装说明和 CLI 行为是否一致。
+- 收集 alpha tester 反馈，归类为安装问题、文档问题、CLI 行为问题、备份成功率问题或发布阻塞。
+
+### 今日完成
+- [x] 更新 `docs/startup-pack/EXECUTION.md` 和 `docs/ledgers/PROGRESS_TRACKING.md`，明确 AICodeBackup 今日数据复盘和 stable 准备入口。
+  - Evidence: `docs/startup-pack/EXECUTION.md`、`docs/ledgers/PROGRESS_TRACKING.md`
+
+### 明日待办
+- 根据今天补齐的数据，决定优先修 README/npm/官网一致性、alpha tester 阻塞，还是准备增长渠道草稿。
+- 如涉及 npm publish、dist-tag、release tag、GitHub release 或 token 操作，先停在人工确认闸口。
+
 ## 2026-06-24
 
 ### 今日待办
