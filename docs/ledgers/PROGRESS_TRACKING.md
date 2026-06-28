@@ -11,6 +11,37 @@
 - 如果上一条 `明日待办` 为空，今天的待办应从 `docs/startup-pack/EXECUTION.md` 的 `Current task`、`Resume point` 或当前阶段生成。
 - 不记录账号密码、token、Cookie、支付标识、私人联系信息或无关用户隐私。
 
+## 2026-06-28
+
+### 今日待办
+- 本轮决策已收口；见 `今日完成` 和 `明日待办`。
+
+### 今日完成
+- [x] 补齐公开可验证数据，并将缺失平台数据保持为 `Insufficient Data`。
+  - Evidence: `npm view aicodebackup version dist-tags description --json`：`latest=0.1.0-alpha.5`，`alpha=0.2.0-alpha.2`。
+  - Evidence: npm downloads API：`2026-06-22..2026-06-28` 为 37 downloads，`2026-05-30..2026-06-28` 为 645 downloads。
+  - Evidence: GitHub API：`GazeAfar/aicodebackup` 为 3 stars、0 forks、0 open issues、default branch `main`、topics 为空。
+  - Evidence: AICodeBackup 线上首页包含 GA4 loader、`gtag('config')` 和 Measurement ID；GSC Search Analytics API 可读取 `sc-domain:aicodebackup.com`，`2026-05-31..2026-06-27` 返回点击 1、曝光 14、CTR 7.14%、平均排名 9.07。
+- [x] 确认 AICodeBackup 的 GA4/GSC 接入任务可关闭，后续进入数据复盘。
+  - Evidence: 静态站构建脚本 `website/scripts/sync-zh-cn-pages.mjs` 注入 GA4，`website/scripts/audit-seo.mjs` 校验 GA4；GSC API 查询 `sc-domain:aicodebackup.com` 返回 OK；工厂 dashboard 记录 Vercel 首个 Ready Production 部署日期为 `2026-06-17`。
+- [x] 刷新 stable 准备的低风险本地检查。
+  - Evidence: `npm run build` 通过。
+  - Evidence: `npm test` 通过，9 test files / 46 tests。
+  - Evidence: `npm run lint` 通过。
+  - Evidence: `cd website && npm run verify` 通过，Website SEO audit passed for 30 pages。
+- [x] 核对官网安装入口和 npm 包口径，完成优先级决策。
+  - Evidence: `https://www.aicodebackup.com/` 和 `/guides/` 返回 200，均包含 `npm install -g aicodebackup@alpha` 和安装 CTA。
+  - Evidence: `npm view aicodebackup@alpha version readmeFilename homepage repository keywords --json`：`version=0.2.0-alpha.2`，`readmeFilename=README.zh-CN.md`，`homepage/repository` 未返回。
+  - Evidence: `npm view aicodebackup@latest version readmeFilename homepage repository keywords --json`：`version=0.1.0-alpha.5`，`readmeFilename` 为空，`homepage/repository` 未返回。
+  - Evidence: `npm pack --dry-run --json` 确认本地包会包含 `README.md` 和 `README.zh-CN.md`。
+  - Decision: 优先处理 `README / npm / 官网一致性`。当前 npm 默认入口、readme metadata、homepage/repository metadata 和 GitHub topics 是增长前的公开入口缺口；alpha tester 仍缺反馈证据，增长渠道草稿应在公开入口口径收敛后推进。
+
+### 明日待办
+- 起草并实施 README/npm/官网一致性修复：核对 `package.json` 的 `repository`、`homepage`、`bugs`、keywords、README 主语言、npm readme 显示路径、官网安装说明和 GitHub repo description/topics。
+- 产出 npm 发布前检查清单；如需要 npm publish、dist-tag、release tag、GitHub release 或 token 操作，停在人工确认闸口。
+- 继续收集 alpha tester 反馈，至少补齐 tester 类型、OS、setup 完成、first backup 完成、confusing step 和 error message。
+- 在公开入口一致性和 tester 反馈有证据后，再准备增长渠道草稿和 UTM/referrer 字段。
+
 ## 2026-06-25
 
 ### 今日待办

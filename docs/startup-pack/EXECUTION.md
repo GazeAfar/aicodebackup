@@ -7,10 +7,10 @@
 - Site: `AICodeBackup`
 - Stage: `08 增长外链 -> 09 数据复盘 -> 06 SEO 内容优化 -> 07 生产健康复查 -> stable 发布准备`
 - Current owner: Codex
-- Last updated: `2026-06-25`
-- Current task: `补 AICodeBackup 已上线后的数据复盘和 stable 准备证据：npm downloads、GitHub 仓库状态、GSC/analytics、官网访问、alpha tester 反馈、package/website 检查结果。`
+- Last updated: `2026-06-28`
+- Current task: `优先修 README/npm/官网一致性：核对 package metadata、npm readme 显示、官网安装说明、GitHub repo description/topics，并保留 npm publish、dist-tag、release tag、GitHub release 和 token 操作的人工确认闸口。`
 - Current gate: `无 / 待用户确认；npm publish、dist-tag、release tag、GitHub release、npm token rotate/remove 或账号操作必须先暂停确认。`
-- Resume point: 从 `docs/ledgers/PROGRESS_TRACKING.md` 的 2026-06-25 记录继续；先补数据复盘证据，再决定是否进入 stable 发布准备或增长渠道草稿。
+- Resume point: 从 `docs/ledgers/PROGRESS_TRACKING.md` 的 2026-06-28 记录继续；先处理 README/npm/官网一致性，再补 alpha tester 反馈和增长渠道草稿。
 - Next automatic handoff: 按 `AGENTS.md` 的 Autopilot Pipeline 交接。
 
 ## 2. 执行顺序
